@@ -1,0 +1,22 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/(auth)/reset-password/page": "app/(auth)/reset-password/page.js",
+  "/page": "app/page.js",
+  "/(dashboard)/analytics/page": "app/(dashboard)/analytics/page.js",
+  "/(dashboard)/billing/page": "app/(dashboard)/billing/page.js",
+  "/(dashboard)/chat/page": "app/(dashboard)/chat/page.js",
+  "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js",
+  "/(dashboard)/factories/page": "app/(dashboard)/factories/page.js",
+  "/(dashboard)/inspections/[id]/page": "app/(dashboard)/inspections/[id]/page.js",
+  "/(dashboard)/inspections/page": "app/(dashboard)/inspections/page.js",
+  "/(dashboard)/lab-testing/page": "app/(dashboard)/lab-testing/page.js",
+  "/(dashboard)/liveboard/page": "app/(dashboard)/liveboard/page.js",
+  "/(dashboard)/orders/new/page": "app/(dashboard)/orders/new/page.js",
+  "/(dashboard)/orders/page": "app/(dashboard)/orders/page.js",
+  "/(dashboard)/settings/page": "app/(dashboard)/settings/page.js",
+  "/(dashboard)/tasks/page": "app/(dashboard)/tasks/page.js",
+  "/(dashboard)/orders/[id]/page": "app/(dashboard)/orders/[id]/page.js",
+  "/(marketing)/home/page": "app/(marketing)/home/page.js",
+  "/(marketing)/pricing/page": "app/(marketing)/pricing/page.js"
+}

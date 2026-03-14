@@ -1,0 +1,342 @@
+{
+  "category_id": "mens_outerwear",
+  "category_label": "Men's Outerwear",
+  "brand": "RefrigiWear",
+  "source_url": "https://pro.refrigiwear.com/category/mens/",
+  "products": [
+
+    {
+      "id": "MNJKT-001",
+      "style": "0489",
+      "name": "Iron-Tuff® Arctic Jacket",
+      "subcategory": "Jackets",
+      "collection": "Iron-Tuff®",
+      "colors": ["Black", "Navy"],
+      "description": "Waist-length freezer jacket. Abrasion-resistant, water-resistant, wind-tight. 2 oversized insulated front pockets, 2-stall pencil pocket on left sleeve, brass rivets throughout.",
+      "sizes": ["S","M","L","XL","2XL","3XL","4XL","5XL"],
+      "temp_rating_f": -50,
+      "temp_rating_c": -46,
+      "specs": {
+        "shell": "400-denier nylon",
+        "insulation": "11.25 oz RefrigiFill™ polyester",
+        "lining": "Polyester taffeta",
+        "seams": "Bound seams",
+        "hardware": "Brass zipper + brass rivets",
+        "cuffs": "Knit inner cuffs",
+        "closure": "Heavy-duty brass zipper with storm flap",
+        "pockets": "2 insulated front + 1 sleeve pencil pocket",
+        "certifications": []
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["400D nylon shell", "RefrigiFill™ polyester insulation", "Brass hardware"]
+    },
+
+    {
+      "id": "MNJKT-002",
+      "style": "0454",
+      "name": "Iron-Tuff® Polar Jacket",
+      "subcategory": "Jackets",
+      "collection": "Iron-Tuff®",
+      "colors": ["Black", "Navy", "Orange"],
+      "description": "Waist-length, wind-tight, abrasion-resistant freezer jacket. Knit cuffs, elastic back band for draft protection.",
+      "sizes": ["S","M","L","XL","2XL","3XL","4XL","5XL"],
+      "temp_rating_f": -50,
+      "temp_rating_c": -46,
+      "specs": {
+        "shell": "400-denier nylon",
+        "insulation": "11.25 oz RefrigiFill™ polyester",
+        "lining": "Polyester taffeta",
+        "seams": "Bound seams",
+        "hardware": "Brass zipper",
+        "cuffs": "Knit inner cuffs",
+        "closure": "Heavy-duty zipper with storm flap",
+        "pockets": "2 insulated front pockets",
+        "certifications": []
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["400D nylon shell", "RefrigiFill™ polyester insulation"]
+    },
+
+    {
+      "id": "MNJKT-003",
+      "style": "0469",
+      "name": "Iron-Tuff® WinterSeal™",
+      "subcategory": "Jackets",
+      "collection": "Iron-Tuff®",
+      "colors": ["Black"],
+      "description": "Full-front zip, sealed seams, brass rivets. Fleece collar, storm flap. Maximum cold-sealing construction.",
+      "sizes": ["S","M","L","XL","2XL","3XL","4XL","5XL"],
+      "temp_rating_f": -50,
+      "temp_rating_c": -46,
+      "specs": {
+        "shell": "400-denier nylon",
+        "insulation": "11.25 oz RefrigiFill™ polyester",
+        "lining": "Polyester taffeta",
+        "seams": "Bound seams",
+        "hardware": "Brass zipper + brass rivets",
+        "cuffs": "Knit inner cuffs",
+        "collar": "Soft fleece collar",
+        "closure": "Heavy-duty brass zipper with storm flap",
+        "certifications": []
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["400D nylon shell", "RefrigiFill™ polyester insulation", "Brass hardware"]
+    },
+
+    {
+      "id": "MNJKT-004",
+      "style": "0459 / 0459H",
+      "name": "Iron-Tuff® Siberian™",
+      "subcategory": "Jackets",
+      "collection": "Iron-Tuff®",
+      "colors": ["Black", "HiVis Lime", "HiVis Orange"],
+      "hivis_available": true,
+      "description": "Waist-length with fleece collar and storm flap. HiVis version meets ANSI/ISEA 107. Features 3M™ Scotchlite™ reflective tape on HiVis models.",
+      "sizes": ["S","M","L","XL","2XL","3XL","4XL","5XL"],
+      "temp_rating_f": -50,
+      "temp_rating_c": -46,
+      "specs": {
+        "shell": "400-denier nylon",
+        "insulation": "11.25 oz RefrigiFill™ polyester",
+        "seams": "Bound seams",
+        "hardware": "Brass zipper + brass rivets",
+        "collar": "Soft fleece collar",
+        "reflective_tape": "2\" 3M™ Scotchlite™ (HiVis version)",
+        "certifications": ["ANSI/ISEA 107 Class 3 (HiVis version)"]
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["400D nylon shell", "RefrigiFill™ insulation", "3M Scotchlite tape (HiVis)"]
+    },
+
+    {
+      "id": "MNJKT-005",
+      "style": "0478",
+      "name": "Iron-Tuff® Ice Parka",
+      "subcategory": "Jackets",
+      "collection": "Iron-Tuff®",
+      "colors": ["Black", "Navy"],
+      "description": "Only Iron-Tuff® jacket with sewn-on hood. Hip-length for extended coverage. Elastic back band and 2 front pockets.",
+      "sizes": ["S","M","L","XL","2XL","3XL","4XL","5XL"],
+      "temp_rating_f": -50,
+      "temp_rating_c": -46,
+      "specs": {
+        "shell": "400-denier nylon",
+        "insulation": "11.25 oz RefrigiFill™ polyester",
+        "seams": "Bound seams",
+        "hood": "Sewn-on insulated hood with drawstring",
+        "hardware": "Brass zipper",
+        "closure": "Heavy-duty zipper with storm flap",
+        "pockets": "2 oversized insulated front + 1 zippered sleeve",
+        "certifications": []
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["400D nylon shell", "RefrigiFill™ insulation", "Sewn-on hood"]
+    },
+
+    {
+      "id": "MNJKT-006",
+      "style": "0488",
+      "name": "Iron-Tuff® Inspector Jacket",
+      "subcategory": "Jackets",
+      "collection": "Iron-Tuff®",
+      "colors": ["Black"],
+      "description": "Knee-length for maximum coverage. Side seam slits for pant pocket access. Extra-long protection for cold storage inspectors and supervisors.",
+      "sizes": ["S","M","L","XL","2XL","3XL","4XL","5XL"],
+      "temp_rating_f": -50,
+      "temp_rating_c": -46,
+      "specs": {
+        "shell": "400-denier nylon",
+        "insulation": "11.25 oz RefrigiFill™ polyester",
+        "seams": "Bound seams",
+        "length": "Knee-length",
+        "hardware": "Heavy-duty brass zipper",
+        "pockets": "2 oversized insulated front + chest pocket",
+        "special_features": "Side seam slits for pant pocket access",
+        "certifications": []
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["400D nylon shell", "RefrigiFill™ insulation", "Brass hardware"]
+    },
+
+    {
+      "id": "MNJKT-007",
+      "style": "0647",
+      "name": "PolarForce® Hooded Parka",
+      "subcategory": "Jackets",
+      "collection": "PolarForce®",
+      "colors": ["Black"],
+      "description": "Customizable insulated hood. Performance-Flex ribbed panels at flex points for movement. Full zip with storm flap.",
+      "sizes": ["S","M","L","XL","2XL","3XL","4XL","5XL"],
+      "temp_rating_f": -40,
+      "temp_rating_c": -40,
+      "specs": {
+        "shell": "PolarShield™ nylon",
+        "insulation": "9 oz RefrigiFill™ polyester",
+        "flex_panels": "Performance-Flex ribbed fabric at key flex points",
+        "hood": "Customizable insulated adjustable hood",
+        "closure": "Full-zip with storm flap",
+        "certifications": []
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["PolarShield™ nylon", "9oz RefrigiFill™", "Performance-Flex panels"]
+    },
+
+    {
+      "id": "MNJKT-008",
+      "style": "0494",
+      "name": "Softshell Insulated Jacket",
+      "subcategory": "Jackets",
+      "collection": "Softshell",
+      "colors": ["Black"],
+      "description": "4-way stretch softshell. Water-repellent DWR finish. Side zip ventilation. Active work performance.",
+      "sizes": ["S","M","L","XL","2XL","3XL"],
+      "temp_rating_f": -20,
+      "temp_rating_c": -29,
+      "specs": {
+        "shell": "96% polyester / 4% spandex softshell",
+        "insulation": "Lightweight polyester fill",
+        "stretch": "4-way stretch",
+        "finish": "DWR water-repellent",
+        "ventilation": "Side zippers",
+        "certifications": []
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["Polyester/spandex softshell", "DWR finish", "Lightweight insulation"]
+    },
+
+    {
+      "id": "MNJKT-009",
+      "style": "0494HV",
+      "name": "HiVis Softshell Jacket",
+      "subcategory": "Jackets",
+      "collection": "Softshell",
+      "hivis_available": true,
+      "colors": ["HiVis Lime", "HiVis Orange"],
+      "description": "ANSI Class 3 compliant softshell. Stretch 4-way, DWR, reflective striping. For active outdoor workers requiring visibility.",
+      "sizes": ["S","M","L","XL","2XL","3XL"],
+      "temp_rating_f": -20,
+      "temp_rating_c": -29,
+      "specs": {
+        "shell": "96% polyester / 4% spandex softshell",
+        "insulation": "Lightweight polyester fill",
+        "reflective": "3M reflective trim",
+        "certifications": ["ANSI/ISEA 107 Class 3", "EN ISO 20471"]
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["HiVis polyester/spandex softshell", "3M reflective trim", "DWR finish"]
+    },
+
+    {
+      "id": "MNJKT-010",
+      "style": "0485",
+      "name": "Econo-Tuff® Jacket",
+      "subcategory": "Jackets",
+      "collection": "Econo-Tuff®",
+      "colors": ["Black", "Navy", "Orange"],
+      "description": "Budget-friendly insulated jacket. Lightweight 200D shell. 2 insulated front pockets. EN 14058 certified.",
+      "sizes": ["S","M","L","XL","2XL","3XL"],
+      "temp_rating_f": 15,
+      "temp_rating_c": -9,
+      "specs": {
+        "shell": "200-denier polyester",
+        "insulation": "6 oz polyester fiberfill",
+        "pockets": "2 insulated front pockets",
+        "certifications": ["EN 14058:2017 (4|2|0.182|X)"]
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["200D polyester shell", "6oz fiberfill insulation"]
+    },
+
+    {
+      "id": "MNBIB-001",
+      "style": "0402",
+      "name": "Iron-Tuff® Bib Overalls",
+      "subcategory": "Bibs & Pants",
+      "collection": "Iron-Tuff®",
+      "colors": ["Black", "Navy"],
+      "description": "Chest-to-ankle protection. Adjustable shoulder straps with metal hardware. Boot-zipper legs for easy on/off. Snap-close bib pocket.",
+      "sizes": ["S","M","L","XL","2XL","3XL","4XL","5XL"],
+      "temp_rating_f": -50,
+      "temp_rating_c": -46,
+      "specs": {
+        "shell": "400-denier nylon",
+        "insulation": "11.25 oz RefrigiFill™ polyester",
+        "seams": "Bound seams",
+        "leg_closure": "Boot zipper legs",
+        "straps": "Adjustable shoulder straps with metal hardware",
+        "bib_pocket": "Snap-close chest pocket",
+        "certifications": []
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["400D nylon shell", "RefrigiFill™ insulation", "Metal suspender hardware"]
+    },
+
+    {
+      "id": "MNBIB-002",
+      "style": "0402HV",
+      "name": "HiVis Iron-Tuff® Bib Overalls",
+      "subcategory": "Bibs & Pants",
+      "collection": "Iron-Tuff®",
+      "hivis_available": true,
+      "colors": ["HiVis Lime", "HiVis Orange"],
+      "description": "ANSI/ISEA 107 Class E compliant. Reflective tape on legs and bib. All Iron-Tuff® durability.",
+      "sizes": ["S","M","L","XL","2XL","3XL","4XL","5XL"],
+      "temp_rating_f": -50,
+      "temp_rating_c": -46,
+      "specs": {
+        "shell": "400-denier nylon",
+        "insulation": "11.25 oz RefrigiFill™ polyester",
+        "reflective": "3M Scotchlite™ strips",
+        "certifications": ["ANSI/ISEA 107 Class E"]
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["400D HiVis nylon", "RefrigiFill™ insulation", "3M reflective strips"]
+    },
+
+    {
+      "id": "MNCVR-001",
+      "style": "0488C",
+      "name": "Iron-Tuff® Coveralls",
+      "subcategory": "Coveralls",
+      "collection": "Iron-Tuff®",
+      "colors": ["Black", "Navy"],
+      "description": "Full neck-to-ankle single-garment protection. Heavy-duty brass front zipper, boot-zipper legs, bound seams throughout.",
+      "sizes": ["S","M","L","XL","2XL","3XL","4XL","5XL"],
+      "temp_rating_f": -50,
+      "temp_rating_c": -46,
+      "specs": {
+        "shell": "400-denier nylon",
+        "insulation": "11.25 oz RefrigiFill™ polyester",
+        "seams": "Bound seams",
+        "closure": "Heavy-duty brass front zipper",
+        "leg_closure": "Boot zipper legs",
+        "pockets": "2 front + bib pocket",
+        "certifications": []
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["400D nylon shell", "RefrigiFill™ insulation", "Brass hardware"]
+    },
+
+    {
+      "id": "MNCVR-002",
+      "style": "8415",
+      "name": "ComfortGuard™ Coveralls",
+      "subcategory": "Coveralls",
+      "collection": "ComfortGuard™",
+      "colors": ["Black"],
+      "description": "Lightweight all-day comfort. Snap front, elastic waist. Designed for moderate cold and long shifts.",
+      "sizes": ["S","M","L","XL","2XL","3XL"],
+      "temp_rating_f": 0,
+      "temp_rating_c": -18,
+      "specs": {
+        "shell": "100% polyester",
+        "insulation": "Lightweight polyester fiberfill",
+        "closure": "Snap front",
+        "waist": "Elastic waistband",
+        "certifications": []
+      },
+      "size_chart_ref": "mens_garment_chart",
+      "key_materials": ["100% polyester shell", "Lightweight fiberfill", "Snap closures"]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+    "n8n.host": "https://n8n.srv1372067.hstgr.cloud:5678/mcp-server/http",
+    "n8n.apiKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyNjI1ZmJjMy1hMGYxLTQ5OTItYjM2Ny1jMjg5MDk2ZjRjMjYiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiMjJlNjVjYzktNTJlZS00NzAwLWExYjAtMGI0NjNlMmEwN2E0IiwiaWF0IjoxNzcyNzY4NjA5LCJleHAiOjE3NzUzNDAwMDB9.yBXZjQO5SHktFGbgYd_0iByjCjjV0hKP3g64YrVjWZQ",
+    "n8n.syncFolder": "n8n/workflows"
+}

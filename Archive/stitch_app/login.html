@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SANKALP 🏆 - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1565c1",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111821",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen">
+<div class="flex min-h-screen overflow-hidden">
+<!-- Left Section: Illustration & Branding -->
+<div class="hidden lg:flex lg:w-1/2 relative bg-primary items-center justify-center p-12 overflow-hidden">
+<!-- Decorative Background Elements -->
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white/5 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/5 rounded-full blur-3xl"></div>
+<div class="relative z-10 w-full max-w-lg">
+<div class="mb-12">
+<h2 class="text-4xl font-bold text-white mb-4">Precision in Every Process</h2>
+<p class="text-white/80 text-lg leading-relaxed">
+                        SANKALP provides the ultimate suite for production and inspection management. Achieve excellence through focused execution.
+                    </p>
+</div>
+<div class="relative rounded-xl overflow-hidden shadow-2xl bg-white/10 backdrop-blur-sm border border-white/20">
+<img alt="Industrial quality inspection" class="w-full aspect-video object-cover opacity-90" data-alt="Modern factory automated quality inspection line" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHl8XdLIdCelDDnYCO8mwHLxCYMvwiIhL2xKe0yHSok3zrK7VofR-r3vzNYRZsBBrVXOgZR0_tg7-QxdhhiRgVNz6OLSxPPhX48uT0G0gMsc-hNdbyoq548dq2ZuNsfAPoSrl0WzSKocePpZVDjfheZtxWX_8v_ElG9kaVUky9S89g56Dphi5mglOIgi99YEpTUQGBHfnFQ5344wsjiAxJ6x4s04SKDz85Y4vpmtrEqCrgIJ-dDcuHMrN0KWRV91HzCdrqNaoHKrA4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6">
+<div class="flex items-center space-x-3">
+<div class="bg-white/20 p-2 rounded-lg backdrop-blur-md">
+<span class="material-icons text-white">verified_user</span>
+</div>
+<div>
+<p class="text-white font-semibold">Quality First</p>
+<p class="text-white/70 text-sm">Real-time inspection monitoring</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 grid grid-cols-2 gap-6">
+<div class="flex items-center space-x-3 text-white/90">
+<span class="material-icons text-white">check_circle</span>
+<span class="text-sm font-medium">99.9% Accuracy</span>
+</div>
+<div class="flex items-center space-x-3 text-white/90">
+<span class="material-icons text-white">speed</span>
+<span class="text-sm font-medium">Focused Execution</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Section: Login Form -->
+<div class="w-full lg:w-1/2 flex flex-col justify-center items-center p-6 sm:p-12 md:p-24 bg-white dark:bg-background-dark">
+<div class="w-full max-w-md">
+<!-- Mobile Logo -->
+<div class="flex justify-center mb-10 lg:justify-start">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-2 rounded-lg flex items-center justify-center">
+<span class="material-icons text-white text-2xl">precision_manufacturing</span>
+</div>
+<span class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white uppercase">SANKALP 🏆</span>
+</div>
+</div>
+<!-- Form Header -->
+<div class="mb-10 text-center lg:text-left">
+<h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Welcome Back to SANKALP 🏆</h1>
+<p class="text-gray-500 dark:text-gray-400">Stay Focused. Stay Committed.</p>
+</div>
+<!-- Login Form -->
+<form action="dashboard.html" class="space-y-6" method="GET">
+<div>
+<label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2" for="email">Work Email or Username</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-icons text-gray-400 text-lg">alternate_email</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 bg-background-light dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all text-gray-900 dark:text-white placeholder-gray-400" id="email" name="email" placeholder="name@company.com" required="" type="email"/>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="block text-sm font-semibold text-gray-700 dark:text-gray-300" for="password">Password</label>
+<a class="text-sm font-semibold text-primary hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-icons text-gray-400 text-lg">lock_outline</span>
+</div>
+<input class="block w-full pl-10 pr-10 py-3 bg-background-light dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all text-gray-900 dark:text-white placeholder-gray-400" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-3 flex items-center" type="button">
+<span class="material-icons text-gray-400 hover:text-gray-600 transition-colors cursor-pointer text-lg">visibility_off</span>
+</button>
+</div>
+</div>
+<div class="flex items-center">
+<input class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded cursor-pointer" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="ml-2 block text-sm text-gray-600 dark:text-gray-400 cursor-pointer" for="remember-me">
+                            Keep me logged in for 30 days
+                        </label>
+</div>
+<div>
+<button class="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all transform active:scale-[0.98]" type="submit">
+                            ENTER SANKALP 🏆
+                        </button>
+</div>
+</form>
+<!-- Additional Links -->
+<div class="mt-10 text-center">
+<p class="text-sm text-gray-600 dark:text-gray-400">
+                        New to the platform? 
+                        <a class="font-bold text-primary hover:underline ml-1" href="#">Request Access</a>
+</p>
+</div>
+<!-- Footer -->
+<div class="mt-20 flex flex-col items-center lg:items-start text-xs text-gray-400 space-y-2">
+<p>© 2024 SANKALP Management Systems. All rights reserved.</p>
+<div class="flex space-x-4">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="js/app.js"></script></body></html>

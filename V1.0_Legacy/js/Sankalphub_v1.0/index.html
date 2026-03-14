@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SANKALP 🏆 - Production &amp; Inspection Intelligence</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Outfit:wght@600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#f19c52",
+              "background-light": "#f8fafc",
+              "background-dark": "#0f172a",
+              "card-dark": "#1e293b",
+            },
+            fontFamily: {
+              display: ["Outfit", "Plus Jakarta Sans", "sans-serif"],
+              sans: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.625rem",
+              'xl': '1rem',
+              '2xl': '1.5rem',
+            },
+          },
+        },
+      };
+    </script>
+<style type="text/tailwindcss">
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #f19c52 0%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-slate-900 bg-background-light dark:bg-background-dark dark:text-slate-100 transition-colors duration-300">
+<nav class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-slate-200/50 dark:border-slate-800/50 bg-white/80 dark:bg-background-dark/80">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">emoji_events</span>
+</div>
+<span class="text-2xl font-black font-display tracking-tight text-slate-900 dark:text-white">SANKALP 🏆</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors" href="#features">Features</a>
+<a class="font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors" href="#solutions">Solutions</a>
+<a class="font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors" href="#calculator">Savings</a>
+<a class="font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors" href="#">Pricing</a>
+</div>
+<div class="flex items-center space-x-4">
+<a class="hidden sm:block font-semibold text-slate-700 dark:text-slate-200 hover:text-primary transition-colors" href="login.html">Login to SANKALP 🏆</a>
+<a class="bg-primary hover:bg-orange-600 text-white px-6 py-2.5 rounded-full font-bold transition-all transform hover:scale-105 shadow-md shadow-primary/25" href="#">Get Demo</a>
+</div>
+</div>
+</div>
+</nav>
+<header class="relative pt-32 pb-20 overflow-hidden">
+<div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(241,156,82,0.1),transparent_40%)]"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="text-left">
+<div class="inline-flex items-center px-4 py-1.5 mb-6 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold text-sm">
+<span class="material-symbols-outlined text-lg mr-2">verified</span>
+                    Driven by Determination. Powered by Discipline.
+                </div>
+<h1 class="text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-slate-900 dark:text-white mb-6 leading-tight">
+                    SANKALP 🏆 – <br/><span class="gradient-text">Production &amp; Inspection Intelligence Platform</span>
+</h1>
+<p class="text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-lg leading-relaxed">
+                    Unifying Sampling, Production, Inspection, and Testing into one disciplined workflow system.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="px-8 py-4 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/30 hover:bg-orange-600 transition-all flex items-center justify-center">
+                        Request Demo
+                        <span class="material-symbols-outlined ml-2">arrow_forward</span>
+</button>
+<button class="px-8 py-4 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-700 font-bold rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center justify-center text-slate-700 dark:text-slate-200">
+<span class="material-symbols-outlined mr-2 text-primary">play_circle</span>
+                        Watch Video
+                    </button>
+</div>
+</div>
+<div class="relative">
+<div class="relative z-10 bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-800/50">
+<img alt="Dashboard Preview" class="opacity-90 w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKmkJRLKh-9GfwJNcnteLyGVbLXnSl2rV71XbidbPetZXTX1r3TbuO5iNRVOxdUCgTWzZYTbSJUPxEP8hKArCa0MUOPV551k3l0T6S8qImbDn_hRD8ImAPs8o-w-l3_KGv_wSVAiAuK0LRoCvbMCEdJz1yuRMR-y47XZzVM3FMY26LH8kC9mLOICDKLl_nlVqT4PnDnA11f_HPtEZ1dUBcaF5DP74oRc0230NA9xSP45l8HRZ0BOxAuVe9jkeoLyzkCGcJ4oW45DDf"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 z-20 hidden md:block">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<p class="text-xs font-semibold text-slate-400">Error Reduction</p>
+<p class="text-xl font-bold text-slate-900 dark:text-white">+34% Faster</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<section class="py-12 bg-slate-50 dark:bg-slate-900/50 border-y border-slate-100 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 text-center">
+<p class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-8">TRUSTED BY INDUSTRY LEADERS IN PRODUCTION &amp; LOGISTICS</p>
+<div class="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<span class="text-2xl font-black text-slate-500">GLOBALWEAR</span>
+<span class="text-2xl font-black text-slate-500">LOGISTX</span>
+<span class="text-2xl font-black text-slate-500">PRIME+</span>
+<span class="text-2xl font-black text-slate-500">SMARTCHAIN</span>
+<span class="text-2xl font-black text-slate-500">TECHFABRIC</span>
+</div>
+</div>
+</section>
+<section class="py-24 max-w-7xl mx-auto px-4" id="features">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-4">One disciplined system. Total execution.</h2>
+<p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">SANKALP 🏆 brings order to complexity with specialized modules for every phase of production.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white dark:bg-card-dark p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 transition-all">
+<div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 text-primary rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">fact_check</span>
+</div>
+<h3 class="text-xl font-bold mb-4">Digital Inspection</h3>
+<p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Ensure absolute product quality with real-time digital inspections. Replace intuition with data-driven accuracy.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-sm mr-2">check_circle</span> Instant PDF Report Generation
+                </li>
+<li class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-sm mr-2">check_circle</span> Offline Data Capture
+                </li>
+</ul>
+<a class="font-bold text-primary flex items-center hover:gap-2 transition-all" href="inspection.html">Explore Module <span class="material-symbols-outlined ml-1">chevron_right</span></a>
+</div>
+<div class="bg-white dark:bg-card-dark p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 transition-all">
+<div class="w-14 h-14 bg-blue-100 dark:bg-blue-900/20 text-blue-500 rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">manufacturing</span>
+</div>
+<h3 class="text-xl font-bold mb-4">Production Tracking</h3>
+<p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Full visibility from sampling to shipment. Monitor Critical Path Management in real-time across your network.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-blue-500 text-sm mr-2">check_circle</span> Critical Path Alerts
+                </li>
+<li class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-blue-500 text-sm mr-2">check_circle</span> Unified Vendor Hub
+                </li>
+</ul>
+<a class="font-bold text-blue-500 flex items-center hover:gap-2 transition-all" href="production.html">Explore Module <span class="material-symbols-outlined ml-1">chevron_right</span></a>
+</div>
+<div class="bg-white dark:bg-card-dark p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-xl hover:-translate-y-1 transition-all">
+<div class="w-14 h-14 bg-purple-100 dark:bg-purple-900/20 text-purple-500 rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">insights</span>
+</div>
+<h3 class="text-xl font-bold mb-4">Analytics Engine</h3>
+<p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Convert raw production data into actionable intelligence. Identify vendor bottlenecks and efficiency gains.</p>
+<ul class="space-y-3 mb-8">
+<li class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-purple-500 text-sm mr-2">check_circle</span> Automated KPI Dashboards
+                </li>
+<li class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-purple-500 text-sm mr-2">check_circle</span> Benchmarking Reports
+                </li>
+</ul>
+<a class="font-bold text-purple-500 flex items-center hover:gap-2 transition-all" href="advanced_analytics.html">Explore Module <span class="material-symbols-outlined ml-1">chevron_right</span></a>
+</div>
+</div>
+</section>
+<section class="py-24 bg-slate-900 text-white overflow-hidden" id="solutions">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl font-extrabold mb-6 leading-tight">Master your supply chain with <span class="text-primary">unwavering focus.</span></h2>
+<p class="text-slate-400 text-lg mb-8">SANKALP 🏆 empowers your team to maintain strict discipline over every order. Real-time updates ensure that delays are spotted before they impact your delivery timelines.</p>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<div>
+<h4 class="font-bold mb-1">Centralized Execution</h4>
+<p class="text-slate-400">Bring vendors, agents, and inspection teams into one unified workflow.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined">notification_important</span>
+</div>
+<div>
+<h4 class="font-bold mb-1">Proactive Risk Control</h4>
+<p class="text-slate-400">Automated determination triggers alerts for any deviation from the critical path.</p>
+</div>
+</div>
+</div>
+<button class="mt-12 px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-orange-600 transition-all">Get Started with SANKALP 🏆</button>
+</div>
+<div class="relative">
+<div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-2xl">
+<div class="flex justify-between items-center mb-12">
+<div class="text-center">
+<div class="w-16 h-16 rounded-full border-4 border-primary flex items-center justify-center mb-2 mx-auto">
+<span class="text-sm font-bold">100%</span>
+</div>
+<p class="text-xs uppercase font-bold text-slate-400">Sampling</p>
+</div>
+<div class="h-1 w-full bg-slate-700 mx-2 -mt-10"></div>
+<div class="text-center">
+<div class="w-16 h-16 rounded-full border-4 border-slate-600 flex items-center justify-center mb-2 mx-auto">
+<span class="text-sm font-bold">45%</span>
+</div>
+<p class="text-xs uppercase font-bold text-slate-400">Production</p>
+</div>
+<div class="h-1 w-full bg-slate-700 mx-2 -mt-10"></div>
+<div class="text-center">
+<div class="w-16 h-16 rounded-full border-4 border-slate-600 flex items-center justify-center mb-2 mx-auto">
+<span class="text-sm font-bold">0%</span>
+</div>
+<p class="text-xs uppercase font-bold text-slate-400">Inspection</p>
+</div>
+</div>
+<div class="bg-slate-700/50 p-6 rounded-xl">
+<div class="flex justify-between items-center mb-4">
+<span class="font-bold">Batch #9920 - Technical Outerwear</span>
+<span class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded">On Schedule</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<div class="w-5 h-5 rounded bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-[12px]">check</span></div>
+<span class="text-sm text-slate-300">Materials Sourcing &amp; Lab Testing</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-5 h-5 rounded border border-slate-500 flex items-center justify-center"><span class="material-symbols-outlined text-[12px] opacity-0">check</span></div>
+<span class="text-sm text-slate-300">Inline Production Audits</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 max-w-7xl mx-auto px-4" id="calculator">
+<div class="grid lg:grid-cols-2 gap-12">
+<div>
+<span class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded mb-4 uppercase">Efficiency Calculator</span>
+<h2 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-6">Quantify your disciplined growth.</h2>
+<p class="text-slate-600 dark:text-slate-400 text-lg mb-8 leading-relaxed">
+                Waste is the enemy of execution. SANKALP 🏆 eliminates 35% of manual administrative overhead by digitizing your entire inspection and tracking workflow.
+            </p>
+<div class="bg-white dark:bg-card-dark p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+<h3 class="font-bold mb-6">Current Operational Overhead</h3>
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-slate-500 mb-2">Team members involved</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg" type="number" value="10"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-500 mb-2">Average monthly salary (USD)</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg" type="number" value="3500"/>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<span class="font-bold text-slate-400">ESTIMATED ANNUAL OVERHEAD</span>
+<span class="text-3xl font-black text-slate-900 dark:text-white">$420,000</span>
+</div>
+</div>
+</div>
+<div class="bg-slate-900 p-10 rounded-3xl text-white flex flex-col justify-between">
+<div>
+<h3 class="text-2xl font-bold mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">speed</span>
+                    The SANKALP 🏆 Advantage
+                </h3>
+<div class="space-y-8">
+<div class="flex justify-between items-end border-b border-slate-800 pb-4">
+<div>
+<p class="text-sm text-slate-400 font-bold uppercase mb-1">Total Users</p>
+<p class="text-2xl font-bold">12</p>
+</div>
+<span class="text-primary material-symbols-outlined">edit</span>
+</div>
+<div class="flex justify-between items-end border-b border-slate-800 pb-4">
+<div>
+<p class="text-sm text-slate-400 font-bold uppercase mb-1">SANKALP 🏆 Annual Investment</p>
+<p class="text-2xl font-bold">$4,900</p>
+</div>
+<span class="text-slate-500">USD</span>
+</div>
+</div>
+</div>
+<div class="mt-12 bg-primary p-8 rounded-2xl shadow-xl shadow-primary/20">
+<p class="text-white/80 font-bold uppercase text-sm mb-1 tracking-wider">Estimated Annual Savings</p>
+<p class="text-5xl font-black text-white">$147,000</p>
+<p class="mt-4 text-white/90 font-medium">ROI Payback Period: <span class="bg-white/20 px-2 py-0.5 rounded">1.2 Months</span></p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-slate-50 dark:bg-slate-900/30">
+<div class="max-w-7xl mx-auto px-4">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Determination In Action</h2>
+<p class="text-slate-500 mt-2">Latest insights on manufacturing discipline and supply chain intelligence.</p>
+</div>
+<a class="text-primary font-bold hover:underline" href="#">View All Insights</a>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<article class="group bg-white dark:bg-card-dark rounded-2xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800 transition-all hover:shadow-xl">
+<div class="h-48 bg-slate-200 overflow-hidden">
+<img alt="Supply Chain" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANvJbDIS7lkMNU-O3wA6xPYzXeec_GB3R-nWxTuySR3t8rxdJqf2yQq7zhKSOpUOslP2cVAastWDnJj1vazC84B0Q-9feoqMFa8wcU_Mbs3nPgbrDu9q_-q6MZrQPV_Pwa4jdbB5xXkGb9XW9SE7uvA1Uv-wbBy5ISg4iEHmhht0LEJXucdK1xm16P-A_tINzJ6E44nn5o-YuIckI584FrKmPvaPOUVojFKRn8RT3cBnImVdQE9CWwq9KlXv4m4rlXUJIMcqG9_F3h"/>
+</div>
+<div class="p-6">
+<span class="text-primary text-xs font-bold uppercase tracking-widest">Efficiency</span>
+<h4 class="text-xl font-bold mt-2 mb-4 group-hover:text-primary transition-colors">Digital Inspection: The New Standard</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-6">How SANKALP 🏆 users are reducing sampling errors by over 40% through disciplined reporting...</p>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200"></div>
+<span class="text-xs font-bold text-slate-700 dark:text-slate-300">Technical Team</span>
+<span class="text-xs text-slate-400 ml-auto">Mar 01, 2024</span>
+</div>
+</div>
+</article>
+<article class="group bg-white dark:bg-card-dark rounded-2xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800 transition-all hover:shadow-xl">
+<div class="h-48 bg-slate-200 overflow-hidden">
+<img alt="Digital Transformation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBu83Lq_fs9k-Buxqj7seW9GQxas28ac-Be7doTjKOVVjlWnRNKpr3RfJKGkYMWYDrQT9sOskDwzzDTMaQmDtbQO1wRm1xPcOD5X2hfiWp7OjRZ-B8GugQHPF_Xa2FWCfT3bzsVOasL49udnR3lVVblYY0M6GtB_GuviuGlA25CW5pzzbm9XGeuepu_pPd9HVZxIYGE_ccK5nYatYtPMc8Fa7sWzmf_FUqXCkDx_DXD07HrAUbazoTOyo2D1Be8v8CKTLHgpCWIMaJ"/>
+</div>
+<div class="p-6">
+<span class="text-primary text-xs font-bold uppercase tracking-widest">Discipline</span>
+<h4 class="text-xl font-bold mt-2 mb-4 group-hover:text-primary transition-colors">Building a Zero-Delay Supply Chain</h4>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-6">Strategies for maintaining production momentum during peak seasons...</p>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200"></div>
+<span class="text-xs font-bold text-slate-700 dark:text-slate-300">Operations Lead</span>
+<span class="text-xs text-slate-400 ml-auto">Feb 28, 2024</span>
+</div>
+</div>
+</article>
+<div class="bg-primary p-8 rounded-2xl text-white flex flex-col justify-center">
+<h4 class="text-2xl font-bold mb-4">Master your workflow today.</h4>
+<p class="text-white/80 text-sm mb-8">Get SANKALP 🏆 updates and industry guides directly to your inbox.</p>
+<form class="space-y-3">
+<input class="w-full bg-white/10 border-white/20 rounded-lg placeholder-white/60 focus:ring-white" placeholder="Your work email" type="email"/>
+<button class="w-full bg-white text-primary font-bold py-3 rounded-lg hover:bg-slate-100 transition-all">Subscribe Now</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-white dark:bg-background-dark border-t border-slate-100 dark:border-slate-800 pt-20 pb-10">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-16">
+<div class="col-span-2">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-lg">emoji_events</span>
+</div>
+<span class="text-xl font-black font-display tracking-tight dark:text-white uppercase">SANKALP 🏆</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 mb-6 max-w-sm">The all-in-one platform for production monitoring, inspection tracking, and supply chain intelligence.</p>
+<p class="text-slate-900 dark:text-slate-100 font-bold italic mb-6">Driven by Determination. Powered by Discipline.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-base">share</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-base">public</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-bold mb-6">Modules</h5>
+<ul class="space-y-4 text-slate-500 dark:text-slate-400 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Sampling Hub</a></li>
+<li><a class="hover:text-primary transition-colors" href="inspection.html">Digital Inspection</a></li>
+<li><a class="hover:text-primary transition-colors" href="production.html">Production T&amp;A</a></li>
+<li><a class="hover:text-primary transition-colors" href="analytics.html">Lab Testing</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6">Company</h5>
+<ul class="space-y-4 text-slate-500 dark:text-slate-400 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Mission</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Case Studies</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Insights</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6">Support</h5>
+<ul class="space-y-4 text-slate-500 dark:text-slate-400 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Help Desk</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">System Guides</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">API Reference</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Reliability</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold mb-6">Legal</h5>
+<ul class="space-y-4 text-slate-500 dark:text-slate-400 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Compliance</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-slate-400 text-sm">© 2024 SANKALP 🏆 Intelligence Platform. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<button class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" id="theme-toggle">
+<span class="material-symbols-outlined block dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block">light_mode</span>
+</button>
+<div class="flex items-center gap-2 text-slate-400 text-sm">
+<span class="material-symbols-outlined text-sm">language</span>
+<span>English (US)</span>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<div class="fixed bottom-6 left-6 right-6 md:left-auto md:w-96 z-[100] bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-700 p-6 rounded-2xl shadow-2xl flex flex-col gap-4">
+<p class="text-sm text-slate-600 dark:text-slate-400">By using SANKALP 🏆, you agree to our use of performance cookies to improve your workflow experience. <a class="text-primary font-bold underline" href="#">Details</a></p>
+<div class="flex gap-2">
+<button class="flex-1 px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">Decline</button>
+<button class="flex-1 px-4 py-2 text-sm font-bold bg-primary text-white rounded-lg shadow-lg shadow-primary/20" onclick="this.parentElement.parentElement.remove()">Accept All</button>
+</div>
+</div>
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    themeToggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+    } else {
+        html.classList.remove('dark');
+    }
+</script>
+<script>
+// Demo request modal for index.html
+document.addEventListener('DOMContentLoaded', () => {
+    const API_BASE = 'https://app.sankalphub.in/api';
+
+    function showDemoModal() {
+        const existing = document.getElementById('demo-modal');
+        if (existing) existing.remove();
+        document.body.insertAdjacentHTML('beforeend', `
+        <div id="demo-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div class="absolute inset-0 bg-gray-900/70 backdrop-blur-sm" onclick="document.getElementById('demo-modal').remove()"></div>
+            <div class="relative bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-md w-full p-8">
+                <button onclick="document.getElementById('demo-modal').remove()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+                <div class="mb-6">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-2xl">calendar_today</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Request a Demo</h3>
+                    <p class="text-gray-500 dark:text-slate-400 text-sm mt-1">We'll reach out within 24 hours to schedule your personalized demo.</p>
+                </div>
+                <div id="demo-success" class="hidden text-center py-6">
+                    <span class="material-symbols-outlined text-green-500 text-5xl">check_circle</span>
+                    <p class="font-bold text-lg mt-3 text-gray-900 dark:text-white">Demo Requested!</p>
+                    <p class="text-gray-500 text-sm mt-1">We'll contact you within 24 hours.</p>
+                </div>
+                <form id="demo-form" class="space-y-4">
+                    <div id="demo-error" class="hidden px-4 py-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm"></div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Full Name *</label>
+                        <input id="demo-name" type="text" required placeholder="Your full name" class="block w-full px-4 py-2.5 border border-gray-200 dark:border-slate-600 bg-gray-50 dark:bg-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-primary text-gray-900 dark:text-white"/>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Work Email *</label>
+                        <input id="demo-email" type="email" required placeholder="name@company.com" class="block w-full px-4 py-2.5 border border-gray-200 dark:border-slate-600 bg-gray-50 dark:bg-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-primary text-gray-900 dark:text-white"/>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Company Name</label>
+                        <input id="demo-company" type="text" placeholder="Your company or factory" class="block w-full px-4 py-2.5 border border-gray-200 dark:border-slate-600 bg-gray-50 dark:bg-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-primary text-gray-900 dark:text-white"/>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Phone (optional)</label>
+                        <input id="demo-phone" type="tel" placeholder="+91 98765 43210" class="block w-full px-4 py-2.5 border border-gray-200 dark:border-slate-600 bg-gray-50 dark:bg-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-primary text-gray-900 dark:text-white"/>
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-orange-600 transition-colors">
+                        Schedule My Demo
+                    </button>
+                </form>
+            </div>
+        </div>`);
+
+        document.getElementById('demo-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const errEl = document.getElementById('demo-error');
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            errEl.classList.add('hidden');
+
+            try {
+                const res = await fetch(`${API_BASE}/demo-request/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: document.getElementById('demo-name').value,
+                        email: document.getElementById('demo-email').value,
+                        company: document.getElementById('demo-company').value || '',
+                        phone: document.getElementById('demo-phone').value || '',
+                    }),
+                });
+                if (res.ok) {
+                    document.getElementById('demo-form').classList.add('hidden');
+                    document.getElementById('demo-success').classList.remove('hidden');
+                    setTimeout(() => { document.getElementById('demo-modal')?.remove(); }, 3000);
+                } else {
+                    const data = await res.json();
+                    errEl.textContent = data.email?.[0] || data.detail || 'Something went wrong. Please try again.';
+                    errEl.classList.remove('hidden');
+                    btn.textContent = 'Schedule My Demo';
+                    btn.disabled = false;
+                }
+            } catch {
+                errEl.textContent = 'Connection failed. Please try again.';
+                errEl.classList.remove('hidden');
+                btn.textContent = 'Schedule My Demo';
+                btn.disabled = false;
+            }
+        });
+    }
+
+    // Wire all "Request Demo" and "Get Demo" buttons
+    document.querySelectorAll('button, a').forEach(el => {
+        const text = el.textContent.trim();
+        if (text === 'Request Demo' || text === 'Get Demo') {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                showDemoModal();
+            });
+        }
+    });
+
+    // Wire pricing link
+    document.querySelectorAll('a[href="#"]').forEach(el => {
+        if (el.textContent.trim() === 'Pricing') {
+            el.href = 'pricing.html';
+        }
+    });
+});
+</script>
+<script src="js/app.js"></script></body></html>

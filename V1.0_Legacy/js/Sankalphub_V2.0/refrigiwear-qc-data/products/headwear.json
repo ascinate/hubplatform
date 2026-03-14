@@ -1,0 +1,114 @@
+{
+  "category_id": "headwear",
+  "category_label": "Headwear",
+  "brand": "RefrigiWear",
+  "source_url": "https://pro.refrigiwear.com/category/headwear/",
+  "products": [
+    {
+      "id": "HDWR-001",
+      "style": "0058HV",
+      "name": "HiVis Reversible Knit Cap",
+      "subcategory": "High-Visibility",
+      "hivis_available": true,
+      "colors": ["HiVis Lime / Black reversible", "HiVis Orange / Black reversible"],
+      "description": "Reversible between HiVis fluorescent side and black side. ANSI/ISEA 107 compliant. Stretch acrylic knit.",
+      "sizes": ["S/M", "L/XL"],
+      "specs": {
+        "composition": "100% acrylic knit",
+        "reversible": true,
+        "certifications": ["ANSI/ISEA 107"]
+      },
+      "size_chart_ref": "headwear_general",
+      "key_materials": ["100% acrylic knit", "HiVis fluorescent yarn"]
+    },
+    {
+      "id": "HDWR-002",
+      "style": "0050SH",
+      "name": "Sherpa Lined Balaclava",
+      "subcategory": "Masks & Balaclavas",
+      "colors": ["Black"],
+      "description": "Full face balaclava. Sherpa fleece inner lining at face and ear areas. Adjustable face opening. Best balaclava for extreme cold.",
+      "sizes": ["One Size"],
+      "specs": {
+        "outer": "100% acrylic knit",
+        "inner_lining": "Sherpa polyester fleece",
+        "face_opening": "Adjustable",
+        "coverage": "Full face, neck, and ears",
+        "certifications": []
+      },
+      "size_chart_ref": "headwear_general",
+      "key_materials": ["Acrylic knit outer", "Sherpa polyester fleece lining"]
+    },
+    {
+      "id": "HDWR-003",
+      "style": "0050",
+      "name": "Face Mask / Balaclava",
+      "subcategory": "Masks & Balaclavas",
+      "colors": ["Black", "HiVis"],
+      "description": "Full or half-face coverage. Adjustable neck. Machine washable. HiVis version available.",
+      "sizes": ["One Size"],
+      "specs": {
+        "composition": "100% acrylic knit",
+        "face_coverage": "Full or half-face",
+        "washable": true,
+        "certifications": []
+      },
+      "size_chart_ref": "headwear_general",
+      "key_materials": ["100% acrylic knit"]
+    },
+    {
+      "id": "HDWR-004",
+      "style": "0055",
+      "name": "Knit Neck Gaiter",
+      "subcategory": "Gaiters & Headbands",
+      "colors": ["Black"],
+      "description": "Lightweight double-layer neck and chin coverage. Versatile — can be worn as gaiter, headband, or face cover. Moisture-wicking polyester.",
+      "sizes": ["One Size"],
+      "specs": {
+        "composition": "100% polyester stretch knit",
+        "layers": "Double-layer construction",
+        "feature": "Moisture-wicking",
+        "certifications": []
+      },
+      "size_chart_ref": "headwear_general",
+      "key_materials": ["100% polyester stretch knit"]
+    },
+    {
+      "id": "HDWR-005",
+      "style": "0060",
+      "name": "Snap-On Hood",
+      "subcategory": "Snap on Hoods",
+      "colors": ["Black"],
+      "description": "Attaches to Iron-Tuff® jacket collar snaps. Insulated. Drawstring face opening for adjustable fit.",
+      "sizes": ["One Size"],
+      "temp_rating_f": -30,
+      "temp_rating_c": -34,
+      "specs": {
+        "outer": "400-denier nylon",
+        "insulation": "6 oz polyester fiberfill",
+        "attachment": "Snap fasteners (mates to Iron-Tuff® collar)",
+        "face": "Drawstring adjustable face opening",
+        "certifications": []
+      },
+      "size_chart_ref": "headwear_general",
+      "key_materials": ["400D nylon outer", "6oz fiberfill insulation", "Metal snap fasteners"]
+    },
+    {
+      "id": "HDWR-006",
+      "style": "0057HV",
+      "name": "HiVis Hard Hat Insert",
+      "subcategory": "High-Visibility",
+      "hivis_available": true,
+      "colors": ["HiVis Orange", "HiVis Lime"],
+      "description": "Insulated knit liner worn under standard hard hats. ANSI/ISEA 107 compliant. Fits under Class E hard hats.",
+      "sizes": ["One Size"],
+      "specs": {
+        "composition": "Polyester knit",
+        "fit": "Designed for under Class E hard hat",
+        "certifications": ["ANSI/ISEA 107"]
+      },
+      "size_chart_ref": "headwear_general",
+      "key_materials": ["HiVis polyester knit"]
+    }
+  ]
+}

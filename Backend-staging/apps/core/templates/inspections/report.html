@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Inspection Report — {{ inspection.inspection_no|default:inspection.id }}</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9.5pt;
+    color: #1a1a2e;
+    line-height: 1.4;
+    background: #fff;
+}
+
+@page {
+    size: A4;
+    margin: 0 0 16mm;
+    @bottom-left {
+        content: "SankalpHub  ·  Quality Inspection Management Platform";
+        font-size: 7pt;
+        color: #9ca3af;
+        font-family: Arial, sans-serif;
+        padding: 0 10mm;
+    }
+    @bottom-center {
+        content: "{{ inspection.inspection_no|default:'—' }}  ·  {{ inspection.inspection_date }}";
+        font-size: 7pt;
+        color: #9ca3af;
+        font-family: Arial, sans-serif;
+    }
+    @bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
+        font-size: 7pt;
+        color: #9ca3af;
+        font-family: Arial, sans-serif;
+        padding: 0 10mm;
+    }
+}
+
+/* ═══════════════════════════ HEADER BANNER ═══════════════════════════ */
+.header-banner {
+    background: #1e3a6e;
+    color: #fff;
+    padding: 10px 14px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+}
+.header-logo-block { display: flex; flex-direction: column; gap: 1px; }
+.header-logo { font-size: 17pt; font-weight: 700; letter-spacing: -0.5px; }
+.header-tagline { font-size: 7pt; color: #93c5fd; letter-spacing: 0.2px; }
+.header-title-block { text-align: center; flex: 1; padding: 0 20px; }
+.header-title { font-size: 12pt; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+.header-insp-no { font-size: 8pt; color: #bfdbfe; margin-top: 2px; }
+.header-result-block { text-align: right; }
+
+/* Result badge — large for header */
+.result-badge-lg {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 4px;
+    font-size: 11pt;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.rb-pass    { background: #16a34a; color: #fff; }
+.rb-fail    { background: #dc2626; color: #fff; }
+.rb-conditional_pass { background: #2563eb; color: #fff; }
+.rb-pending { background: #6b7280; color: #fff; }
+
+/* ═══════════════════════════ META STRIP ═══════════════════════════ */
+.meta-strip {
+    background: #f1f5f9;
+    border-bottom: 2px solid #1e3a6e;
+    display: flex;
+    padding: 6px 14px;
+    gap: 0;
+}
+.meta-cell {
+    flex: 1;
+    padding: 2px 10px;
+    border-right: 1px solid #cbd5e1;
+}
+.meta-cell:first-child { padding-left: 0; }
+.meta-cell:last-child  { border-right: none; }
+.meta-label { font-size: 6.5pt; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
+.meta-value { font-size: 8.5pt; font-weight: 600; color: #0f172a; margin-top: 1px; }
+
+/* ═══════════════════════════ PAGE BODY ═══════════════════════════ */
+.body-wrap { padding: 10px 14px 4px; }
+
+/* ═══════════════════════════ SECTION HEADERS ═══════════════════════════ */
+.sec-head {
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: #fff;
+    background: #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 4px 8px;
+    margin-top: 12px;
+    margin-bottom: 0;
+    page-break-after: avoid;
+}
+.sec-head:first-child { margin-top: 0; }
+
+/* ═══════════════════════════ ORDER DETAILS TABLE ═══════════════════════════ */
+.order-details-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+}
+.order-details-table td {
+    padding: 5px 8px;
+    border: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+.order-details-table .col-label {
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 7pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    width: 15%;
+    white-space: nowrap;
+}
+.order-details-table .col-value {
+    color: #0f172a;
+    font-weight: 500;
+    width: 35%;
+}
+
+/* ═══════════════════════════ ORDER CONTEXT GRID ═══════════════════════════ */
+.ctx-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-left: 1px solid #e2e8f0;
+    border-top: 1px solid #e2e8f0;
+}
+.ctx-row { display: contents; }
+.ctx-label {
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 7pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 4px 8px;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+}
+.ctx-value {
+    color: #0f172a;
+    font-size: 8.5pt;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* ═══════════════════════════ AQL TABLE ═══════════════════════════ */
+.aql-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+    page-break-inside: avoid;
+}
+.aql-table th {
+    background: #1e3a6e;
+    color: #fff;
+    padding: 5px 8px;
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.3px;
+}
+.aql-table th:first-child { text-align: left; }
+.aql-table td {
+    padding: 5px 8px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: center;
+    color: #1e293b;
+}
+.aql-table td:first-child { text-align: left; font-weight: 600; }
+.aql-table tr:nth-child(even) td { background: #f8fafc; }
+.aql-result-pass  { color: #16a34a; font-weight: 700; }
+.aql-result-fail  { color: #dc2626; font-weight: 700; }
+.aql-result-na    { color: #9ca3af; font-weight: 600; }
+.sev-critical { color: #dc2626; }
+.sev-major    { color: #d97706; }
+.sev-minor    { color: #6b7280; }
+
+/* ═══════════════════════════ PHYSICAL TESTING GRID ═══════════════════════════ */
+.test-section { page-break-inside: avoid; margin-bottom: 6px; }
+.test-section-label {
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: #1e3a6e;
+    background: #eff6ff;
+    padding: 3px 8px;
+    border-left: 3px solid #1e3a6e;
+    margin-bottom: 4px;
+}
+.test-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    page-break-inside: avoid;
+}
+.test-cell {
+    border: 1px solid #e2e8f0;
+    border-radius: 3px;
+    padding: 5px 7px;
+    font-size: 7.5pt;
+}
+.test-cell-pass     { background: #f0fdf4; border-color: #86efac; }
+.test-cell-fail     { background: #fef2f2; border-color: #fca5a5; }
+.test-cell-na       { background: #f8fafc; border-color: #e2e8f0; }
+.test-cell-pending  { background: #fffbeb; border-color: #fde68a; }
+.test-indicator     { font-size: 9pt; font-weight: 700; }
+.test-cell-pass     .test-indicator { color: #16a34a; }
+.test-cell-fail     .test-indicator { color: #dc2626; }
+.test-cell-na       .test-indicator { color: #94a3b8; }
+.test-cell-pending  .test-indicator { color: #d97706; }
+.test-name { font-size: 7.5pt; color: #334155; font-weight: 500; margin-top: 2px; }
+.test-actual { font-size: 6.5pt; color: #64748b; font-style: italic; margin-top: 1px; }
+.test-result-text { font-size: 7pt; font-weight: 700; text-transform: uppercase; }
+
+/* ═══════════════════════════ DEFECT TABLE ═══════════════════════════ */
+.defect-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8pt;
+    page-break-inside: avoid;
+}
+.defect-table th {
+    background: #0f172a;
+    color: #f1f5f9;
+    padding: 5px 8px;
+    font-size: 7pt;
+    font-weight: 700;
+    text-align: left;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+.defect-table th.num { text-align: center; }
+.defect-table td {
+    padding: 5px 8px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #1e293b;
+    vertical-align: middle;
+}
+.defect-table td.num { text-align: center; font-weight: 600; }
+.defect-table tr:nth-child(even) td { background: #f8fafc; }
+.defect-table .td-crit { color: #dc2626; font-weight: 700; }
+.defect-table .td-major { color: #d97706; font-weight: 700; }
+.defect-table .td-minor { color: #6b7280; font-weight: 600; }
+.defect-table .td-zero { color: #d1d5db; }
+.defect-photo { height: 36px; width: auto; border-radius: 3px; border: 1px solid #e2e8f0; }
+.no-defects { padding: 10px 8px; text-align: center; color: #94a3b8; font-style: italic; font-size: 8pt; background: #f0fdf4; }
+
+/* ═══════════════════════════ PHOTO GRID ═══════════════════════════ */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    page-break-inside: avoid;
+}
+.photo-cell { text-align: center; }
+.photo-cell img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+    display: block;
+}
+.photo-label {
+    font-size: 6.5pt;
+    color: #64748b;
+    margin-top: 3px;
+    text-align: center;
+    line-height: 1.2;
+}
+.photo-section-tag {
+    font-size: 5.5pt;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+}
+.no-photos { padding: 10px 8px; text-align: center; color: #94a3b8; font-style: italic; font-size: 8pt; background: #f8fafc; }
+
+/* ═══════════════════════════ NOTES ═══════════════════════════ */
+.notes-box {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 8.5pt;
+    color: #374151;
+    white-space: pre-wrap;
+}
+
+/* ═══════════════════════════ SIGNATURE BLOCK ═══════════════════════════ */
+.sig-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    page-break-inside: avoid;
+}
+.sig-box {
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 8px 10px;
+}
+.sig-role {
+    font-size: 6.5pt;
+    color: #1e3a6e;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 3px;
+}
+.sig-area {
+    height: 40px;
+    border-bottom: 1px solid #334155;
+    margin: 8px 0 6px;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 2px;
+}
+.sig-area-text {
+    font-size: 11pt;
+    color: #1e3a6e;
+    font-style: italic;
+    font-family: Georgia, serif;
+}
+.sig-field-row {
+    display: flex;
+    gap: 4px;
+    margin-top: 4px;
+    font-size: 7.5pt;
+}
+.sig-field-label { color: #64748b; white-space: nowrap; }
+.sig-field-value { color: #0f172a; font-weight: 500; border-bottom: 1px solid #e2e8f0; flex: 1; padding-bottom: 1px; }
+
+/* ═══════════════════════════ SUMMARY RESULT BAR ═══════════════════════════ */
+.result-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-bottom: 0;
+    margin-top: 12px;
+    page-break-inside: avoid;
+}
+.result-bar-pass { background: #dcfce7; border: 1.5px solid #86efac; }
+.result-bar-fail { background: #fee2e2; border: 1.5px solid #fca5a5; }
+.result-bar-conditional_pass { background: #dbeafe; border: 1.5px solid #93c5fd; }
+.result-bar-pending { background: #f3f4f6; border: 1.5px solid #d1d5db; }
+.result-bar-label { font-size: 8pt; color: #374151; }
+.result-bar-badge { font-size: 10pt; font-weight: 700; }
+.rbb-pass    { color: #16a34a; }
+.rbb-fail    { color: #dc2626; }
+.rbb-conditional_pass { color: #2563eb; }
+.rbb-pending { color: #6b7280; }
+
+/* Row number column */
+.row-num { color: #94a3b8; font-size: 7.5pt; width: 24px; text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER BANNER ═══════════ -->
+<div class="header-banner">
+  <div class="header-logo-block">
+    <div class="header-logo">SankalpHub</div>
+    <div class="header-tagline">Quality Inspection Management Platform</div>
+  </div>
+  <div class="header-title-block">
+    <div class="header-title">Quality Inspection Report</div>
+    <div class="header-insp-no">{{ inspection.inspection_no|default:inspection.id }}</div>
+  </div>
+  <div class="header-result-block">
+    {% with r=display_result %}
+    <div class="result-badge-lg rb-{{ r }}">
+      {% if r == 'pass' %}✓ PASS
+      {% elif r == 'fail' %}✗ FAIL
+      {% elif r == 'conditional_pass' %}~ CONDITIONAL
+      {% else %}● PENDING{% endif %}
+    </div>
+    {% endwith %}
+  </div>
+</div>
+
+<!-- META STRIP -->
+<div class="meta-strip">
+  <div class="meta-cell">
+    <div class="meta-label">Stage</div>
+    <div class="meta-value">{% if inspection.template %}{{ inspection.template.phase|title|default:"—" }}{% else %}—{% endif %}</div>
+  </div>
+  <div class="meta-cell">
+    <div class="meta-label">Type</div>
+    <div class="meta-value">{{ inspection.get_inspection_type_display }}</div>
+  </div>
+  <div class="meta-cell">
+    <div class="meta-label">Brand / Org</div>
+    <div class="meta-value">{{ org_name }}</div>
+  </div>
+  <div class="meta-cell">
+    <div class="meta-label">Inspector</div>
+    <div class="meta-value">{{ inspection.auditor_name|default:"—" }}</div>
+  </div>
+  <div class="meta-cell">
+    <div class="meta-label">PO Number</div>
+    <div class="meta-value">{% if inspection.production_order %}{{ inspection.production_order.po_number }}{% else %}—{% endif %}</div>
+  </div>
+  <div class="meta-cell">
+    <div class="meta-label">Date</div>
+    <div class="meta-value">{{ inspection.inspection_date }}</div>
+  </div>
+</div>
+
+<div class="body-wrap">
+
+<!-- ═══════════ ORDER DETAILS ═══════════ -->
+<div class="sec-head">Order Details</div>
+<table class="order-details-table">
+  <tr>
+    <td class="col-label">Product</td>
+    <td class="col-value">{% if inspection.production_order %}{{ inspection.production_order.product_name }}{% else %}—{% endif %}</td>
+    <td class="col-label">AQL Level</td>
+    <td class="col-value">{{ aql_level_display|default:"—" }}</td>
+    <td class="col-label">Colorway</td>
+    <td class="col-value" colspan="3">{% if inspection.production_order %}{{ inspection.production_order.color|default:"—" }}{% else %}—{% endif %}</td>
+  </tr>
+  <tr>
+    <td class="col-label">Order Qty</td>
+    <td class="col-value">{% if inspection.production_order %}{{ inspection.production_order.quantity }} pcs{% else %}—{% endif %}</td>
+    <td class="col-label">Sample Size</td>
+    <td class="col-value">{{ sample_size }} pcs</td>
+    <td class="col-label">Category</td>
+    <td class="col-value" colspan="3">{% if inspection.production_order %}{{ inspection.production_order.get_product_category_display|default:"—" }}{% else %}—{% endif %}</td>
+  </tr>
+</table>
+
+<!-- ═══════════ ORDER CONTEXT ═══════════ -->
+<div class="sec-head" style="margin-top:8px">Order Context</div>
+<div class="ctx-grid">
+  <div class="ctx-label">Brand / Organization</div>
+  <div class="ctx-value">{{ org_name }}</div>
+  <div class="ctx-label">PO Number</div>
+  <div class="ctx-value">{% if inspection.production_order %}{{ inspection.production_order.po_number }}{% else %}—{% endif %}</div>
+  <div class="ctx-label">Factory</div>
+  <div class="ctx-value">{% if inspection.factory %}{{ inspection.factory.name }}{% elif inspection.production_order and inspection.production_order.factory %}{{ inspection.production_order.factory.name }}{% else %}—{% endif %}</div>
+  <div class="ctx-label">Factory Location</div>
+  <div class="ctx-value">{% if inspection.factory %}{{ inspection.factory.city|default:"" }}{% if inspection.factory.country %}, {{ inspection.factory.country }}{% endif %}{% else %}—{% endif %}</div>
+  <div class="ctx-label">Order Date</div>
+  <div class="ctx-value">{% if inspection.production_order %}{{ inspection.production_order.created_at|date:"d M Y" }}{% else %}—{% endif %}</div>
+  <div class="ctx-label">Due / ETD</div>
+  <div class="ctx-value">{% if inspection.production_order %}{{ inspection.production_order.due_date|default:"—" }}{% else %}—{% endif %}</div>
+  <div class="ctx-label">Template</div>
+  <div class="ctx-value">{% if inspection.template %}{{ inspection.template.code }} — {{ inspection.template.name }}{% else %}—{% endif %}</div>
+  <div class="ctx-label">Status</div>
+  <div class="ctx-value">{{ inspection.get_status_display }}</div>
+</div>
+
+<!-- ═══════════ AQL SAMPLING PLAN ═══════════ -->
+<div class="sec-head" style="margin-top:8px">AQL Sampling Plan &amp; Results</div>
+<table class="aql-table">
+  <thead>
+    <tr>
+      <th style="width:18%">Severity</th>
+      <th style="width:16%">Sample Size</th>
+      <th style="width:14%">Accept (Ac)</th>
+      <th style="width:14%">Reject (Re)</th>
+      <th style="width:20%">Defects Found</th>
+      <th style="width:18%">Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in aql_rows %}
+    <tr>
+      <td class="sev-{{ row.color }}"><strong>{{ row.severity }}</strong></td>
+      <td>{{ row.sample_size }}</td>
+      <td>{{ row.accept }}</td>
+      <td>{{ row.reject }}</td>
+      <td><strong>{{ row.defects_found }}</strong></td>
+      <td>
+        {% if row.result == 'pass' %}
+          <span class="aql-result-pass">✓ PASS</span>
+        {% elif row.result == 'fail' %}
+          <span class="aql-result-fail">✗ FAIL</span>
+        {% else %}
+          <span class="aql-result-na">— N/A</span>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- ═══════════ PHYSICAL TESTING RESULTS ═══════════ -->
+{% if inspection.sections.all %}
+<div class="sec-head" style="margin-top:8px">Physical Testing Results</div>
+{% for section in inspection.sections.all %}
+{% if section.items.all %}
+<div class="test-section">
+  <div class="test-section-label">{{ section.name }}</div>
+  <div class="test-grid">
+    {% for item in section.items.all %}
+    {% with r=item.result|default:'pending' %}
+    <div class="test-cell test-cell-{{ r }}">
+      <span class="test-indicator">
+        {% if r == 'pass' %}✓{% elif r == 'fail' %}✗{% elif r == 'na' %}—{% else %}○{% endif %}
+      </span>
+      <span class="test-result-text">
+        {% if r == 'pass' %}Pass{% elif r == 'fail' %}Fail{% elif r == 'na' %}N/A{% else %}Pending{% endif %}
+      </span>
+      <div class="test-name">{{ item.label }}</div>
+      {% if item.spec_value %}<div class="test-actual">Spec: {{ item.spec_value }}{% if item.tolerance %} ±{{ item.tolerance }}{% endif %}</div>{% endif %}
+      {% if item.actual_value %}<div class="test-actual">Actual: {{ item.actual_value }}</div>{% endif %}
+      {% if item.comment %}<div class="test-actual">{{ item.comment }}</div>{% endif %}
+    </div>
+    {% endwith %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+
+<!-- ═══════════ DEFECT TABLE ═══════════ -->
+<div class="sec-head" style="margin-top:8px">Defects Found</div>
+{% if defect_table_rows %}
+<table class="defect-table">
+  <thead>
+    <tr>
+      <th style="width:4%">#</th>
+      <th style="width:18%">Group</th>
+      <th style="width:24%">Defect Name</th>
+      <th style="width:18%">Remark</th>
+      <th class="num" style="width:8%">Minor</th>
+      <th class="num" style="width:8%">Major</th>
+      <th class="num" style="width:10%">Critical</th>
+      <th style="width:10%">Evidence</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in defect_table_rows %}
+    <tr>
+      <td class="row-num">{{ forloop.counter }}</td>
+      <td>{{ row.group }}</td>
+      <td><strong>{{ row.defect_name }}</strong></td>
+      <td style="color:#64748b;font-size:7.5pt;">{{ row.remark|default:"—" }}</td>
+      <td class="num {% if row.minor > 0 %}td-minor{% else %}td-zero{% endif %}">
+        {% if row.minor > 0 %}{{ row.minor }}{% else %}—{% endif %}
+      </td>
+      <td class="num {% if row.major > 0 %}td-major{% else %}td-zero{% endif %}">
+        {% if row.major > 0 %}{{ row.major }}{% else %}—{% endif %}
+      </td>
+      <td class="num {% if row.critical > 0 %}td-crit{% else %}td-zero{% endif %}">
+        {% if row.critical > 0 %}{{ row.critical }}{% else %}—{% endif %}
+      </td>
+      <td>
+        {% if row.photo_url %}
+        <img src="{{ row.photo_url }}" class="defect-photo" alt="Evidence" />
+        {% else %}
+        <span style="color:#d1d5db;font-size:7.5pt;">—</span>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class="no-defects">✓ No defects recorded for this inspection</div>
+{% endif %}
+
+<!-- ═══════════ APPEARANCE / EVIDENCE PHOTOS ═══════════ -->
+<div class="sec-head" style="margin-top:8px">Appearance &amp; Evidence Photos</div>
+{% if photo_items %}
+<div class="photo-grid">
+  {% for photo in photo_items %}
+  <div class="photo-cell">
+    <img src="{{ photo.url }}" alt="{{ photo.label }}" />
+    <div class="photo-label">{{ photo.label }}</div>
+    <div class="photo-label photo-section-tag">{{ photo.section }}</div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="no-photos">No photos attached to this inspection</div>
+{% endif %}
+
+<!-- ═══════════ NOTES ═══════════ -->
+{% if inspection.notes %}
+<div class="sec-head" style="margin-top:8px">Inspector Notes</div>
+<div class="notes-box">{{ inspection.notes }}</div>
+{% endif %}
+
+<!-- ═══════════ FINAL RESULT SUMMARY ═══════════ -->
+{% with r=display_result %}
+<div class="result-bar result-bar-{{ r }}">
+  <span class="result-bar-label">
+    <strong>Final Inspection Result</strong> &nbsp;·&nbsp;
+    {{ org_name }} &nbsp;·&nbsp; {{ inspection.get_inspection_type_display }} &nbsp;·&nbsp;
+    Inspected: {{ inspection.quantity_inspected }} pcs &nbsp;·&nbsp;
+    Total Defects: {{ inspection.defects_found }}
+    {% if inspection.defect_rate %} ({{ inspection.defect_rate }}%){% endif %}
+  </span>
+  <span class="result-bar-badge rbb-{{ r }}">
+    {% if r == 'pass' %}✓ PASS
+    {% elif r == 'fail' %}✗ FAIL
+    {% elif r == 'conditional_pass' %}~ CONDITIONAL PASS
+    {% else %}● PENDING{% endif %}
+  </span>
+</div>
+{% endwith %}
+
+<!-- ═══════════ APPROVAL & HANDOVER ═══════════ -->
+<div class="sec-head" style="margin-top:10px">Approval &amp; Handover — Signatures</div>
+<div class="sig-grid">
+  {% comment %}Try to pull approval fields from the inspection sections{% endcomment %}
+  {% with inspector_sig="" inspector_date="" reviewer_name="" reviewer_date="" approver_name="" approver_date="" %}
+  {% for section in inspection.sections.all %}
+    {% for item in section.items.all %}
+      {% if item.label|lower == "inspector name" or item.label|lower == "auditor name" %}{% with inspector_sig=item.actual_value %}{% endwith %}{% endif %}
+    {% endfor %}
+  {% endfor %}
+  <div class="sig-box">
+    <div class="sig-role">Inspector / Auditor</div>
+    <div class="sig-area">
+      <span class="sig-area-text">{{ inspection.auditor_name|default:"" }}</span>
+    </div>
+    <div class="sig-field-row">
+      <span class="sig-field-label">Name:</span>
+      <span class="sig-field-value">{{ inspection.auditor_name|default:"" }}</span>
+    </div>
+    <div class="sig-field-row">
+      <span class="sig-field-label">Date:</span>
+      <span class="sig-field-value">{{ inspection.inspection_date|default:"" }}</span>
+    </div>
+  </div>
+  <div class="sig-box">
+    <div class="sig-role">Reviewer / QC Manager</div>
+    <div class="sig-area">
+      <span class="sig-area-text">{% if inspection.template %}{{ inspection.template.reviewed_by_role|default:"" }}{% endif %}</span>
+    </div>
+    <div class="sig-field-row">
+      <span class="sig-field-label">Name:</span>
+      <span class="sig-field-value">&nbsp;</span>
+    </div>
+    <div class="sig-field-row">
+      <span class="sig-field-label">Date:</span>
+      <span class="sig-field-value">&nbsp;</span>
+    </div>
+  </div>
+  <div class="sig-box">
+    <div class="sig-role">Approver / Brand</div>
+    <div class="sig-area">
+      <span class="sig-area-text">{% if inspection.template %}{{ inspection.template.approved_by_role|default:"" }}{% endif %}</span>
+    </div>
+    <div class="sig-field-row">
+      <span class="sig-field-label">Name:</span>
+      <span class="sig-field-value">&nbsp;</span>
+    </div>
+    <div class="sig-field-row">
+      <span class="sig-field-label">Date:</span>
+      <span class="sig-field-value">&nbsp;</span>
+    </div>
+  </div>
+  {% endwith %}
+</div>
+
+</div><!-- /body-wrap -->
+</body>
+</html>

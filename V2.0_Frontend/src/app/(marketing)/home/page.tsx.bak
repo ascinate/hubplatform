@@ -1,0 +1,732 @@
+'use client'
+
+import { useState, useMemo } from 'react'
+import Link from 'next/link'
+import {
+  ClipboardCheck,
+  BarChart3,
+  TrendingUp,
+  ArrowRight,
+  Play,
+  X,
+  Loader2,
+  CheckCircle,
+  Shield,
+  Zap,
+  Globe,
+  Users,
+  ChevronRight,
+} from 'lucide-react'
+import { toast } from 'sonner'
+import axios from 'axios'
+
+export default function MarketingHomePage() {
+  const [showDemo, setShowDemo] = useState(false)
+  const [demoForm, setDemoForm] = useState({
+    full_name: '',
+    email: '',
+    company_name: '',
+    phone: '',
+  })
+  const [submittingDemo, setSubmittingDemo] = useState(false)
+
+  // Newsletter
+  const [newsletterEmail, setNewsletterEmail] = useState('')
+
+  // ROI Calculator
+  const [teamMembers, setTeamMembers] = useState(10)
+  const [avgSalary, setAvgSalary] = useState(3500)
+
+  const roi = useMemo(() => {
+    const annualOverhead = teamMembers * avgSalary * 12
+    const savings = annualOverhead * 0.35
+    const investment = 2999 * 12
+    const netSavings = savings - investment
+    const paybackMonths = savings > 0 ? investment / (savings / 12) : 0
+    return { annualOverhead, savings, investment, netSavings, paybackMonths }
+  }, [teamMembers, avgSalary])
+
+  const handleDemoSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!demoForm.full_name || !demoForm.email) {
+      toast.error('Please fill in your name and email')
+      return
+    }
+
+    setSubmittingDemo(true)
+    try {
+      await axios.post('https://app.sankalphub.in/api/demo-request/', demoForm)
+      toast.success('Demo request submitted! We\'ll be in touch shortly.')
+      setShowDemo(false)
+      setDemoForm({ full_name: '', email: '', company_name: '', phone: '' })
+    } catch {
+      toast.error('Failed to submit demo request. Please try again.')
+    } finally {
+      setSubmittingDemo(false)
+    }
+  }
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!newsletterEmail) {
+      toast.error('Please enter your email')
+      return
+    }
+    toast.success('Thanks for subscribing!')
+    setNewsletterEmail('')
+  }
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Glass Nav Bar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-border/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <Link href="/home" className="flex items-center gap-2">
+              <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">S</span>
+              </div>
+              <span className="text-xl font-bold text-text-primary">SankalpHub</span>
+            </Link>
+
+            <div className="hidden md:flex items-center gap-8">
+              <button
+                onClick={() => scrollTo('features')}
+                className="text-sm text-text-muted hover:text-text-primary transition-colors"
+              >
+                Features
+              </button>
+              <button
+                onClick={() => scrollTo('solutions')}
+                className="text-sm text-text-muted hover:text-text-primary transition-colors"
+              >
+                Solutions
+              </button>
+              <button
+                onClick={() => scrollTo('calculator')}
+                className="text-sm text-text-muted hover:text-text-primary transition-colors"
+              >
+                Savings
+              </button>
+              <Link href="/pricing" className="text-sm text-text-muted hover:text-text-primary transition-colors">
+                Pricing
+              </Link>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Link
+                href="/login"
+                className="text-sm font-medium text-text-primary hover:text-primary transition-colors"
+              >
+                Login
+              </Link>
+              <button
+                onClick={() => setShowDemo(true)}
+                className="px-4 py-2 bg-primary hover:bg-primary-hover text-white text-sm font-semibold rounded-lg transition-colors"
+              >
+                Get Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4">
+        <div className="max-w-6xl mx-auto text-center">
+          <span className="inline-block px-4 py-1.5 bg-primary-light text-primary text-sm font-medium rounded-full mb-6">
+            Production &amp; Inspection Intelligence Platform
+          </span>
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-text-primary mb-6 leading-tight">
+            SANKALP &mdash; Driven by Determination.
+            <br />
+            <span className="text-primary">Powered by Discipline.</span>
+          </h1>
+
+          <p className="text-lg md:text-xl text-text-muted max-w-2xl mx-auto mb-10">
+            Unifying Sampling, Production, Inspection, and Testing into one disciplined workflow system
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <button
+              onClick={() => setShowDemo(true)}
+              className="px-8 py-3.5 bg-primary hover:bg-primary-hover text-white font-semibold rounded-lg transition-colors flex items-center gap-2"
+            >
+              Request Demo
+              <ArrowRight size={18} />
+            </button>
+            <button className="px-8 py-3.5 border-2 border-border text-text-primary font-semibold rounded-lg hover:border-primary hover:text-primary transition-colors flex items-center gap-2">
+              <Play size={18} />
+              Watch Video
+            </button>
+          </div>
+
+          {/* Stats Strip */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-success-light rounded-xl flex items-center justify-center">
+                <TrendingUp size={22} className="text-success" />
+              </div>
+              <div className="text-left">
+                <p className="text-2xl font-bold text-text-primary">+34%</p>
+                <p className="text-sm text-text-muted">Faster Error Reduction</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center">
+                <Zap size={22} className="text-primary" />
+              </div>
+              <div className="text-left">
+                <p className="text-2xl font-bold text-text-primary">1.2 Month</p>
+                <p className="text-sm text-text-muted">Payback Period</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted By Section */}
+      <section className="py-12 border-y border-border/50 bg-gray-50/50">
+        <div className="max-w-5xl mx-auto px-4">
+          <p className="text-center text-sm text-text-muted uppercase tracking-wider mb-8">
+            Trusted by industry leaders
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14">
+            {['GLOBALWEAR', 'LOGISTX', 'PRIME+', 'SMARTCHAIN', 'TECHFABRIC'].map((name) => (
+              <span
+                key={name}
+                className="text-lg font-bold text-text-muted/50 tracking-widest select-none"
+              >
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section id="features" className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <span className="inline-block px-3 py-1 bg-primary-light text-primary text-xs font-semibold rounded-full uppercase tracking-wider mb-4">
+              Capabilities
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+              Everything You Need, In One Platform
+            </h2>
+            <p className="text-text-muted max-w-xl mx-auto">
+              From digital inspections to analytics, SankalpHub covers every aspect of your production workflow.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card 1 — Digital Inspection */}
+            <div className="bg-white border border-border rounded-2xl p-8 hover:shadow-elevated transition-shadow group">
+              <div className="w-14 h-14 bg-primary-light rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                <ClipboardCheck size={26} className="text-primary group-hover:text-white transition-colors" />
+              </div>
+              <h3 className="text-xl font-bold text-text-primary mb-3">Digital Inspection</h3>
+              <p className="text-text-muted text-sm leading-relaxed mb-4">
+                Digitize your entire inspection process with real-time data capture and automated PDF report generation.
+              </p>
+              <ul className="space-y-2">
+                {['PDF Report generation', 'Offline data capture', 'Real-time alerts'].map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-sm text-text-muted">
+                    <CheckCircle size={16} className="text-success flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Card 2 — Production Tracking */}
+            <div className="bg-white border border-border rounded-2xl p-8 hover:shadow-elevated transition-shadow group">
+              <div className="w-14 h-14 bg-primary-light rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                <BarChart3 size={26} className="text-primary group-hover:text-white transition-colors" />
+              </div>
+              <h3 className="text-xl font-bold text-text-primary mb-3">Production Tracking</h3>
+              <p className="text-text-muted text-sm leading-relaxed mb-4">
+                Track production milestones, critical path alerts, and vendor performance from a unified hub.
+              </p>
+              <ul className="space-y-2">
+                {['Critical Path Alerts', 'Unified Vendor Hub', 'Order tracking'].map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-sm text-text-muted">
+                    <CheckCircle size={16} className="text-success flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Card 3 — Analytics Engine */}
+            <div className="bg-white border border-border rounded-2xl p-8 hover:shadow-elevated transition-shadow group">
+              <div className="w-14 h-14 bg-primary-light rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                <TrendingUp size={26} className="text-primary group-hover:text-white transition-colors" />
+              </div>
+              <h3 className="text-xl font-bold text-text-primary mb-3">Analytics Engine</h3>
+              <p className="text-text-muted text-sm leading-relaxed mb-4">
+                Automated KPI dashboards and benchmarking reports to power data-driven decisions.
+              </p>
+              <ul className="space-y-2">
+                {['Automated KPI Dashboards', 'Benchmarking Reports', 'Trend analysis'].map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-sm text-text-muted">
+                    <CheckCircle size={16} className="text-success flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Solutions Section */}
+      <section id="solutions" className="py-20 px-4 bg-slate-900 text-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="inline-block px-3 py-1 bg-white/10 text-primary text-xs font-semibold rounded-full uppercase tracking-wider mb-4">
+                Solutions
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Supply Chain Mastery
+              </h2>
+              <p className="text-slate-300 mb-8 leading-relaxed">
+                SankalpHub brings discipline and transparency to every link in your supply chain.
+                From raw material sourcing to final dispatch, maintain complete visibility and control.
+              </p>
+              <ul className="space-y-4">
+                {[
+                  { icon: Globe, text: 'Multi-factory, multi-vendor visibility from a single dashboard' },
+                  { icon: Shield, text: 'Compliance tracking with automated audit trails' },
+                  { icon: Zap, text: 'Real-time production alerts and critical path monitoring' },
+                  { icon: Users, text: 'Role-based access for buyers, vendors, and QC teams' },
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <item.icon size={16} className="text-primary" />
+                    </div>
+                    <span className="text-slate-200 text-sm">{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700">
+              <div className="space-y-6">
+                {[
+                  { label: 'Order Visibility', value: '99.2%', color: 'bg-primary' },
+                  { label: 'Inspection Pass Rate', value: '94.5%', color: 'bg-success' },
+                  { label: 'On-Time Delivery', value: '97.1%', color: 'bg-info' },
+                ].map((metric) => (
+                  <div key={metric.label}>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm text-slate-300">{metric.label}</span>
+                      <span className="text-sm font-bold text-white">{metric.value}</span>
+                    </div>
+                    <div className="w-full bg-slate-700 rounded-full h-2">
+                      <div
+                        className={`${metric.color} h-2 rounded-full transition-all`}
+                        style={{ width: metric.value }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ROI Calculator */}
+      <section id="calculator" className="py-20 px-4 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <span className="inline-block px-3 py-1 bg-primary-light text-primary text-xs font-semibold rounded-full uppercase tracking-wider mb-4">
+              ROI Calculator
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+              Calculate Your Savings
+            </h2>
+            <p className="text-text-muted max-w-xl mx-auto">
+              See how much SankalpHub can save your organization with our efficiency gains.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-gray-50 rounded-2xl p-8 md:p-12 border border-border">
+            {/* Inputs */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-semibold text-text-primary mb-4">Your Team</h3>
+              <div>
+                <label className="block text-sm font-medium text-text-primary mb-2">
+                  Team Members
+                </label>
+                <input
+                  type="number"
+                  min={1}
+                  value={teamMembers}
+                  onChange={(e) => setTeamMembers(Math.max(1, parseInt(e.target.value) || 1))}
+                  className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors bg-white"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-text-primary mb-2">
+                  Avg Monthly Salary (USD)
+                </label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted text-sm">$</span>
+                  <input
+                    type="number"
+                    min={0}
+                    value={avgSalary}
+                    onChange={(e) => setAvgSalary(Math.max(0, parseInt(e.target.value) || 0))}
+                    className="w-full pl-8 pr-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors bg-white"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Results */}
+            <div className="space-y-5">
+              <h3 className="text-lg font-semibold text-text-primary mb-4">Your Savings</h3>
+              <div className="bg-white rounded-xl p-4 border border-border">
+                <p className="text-xs text-text-muted uppercase tracking-wider mb-1">Annual Overhead</p>
+                <p className="text-2xl font-bold text-text-primary">
+                  ${roi.annualOverhead.toLocaleString('en-US')}
+                </p>
+              </div>
+              <div className="bg-white rounded-xl p-4 border border-border">
+                <p className="text-xs text-text-muted uppercase tracking-wider mb-1">SANKALP Investment</p>
+                <p className="text-2xl font-bold text-text-primary">
+                  ${roi.investment.toLocaleString('en-US')}<span className="text-sm font-normal text-text-muted">/yr ($2,999/mo)</span>
+                </p>
+              </div>
+              <div className="bg-success-light rounded-xl p-4 border border-success/20">
+                <p className="text-xs text-success uppercase tracking-wider font-semibold mb-1">
+                  Estimated Annual Savings
+                </p>
+                <p className="text-2xl font-bold text-success">
+                  ${roi.netSavings > 0 ? roi.netSavings.toLocaleString('en-US') : '0'}
+                </p>
+              </div>
+              <div className="bg-primary-light rounded-xl p-4 border border-primary/20">
+                <p className="text-xs text-primary uppercase tracking-wider font-semibold mb-1">
+                  ROI Payback Period
+                </p>
+                <p className="text-2xl font-bold text-primary">
+                  {roi.paybackMonths > 0 ? `${roi.paybackMonths.toFixed(1)} months` : 'N/A'}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <span className="inline-block px-3 py-1 bg-primary-light text-primary text-xs font-semibold rounded-full uppercase tracking-wider mb-4">
+              Insights
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
+              Latest from Our Blog
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'How Digital Inspections Cut Defect Rates by 40%',
+                description:
+                  'Learn how leading garment exporters are leveraging digital inspection workflows to dramatically reduce quality defects.',
+                tag: 'Quality',
+              },
+              {
+                title: 'The Future of Supply Chain Visibility in 2026',
+                description:
+                  'Explore emerging trends in supply chain management and how real-time tracking is transforming global operations.',
+                tag: 'Industry',
+              },
+              {
+                title: 'ROI of Production Intelligence Platforms',
+                description:
+                  'A data-driven analysis of how production intelligence platforms deliver measurable returns within the first quarter.',
+                tag: 'Business',
+              },
+            ].map((article, idx) => (
+              <article
+                key={idx}
+                className="bg-white rounded-2xl overflow-hidden border border-border hover:shadow-elevated transition-shadow group"
+              >
+                <div className="h-48 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center">
+                  <span className="text-slate-400 text-sm">Image Placeholder</span>
+                </div>
+                <div className="p-6">
+                  <span className="inline-block px-2.5 py-0.5 bg-primary-light text-primary text-xs font-semibold rounded-full mb-3">
+                    {article.tag}
+                  </span>
+                  <h3 className="text-lg font-bold text-text-primary mb-2 group-hover:text-primary transition-colors">
+                    {article.title}
+                  </h3>
+                  <p className="text-sm text-text-muted leading-relaxed mb-4">
+                    {article.description}
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-sm text-primary font-medium cursor-pointer">
+                    Read More <ChevronRight size={16} />
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-text-primary mb-4">Stay Updated</h2>
+          <p className="text-text-muted mb-8">
+            Get the latest insights on production intelligence, quality management, and supply chain innovation.
+          </p>
+          <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={newsletterEmail}
+              onChange={(e) => setNewsletterEmail(e.target.value)}
+              className="flex-1 px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 bg-primary hover:bg-primary-hover text-white font-semibold rounded-lg transition-colors whitespace-nowrap"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-16 px-4 bg-slate-900 text-slate-300">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+            {/* Brand */}
+            <div className="col-span-2 md:col-span-1">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">S</span>
+                </div>
+                <span className="text-lg font-bold text-white">SankalpHub</span>
+              </div>
+              <p className="text-sm text-slate-400">
+                Production &amp; Inspection Intelligence Platform
+              </p>
+            </div>
+
+            {/* Product */}
+            <div>
+              <h4 className="text-white font-semibold text-sm mb-4">Product</h4>
+              <ul className="space-y-2.5">
+                <li>
+                  <button onClick={() => scrollTo('features')} className="text-sm text-slate-400 hover:text-white transition-colors">
+                    Features
+                  </button>
+                </li>
+                <li>
+                  <Link href="/pricing" className="text-sm text-slate-400 hover:text-white transition-colors">
+                    Pricing
+                  </Link>
+                </li>
+                <li>
+                  <span className="text-sm text-slate-400 hover:text-white transition-colors cursor-pointer">
+                    Integrations
+                  </span>
+                </li>
+                <li>
+                  <span className="text-sm text-slate-400 hover:text-white transition-colors cursor-pointer">
+                    Changelog
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Company */}
+            <div>
+              <h4 className="text-white font-semibold text-sm mb-4">Company</h4>
+              <ul className="space-y-2.5">
+                <li>
+                  <span className="text-sm text-slate-400 hover:text-white transition-colors cursor-pointer">
+                    About
+                  </span>
+                </li>
+                <li>
+                  <span className="text-sm text-slate-400 hover:text-white transition-colors cursor-pointer">
+                    Careers
+                  </span>
+                </li>
+                <li>
+                  <span className="text-sm text-slate-400 hover:text-white transition-colors cursor-pointer">
+                    Blog
+                  </span>
+                </li>
+                <li>
+                  <span className="text-sm text-slate-400 hover:text-white transition-colors cursor-pointer">
+                    Contact
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h4 className="text-white font-semibold text-sm mb-4">Legal</h4>
+              <ul className="space-y-2.5">
+                <li>
+                  <span className="text-sm text-slate-400 hover:text-white transition-colors cursor-pointer">
+                    Privacy Policy
+                  </span>
+                </li>
+                <li>
+                  <span className="text-sm text-slate-400 hover:text-white transition-colors cursor-pointer">
+                    Terms of Service
+                  </span>
+                </li>
+                <li>
+                  <span className="text-sm text-slate-400 hover:text-white transition-colors cursor-pointer">
+                    Cookie Policy
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Connect */}
+            <div>
+              <h4 className="text-white font-semibold text-sm mb-4">Connect</h4>
+              <ul className="space-y-2.5">
+                <li>
+                  <span className="text-sm text-slate-400 hover:text-white transition-colors cursor-pointer">
+                    Twitter
+                  </span>
+                </li>
+                <li>
+                  <span className="text-sm text-slate-400 hover:text-white transition-colors cursor-pointer">
+                    LinkedIn
+                  </span>
+                </li>
+                <li>
+                  <span className="text-sm text-slate-400 hover:text-white transition-colors cursor-pointer">
+                    GitHub
+                  </span>
+                </li>
+                <li>
+                  <a href="mailto:hello@sankalphub.in" className="text-sm text-slate-400 hover:text-white transition-colors">
+                    Email Us
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-slate-800 pt-8">
+            <p className="text-center text-slate-500 text-sm">
+              &copy; 2026 SankalpHub. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      {/* Demo Request Modal */}
+      {showDemo && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center">
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setShowDemo(false)}
+          />
+
+          {/* Modal */}
+          <div className="relative bg-white rounded-2xl shadow-elevated p-8 w-full max-w-md mx-4 z-10">
+            <button
+              onClick={() => setShowDemo(false)}
+              className="absolute right-4 top-4 text-text-muted hover:text-text-primary transition-colors"
+            >
+              <X size={20} />
+            </button>
+
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-primary rounded-xl mb-4">
+                <span className="text-white font-bold text-xl">S</span>
+              </div>
+              <h2 className="text-xl font-bold text-text-primary">Request a Demo</h2>
+              <p className="text-sm text-text-muted mt-1">
+                See SankalpHub in action. Our team will reach out within 24 hours.
+              </p>
+            </div>
+
+            <form onSubmit={handleDemoSubmit} className="space-y-4">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Full Name *"
+                  value={demoForm.full_name}
+                  onChange={(e) => setDemoForm({ ...demoForm, full_name: e.target.value })}
+                  className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Work Email *"
+                  value={demoForm.email}
+                  onChange={(e) => setDemoForm({ ...demoForm, email: e.target.value })}
+                  className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Company Name (optional)"
+                  value={demoForm.company_name}
+                  onChange={(e) => setDemoForm({ ...demoForm, company_name: e.target.value })}
+                  className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                />
+              </div>
+              <div>
+                <input
+                  type="tel"
+                  placeholder="Phone (optional)"
+                  value={demoForm.phone}
+                  onChange={(e) => setDemoForm({ ...demoForm, phone: e.target.value })}
+                  className="w-full px-4 py-3 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={submittingDemo}
+                className="w-full py-3 bg-primary hover:bg-primary-hover text-white font-semibold rounded-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                {submittingDemo ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  'Submit Request'
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}

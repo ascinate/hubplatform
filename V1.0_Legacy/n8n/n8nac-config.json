@@ -1,0 +1,6 @@
+{
+  "host": "https://n8n.srv1372067.hstgr.cloud:5678/mcp-server/http",
+  "syncFolder": "n8n/workflows",
+  "projectId": "",
+  "projectName": ""
+}

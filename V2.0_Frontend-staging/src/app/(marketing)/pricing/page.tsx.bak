@@ -1,0 +1,280 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { Check, Loader2, ChevronDown } from 'lucide-react'
+
+interface PlanFeature {
+  name: string
+  included: boolean
+}
+
+interface Plan {
+  id: number
+  name: string
+  description: string
+  price_inr: number
+  price_usd: number
+  features: PlanFeature[]
+  is_highlighted: boolean
+  is_enterprise: boolean
+}
+
+export default function PricingPage() {
+  const [plans, setPlans] = useState<Plan[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
+
+  useEffect(() => {
+    const fetchPlans = async () => {
+      try {
+        const res = await fetch('https://app.sankalphub.in/api/billing/plans/')
+        if (!res.ok) throw new Error('Failed to fetch plans')
+        const data = await res.json()
+        setPlans(data)
+      } catch (err) {
+        setError('Unable to load pricing plans. Please try again later.')
+        console.error('Error fetching plans:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchPlans()
+  }, [])
+
+  const faqs = [
+    {
+      question: 'Can I cancel anytime?',
+      answer:
+        'Yes, you can cancel your subscription at any time. Your access will continue until the end of your current billing period, and you won\'t be charged again.',
+    },
+    {
+      question: 'Do you support Indian payment methods?',
+      answer:
+        'Yes! We support UPI, Net Banking, credit/debit cards, and other popular Indian payment methods through our Razorpay integration.',
+    },
+    {
+      question: 'What happens after my free trial?',
+      answer:
+        'After your 14-day free trial ends, you can choose a paid plan to continue using SankalpHub. If you need more time, you can request a trial extension from our support team.',
+    },
+    {
+      question: 'Is there a discount for yearly billing?',
+      answer:
+        'Yes! When you choose annual billing, you get 2 months free — that\'s a 17% discount compared to monthly billing.',
+    },
+  ]
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <Link href="/home" className="flex items-center gap-2">
+              <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">S</span>
+              </div>
+              <span className="text-xl font-bold text-text-primary">SankalpHub</span>
+            </Link>
+
+            <div className="hidden md:flex items-center gap-8">
+              <Link href="/home" className="text-sm text-text-muted hover:text-text-primary transition-colors">
+                Home
+              </Link>
+              <Link href="/home#features" className="text-sm text-text-muted hover:text-text-primary transition-colors">
+                Features
+              </Link>
+              <Link href="/pricing" className="text-sm text-primary font-medium">
+                Pricing
+              </Link>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Link
+                href="/login"
+                className="text-sm font-medium text-text-primary hover:text-primary transition-colors"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/login"
+                className="px-4 py-2 bg-primary hover:bg-primary-hover text-white text-sm font-semibold rounded-lg transition-colors"
+              >
+                Start Free Trial
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <section className="pt-32 pb-16 px-4 text-center">
+        <div className="max-w-3xl mx-auto">
+          <span className="inline-block px-4 py-1.5 bg-primary-light text-primary text-sm font-medium rounded-full mb-6">
+            Simple, Transparent Pricing
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
+            Choose Your Plan
+          </h1>
+          <p className="text-lg text-text-muted max-w-xl mx-auto">
+            Start with a 14-day free trial. No credit card required.
+          </p>
+        </div>
+      </section>
+
+      {/* Plans Grid */}
+      <section className="pb-20 px-4">
+        <div className="max-w-5xl mx-auto">
+          {loading && (
+            <div className="flex items-center justify-center py-20">
+              <Loader2 size={32} className="animate-spin text-primary" />
+              <span className="ml-3 text-text-muted">Loading plans...</span>
+            </div>
+          )}
+
+          {error && (
+            <div className="text-center py-20">
+              <p className="text-danger mb-4">{error}</p>
+              <button
+                onClick={() => window.location.reload()}
+                className="px-5 py-2.5 bg-primary hover:bg-primary-hover text-white text-sm font-semibold rounded-lg transition-colors"
+              >
+                Retry
+              </button>
+            </div>
+          )}
+
+          {!loading && !error && plans.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {plans.map((plan) => (
+                <div
+                  key={plan.id}
+                  className={`relative bg-white rounded-2xl p-8 flex flex-col ${
+                    plan.is_highlighted
+                      ? 'border-2 border-primary shadow-elevated'
+                      : 'border border-border shadow-card'
+                  }`}
+                >
+                  {plan.is_highlighted && (
+                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-white text-xs font-bold rounded-full uppercase tracking-wide">
+                      Most Popular
+                    </span>
+                  )}
+
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold text-text-primary mb-2">{plan.name}</h3>
+                    <p className="text-sm text-text-muted">{plan.description}</p>
+                  </div>
+
+                  <div className="mb-6">
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-4xl font-bold text-text-primary">
+                        &#8377;{plan.price_inr?.toLocaleString('en-IN')}
+                      </span>
+                      <span className="text-text-muted text-sm">/ month</span>
+                    </div>
+                    <p className="text-xs text-text-muted mt-1">
+                      ~${plan.price_usd?.toLocaleString('en-US')} USD equivalent
+                    </p>
+                  </div>
+
+                  <ul className="space-y-3 mb-8 flex-1">
+                    {plan.features?.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5">
+                        <Check size={18} className="text-success mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-text-primary">{feature.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {plan.is_enterprise ? (
+                    <a
+                      href="mailto:sales@sankalphub.in"
+                      className="block w-full py-3 text-center border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition-colors"
+                    >
+                      Contact Sales
+                    </a>
+                  ) : (
+                    <Link
+                      href="/login"
+                      className={`block w-full py-3 text-center font-semibold rounded-lg transition-colors ${
+                        plan.is_highlighted
+                          ? 'bg-primary hover:bg-primary-hover text-white'
+                          : 'bg-primary/10 text-primary hover:bg-primary hover:text-white'
+                      }`}
+                    >
+                      Get Started
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {!loading && !error && plans.length === 0 && (
+            <p className="text-center text-text-muted py-20">
+              No plans available at the moment. Please check back later.
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="pb-20 px-4">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold text-text-primary text-center mb-10">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="border border-border rounded-xl overflow-hidden">
+                <button
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-gray-50 transition-colors"
+                >
+                  <span className="font-semibold text-text-primary">{faq.question}</span>
+                  <ChevronDown
+                    size={20}
+                    className={`text-text-muted transition-transform flex-shrink-0 ml-4 ${
+                      openFaq === index ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                {openFaq === index && (
+                  <div className="px-6 pb-4">
+                    <p className="text-text-muted text-sm leading-relaxed">{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="pb-20 px-4">
+        <div className="max-w-4xl mx-auto bg-primary text-white rounded-2xl py-16 px-8 text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
+          <p className="text-white/80 mb-8 max-w-lg mx-auto">
+            Join hundreds of businesses already using SankalpHub to streamline their production and inspection workflows.
+          </p>
+          <Link
+            href="/login"
+            className="inline-block px-8 py-3.5 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            Start Your Free Trial
+          </Link>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 border-t border-border">
+        <p className="text-center text-text-muted text-sm">
+          &copy; 2026 SankalpHub. All rights reserved.
+        </p>
+      </footer>
+    </div>
+  )
+}

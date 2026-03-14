@@ -1,0 +1,528 @@
+{
+  "_meta": {
+    "description": "10 manufacturing process stage definitions with QC checklist templates for each RefrigiWear product category",
+    "usage": "Use this file to render stage-specific inspection checklists in SankalpHub.in"
+  },
+
+  "stages": {
+
+    "development_samples": {
+      "id": 1,
+      "key": "development_samples",
+      "label": "Development Samples",
+      "code": "DEV",
+      "phase": "Pre-Production",
+      "color": "#6C3483",
+      "icon": "beaker",
+      "description": "Initial prototype review. Establish material, construction, and performance specs. All defect prevention starts here.",
+      "objective": "Validate all design, material, and construction specs before committing to production. Catch issues at lowest cost.",
+      "key_activities": [
+        "Review proto against tech pack",
+        "Lab test materials (fabric, insulation, hardware)",
+        "Conduct fit evaluation across base size",
+        "Approve seam types, SPI, and thread specs",
+        "Validate special features (DWR, HiVis tape, BOA)",
+        "Sign off on all labels and compliance requirements",
+        "Issue comments and corrections to factory"
+      ],
+      "checklist_by_category": {
+        "mens_outerwear": [
+          { "check_id": "DEV-OUT-01", "item": "Shell fabric denier and weave matches spec (400D nylon for Iron-Tuff®)", "type": "Material" },
+          { "check_id": "DEV-OUT-02", "item": "Insulation weight per panel matches spec (11.25 oz for Iron-Tuff®, 9 oz for PolarForce®)", "type": "Material" },
+          { "check_id": "DEV-OUT-03", "item": "DWR spray test rating ≥ 80 (AATCC 22) on shell fabric", "type": "Material" },
+          { "check_id": "DEV-OUT-04", "item": "Shade matches approved colorway lab-dip standard", "type": "Material" },
+          { "check_id": "DEV-OUT-05", "item": "Zipper brand, gauge, and type confirmed (YKK #10 brass for Iron-Tuff®)", "type": "Hardware" },
+          { "check_id": "DEV-OUT-06", "item": "Zipper operates smoothly — 20-cycle test", "type": "Functional" },
+          { "check_id": "DEV-OUT-07", "item": "Seam strength meets minimum spec (≥200N grab test)", "type": "Construction" },
+          { "check_id": "DEV-OUT-08", "item": "Seam type correct per tech pack (bound seams on Iron-Tuff®)", "type": "Construction" },
+          { "check_id": "DEV-OUT-09", "item": "Knit cuff attachment strength — pull test passes", "type": "Construction" },
+          { "check_id": "DEV-OUT-10", "item": "Brass rivets properly set — pull test ≥ 50N on each", "type": "Hardware" },
+          { "check_id": "DEV-OUT-11", "item": "HiVis reflective tape retroreflectivity ≥ 330 cd/lux/m² (HiVis styles only)", "type": "Compliance" },
+          { "check_id": "DEV-OUT-12", "item": "ANSI/ISEA 107 compliance confirmed for HiVis styles", "type": "Compliance" },
+          { "check_id": "DEV-OUT-13", "item": "All required labels present: brand, care, size, country of origin", "type": "Label" },
+          { "check_id": "DEV-OUT-14", "item": "Insulation distribution even — light table and shake test", "type": "Construction" },
+          { "check_id": "DEV-OUT-15", "item": "Fit evaluation — overall silhouette, mobility, and coverage", "type": "Fit" }
+        ],
+        "womens_outerwear": [
+          { "check_id": "DEV-WOM-01", "item": "Women's pattern grading correct — contoured hip, shoulder, and waist fit", "type": "Fit" },
+          { "check_id": "DEV-WOM-02", "item": "Suspender strap width and length appropriate for women's sizing", "type": "Construction" },
+          { "check_id": "DEV-WOM-03", "item": "All shell and insulation specs same as Men's equiv. Iron-Tuff® spec", "type": "Material" },
+          { "check_id": "DEV-WOM-04", "item": "Fit evaluation with female fit model across XS–XL", "type": "Fit" }
+        ],
+        "footwear": [
+          { "check_id": "DEV-FTW-01", "item": "Upper material is waterproof-rated (hydrostatic head test)", "type": "Material" },
+          { "check_id": "DEV-FTW-02", "item": "Thinsulate insulation weight confirmed per model (200g spec)", "type": "Material" },
+          { "check_id": "DEV-FTW-03", "item": "Outsole compound batch test — slip resistance meets ASTM F2913 min 0.40", "type": "Safety" },
+          { "check_id": "DEV-FTW-04", "item": "Outsole bond strength — peel test ≥ 4 N/mm full perimeter", "type": "Construction" },
+          { "check_id": "DEV-FTW-05", "item": "BOA® dial installation per BOA guide — 200-cycle test (BOA styles)", "type": "Functional" },
+          { "check_id": "DEV-FTW-06", "item": "Last is correct (Men's or Women's specific last)", "type": "Fit" },
+          { "check_id": "DEV-FTW-07", "item": "Welt stitching SPI and thread type confirmed", "type": "Construction" },
+          { "check_id": "DEV-FTW-08", "item": "Comfort rating temp test validated (-60°F for Extreme line)", "type": "Performance" }
+        ],
+        "gloves": [
+          { "check_id": "DEV-GLV-01", "item": "Cut resistance yarn achieves ANSI A4 per TDM-100 (cut-resistant models)", "type": "Safety" },
+          { "check_id": "DEV-GLV-02", "item": "Insulation weight and distribution confirmed — light table", "type": "Material" },
+          { "check_id": "DEV-GLV-03", "item": "Palm leather/material adhesion — peel test passes", "type": "Material" },
+          { "check_id": "DEV-GLV-04", "item": "Touch-Rite™ / Key-Rite™ nib placement correct — functional test", "type": "Functional" },
+          { "check_id": "DEV-GLV-05", "item": "TPR impact pad bond strength ≥ 30N (Impact Pro styles)", "type": "Construction" },
+          { "check_id": "DEV-GLV-06", "item": "ANSI/ISEA 105 rating confirmed by accredited lab", "type": "Compliance" }
+        ],
+        "headwear": [
+          { "check_id": "DEV-HDW-01", "item": "Acrylic yarn pill rating ≥ Grade 3 (Martindale ISO 12945-2)", "type": "Material" },
+          { "check_id": "DEV-HDW-02", "item": "HiVis color meets ANSI/ISEA 107 photometric standard", "type": "Compliance" },
+          { "check_id": "DEV-HDW-03", "item": "Sherpa lining shed test — max acceptable fiber count per 10 brush passes", "type": "Material" },
+          { "check_id": "DEV-HDW-04", "item": "Snap fastener size and type confirmed — 200-cycle test (Snap-On Hood)", "type": "Hardware" },
+          { "check_id": "DEV-HDW-05", "item": "Snap-On Hood mates correctly to Iron-Tuff® collar snap positions", "type": "Functional" }
+        ],
+        "accessories": [
+          { "check_id": "DEV-ACC-01", "item": "Pallet cover moisture barrier — cold-flex test at -40°F passes", "type": "Material" },
+          { "check_id": "DEV-ACC-02", "item": "Handle stitching strength — 20kg hang test for 10 min", "type": "Construction" }
+        ]
+      }
+    },
+
+    "size_set": {
+      "id": 2,
+      "key": "size_set",
+      "label": "Size Set",
+      "code": "SZS",
+      "phase": "Pre-Production",
+      "color": "#1A5276",
+      "icon": "ruler",
+      "description": "Size set samples produced across full size range. Verify pattern grading accuracy and material consistency across sizes.",
+      "objective": "Confirm all sizes fit correctly and materials are consistent across size run before PP sample stage.",
+      "key_activities": [
+        "Produce samples in all offered sizes",
+        "Measure all garments against spec sheet measurements",
+        "Evaluate fit on fit models at min, mid, and max sizes",
+        "Verify insulation / material scales correctly with size",
+        "Check all hardware (zippers, snaps, BOA) across sizes",
+        "Issue measurement comments"
+      ],
+      "checklist_by_category": {
+        "mens_outerwear": [
+          { "check_id": "SZS-OUT-01", "item": "Measure all sizes against spec sheet — chest, waist, sleeve, body length (tolerance ±1.5cm)", "type": "Measurement" },
+          { "check_id": "SZS-OUT-02", "item": "Verify insulation weight is correctly scaled per size pattern piece", "type": "Material" },
+          { "check_id": "SZS-OUT-03", "item": "Zipper length matches spec per size — no zip too short at large sizes", "type": "Hardware" },
+          { "check_id": "SZS-OUT-04", "item": "HiVis tape placement proportional across all sizes (distance from hem)", "type": "Construction" },
+          { "check_id": "SZS-OUT-05", "item": "Dye lot consistent across entire size run", "type": "Material" },
+          { "check_id": "SZS-OUT-06", "item": "Size label correct and placed at correct position", "type": "Label" }
+        ],
+        "footwear": [
+          { "check_id": "SZS-FTW-01", "item": "Last size grading correct — half-size and full-size increments", "type": "Fit" },
+          { "check_id": "SZS-FTW-02", "item": "BOA cable length verified per size (different cable per size range)", "type": "Hardware" },
+          { "check_id": "SZS-FTW-03", "item": "Outsole profile consistent across size run", "type": "Construction" }
+        ],
+        "gloves": [
+          { "check_id": "SZS-GLV-01", "item": "Glove measurements per size (hand circumference range correct per size label)", "type": "Measurement" },
+          { "check_id": "SZS-GLV-02", "item": "Finger length and width scale correctly with size", "type": "Fit" }
+        ],
+        "headwear": [
+          { "check_id": "SZS-HDW-01", "item": "Head circumference fits correctly for S/M and L/XL size bands", "type": "Fit" }
+        ]
+      }
+    },
+
+    "pp_samples": {
+      "id": 3,
+      "key": "pp_samples",
+      "label": "PP Samples",
+      "code": "PPS",
+      "phase": "Pre-Production",
+      "color": "#117A65",
+      "icon": "check-circle",
+      "description": "Pre-Production samples produced using bulk materials and production processes. Final approval gate before mass production begins.",
+      "objective": "Confirm production-ready quality using bulk materials and locked production SOPs. No bulk production until PP approved.",
+      "key_activities": [
+        "Produce using exact bulk fabric, hardware, and trims",
+        "Full measurement check vs. spec sheet",
+        "Full construction and quality audit",
+        "Function tests (zip, DWR, BOA, snap, reflective tape)",
+        "Compliance label and certification verification",
+        "Wash test on all washable products",
+        "Issue final approval or conditional approval comments",
+        "Lock all production SOPs before bulk starts"
+      ],
+      "checklist_by_category": {
+        "mens_outerwear": [
+          { "check_id": "PPS-OUT-01", "item": "PP sample produced from exact bulk fabric lot and BOM components", "type": "Material Traceability" },
+          { "check_id": "PPS-OUT-02", "item": "Full measurement audit vs. spec sheet (all points, all sizes represented)", "type": "Measurement" },
+          { "check_id": "PPS-OUT-03", "item": "Seam strength test — all stress seams ≥ 200N (ASTM D5034)", "type": "Construction" },
+          { "check_id": "PPS-OUT-04", "item": "Zipper: 50-cycle operation + 15-lb pull test", "type": "Functional" },
+          { "check_id": "PPS-OUT-05", "item": "DWR spray test ≥ 80 on finished garment (AATCC 22)", "type": "Performance" },
+          { "check_id": "PPS-OUT-06", "item": "Insulation shake test and light-table cold spot check", "type": "Construction" },
+          { "check_id": "PPS-OUT-07", "item": "HiVis retroreflectometry ≥ 330 cd/lux/m² (HiVis styles)", "type": "Compliance" },
+          { "check_id": "PPS-OUT-08", "item": "Wash test (5 cycles) — check insulation migration, color fastness, label legibility", "type": "Durability" },
+          { "check_id": "PPS-OUT-09", "item": "All labels present, correct, and compliant", "type": "Label" },
+          { "check_id": "PPS-OUT-10", "item": "Overall aesthetics approved — appearance, workmanship, presentation", "type": "Aesthetics" }
+        ],
+        "footwear": [
+          { "check_id": "PPS-FTW-01", "item": "Full construction audit — outsole bond (flex 5,000 cycles + peel test)", "type": "Construction" },
+          { "check_id": "PPS-FTW-02", "item": "BOA 200-cycle test — ambient and -40°F if available", "type": "Functional" },
+          { "check_id": "PPS-FTW-03", "item": "Slip resistance test (ASTM F2913 ≥ 0.40)", "type": "Safety" },
+          { "check_id": "PPS-FTW-04", "item": "Cold temperature flex test on upper material", "type": "Performance" }
+        ],
+        "gloves": [
+          { "check_id": "PPS-GLV-01", "item": "ANSI 105 cut test on production lot (accredited lab result on file)", "type": "Safety" },
+          { "check_id": "PPS-GLV-02", "item": "Flex + peel test on palm material bond", "type": "Construction" },
+          { "check_id": "PPS-GLV-03", "item": "Touch-Rite™/Key-Rite™ functional device test (touchscreen/keypad styles)", "type": "Functional" }
+        ]
+      }
+    },
+
+    "material": {
+      "id": 4,
+      "key": "material",
+      "label": "Material / Fabric",
+      "code": "MAT",
+      "phase": "Pre-Production",
+      "color": "#6E2F0E",
+      "icon": "layers",
+      "description": "Incoming material inspection. All fabrics, insulation, hardware, trims, and labels inspected before they enter production.",
+      "objective": "Prevent defective materials from reaching the production floor. Incoming QC is the last line of defense before production starts.",
+      "key_activities": [
+        "Inspect incoming fabric rolls (4-point or 10-point system)",
+        "Weigh insulation per roll vs spec",
+        "Test DWR on shell fabric samples",
+        "Shade/color check against approved standard",
+        "Verify hardware (zippers, snaps, BOA, rivets) correct spec",
+        "Check labels against approved artwork",
+        "Maintain incoming material records per lot"
+      ],
+      "checklist_by_category": {
+        "mens_outerwear": [
+          { "check_id": "MAT-OUT-01", "item": "Shell fabric denier verified (400D nylon per lab test or supplier COA)", "type": "Fabric" },
+          { "check_id": "MAT-OUT-02", "item": "Shade check — all rolls vs approved standard under D65 light (ΔE ≤ 1.0)", "type": "Color" },
+          { "check_id": "MAT-OUT-03", "item": "DWR spray test on 3 samples per roll (AATCC 22, min 80 rating)", "type": "Performance" },
+          { "check_id": "MAT-OUT-04", "item": "Insulation roll weight per linear meter vs 11.25 oz/yd² spec (±5%)", "type": "Insulation" },
+          { "check_id": "MAT-OUT-05", "item": "Visual roll inspection — no holes, contamination, weave defects (4-point system)", "type": "Fabric" },
+          { "check_id": "MAT-OUT-06", "item": "HiVis fabric spectrophotometric test — meets ANSI CIE coordinates (HiVis styles)", "type": "Compliance" },
+          { "check_id": "MAT-OUT-07", "item": "Zipper incoming: 5% random operation test, teeth alignment check", "type": "Hardware" },
+          { "check_id": "MAT-OUT-08", "item": "3M Scotchlite tape: retroreflective surface check, adhesive strip test", "type": "Hardware" },
+          { "check_id": "MAT-OUT-09", "item": "Labels: content matches approved artwork, print legible, correct quantity", "type": "Label" },
+          { "check_id": "MAT-OUT-10", "item": "Thread: correct ticket number, color, and tensile COA verified", "type": "Trim" }
+        ],
+        "footwear": [
+          { "check_id": "MAT-FTW-01", "item": "Upper material waterproof rating test (hydrostatic head)", "type": "Material" },
+          { "check_id": "MAT-FTW-02", "item": "Adhesive cement: correct brand/batch, within pot life date", "type": "Consumable" },
+          { "check_id": "MAT-FTW-03", "item": "BOA components: correct model, function test 5% random sample", "type": "Hardware" },
+          { "check_id": "MAT-FTW-04", "item": "Outsole compound: visual check for contamination", "type": "Material" }
+        ],
+        "gloves": [
+          { "check_id": "MAT-GLV-01", "item": "Cut-resistant yarn COA verified — every incoming lot. ANSI A4 rated.", "type": "Material" },
+          { "check_id": "MAT-GLV-02", "item": "Palm leather: skive thickness check (0.8mm spec)", "type": "Material" },
+          { "check_id": "MAT-GLV-03", "item": "Insulation: weight per unit area vs spec", "type": "Insulation" }
+        ],
+        "headwear": [
+          { "check_id": "MAT-HDW-01", "item": "Acrylic yarn: denier and twist count vs spec (min 32-count)", "type": "Material" },
+          { "check_id": "MAT-HDW-02", "item": "HiVis yarn: spectrophotometric reading per lot", "type": "Material" },
+          { "check_id": "MAT-HDW-03", "item": "Snap fasteners: size, material (metal vs plastic), finish", "type": "Hardware" }
+        ]
+      }
+    },
+
+    "cutting": {
+      "id": 5,
+      "key": "cutting",
+      "label": "Cutting",
+      "code": "CUT",
+      "phase": "Production",
+      "color": "#1A5276",
+      "icon": "scissors",
+      "description": "Fabric cutting operation. Panel accuracy, grain line alignment, and dye lot segregation are critical at this stage.",
+      "objective": "Ensure all cut panels are accurate, correctly marked, and properly organized to prevent downstream defects.",
+      "key_activities": [
+        "Lay-up fabric per spreading plan",
+        "Verify grain line alignment before cutting",
+        "Check panel dimensions against master pattern (first piece)",
+        "Segregate panels by dye lot",
+        "Mark and bundle by style, size, and dye lot",
+        "Inspect cut edges for accuracy and completeness"
+      ],
+      "checklist_by_category": {
+        "mens_outerwear": [
+          { "check_id": "CUT-OUT-01", "item": "Grain line alignment within ±3mm on all shell panels", "type": "Accuracy" },
+          { "check_id": "CUT-OUT-02", "item": "Cut panel dimensions match master pattern (first piece ±3mm)", "type": "Accuracy" },
+          { "check_id": "CUT-OUT-03", "item": "Dye lot number recorded and marked on each bundle", "type": "Traceability" },
+          { "check_id": "CUT-OUT-04", "item": "No panels cut from different dye lots mixed in one bundle", "type": "Color" },
+          { "check_id": "CUT-OUT-05", "item": "Insulation panels cut to correct size — no compression under cutter", "type": "Insulation" },
+          { "check_id": "CUT-OUT-06", "item": "Cut edges clean — no fraying or blade drag marks on nylon shell", "type": "Quality" },
+          { "check_id": "CUT-OUT-07", "item": "HiVis panels: no dirt or oil contamination on tape application areas", "type": "Surface" },
+          { "check_id": "CUT-OUT-08", "item": "Panel count per bundle matches cut plan (correct pcs per size)", "type": "Count" }
+        ],
+        "footwear": [
+          { "check_id": "CUT-FTW-01", "item": "Upper pattern pieces cut accurately to lasting margin spec", "type": "Accuracy" },
+          { "check_id": "CUT-FTW-02", "item": "Lasting margin consistency — uniform width around perimeter", "type": "Quality" }
+        ],
+        "gloves": [
+          { "check_id": "CUT-GLV-01", "item": "Cut-resistant shell panels correctly cut — no stretching or distortion", "type": "Accuracy" },
+          { "check_id": "CUT-GLV-02", "item": "Cut-resistant and standard panels NOT mixed in same bundle", "type": "Segregation" },
+          { "check_id": "CUT-GLV-03", "item": "Fourchettes (side fingers) cut to correct taper spec", "type": "Accuracy" }
+        ]
+      }
+    },
+
+    "sewing_stitching": {
+      "id": 6,
+      "key": "sewing_stitching",
+      "label": "Sewing / Stitching",
+      "code": "SEW",
+      "phase": "Production",
+      "color": "#1A6B2C",
+      "icon": "git-branch",
+      "description": "Main sewing and stitching operations. SPI, seam type, thread tension, and operator technique directly affect product quality.",
+      "objective": "Produce all seams, hems, and stitching to spec. Detect operator and machine issues early.",
+      "key_activities": [
+        "First piece approval before each bundle",
+        "SPI count on all seam types",
+        "Seam strength grab test on first piece",
+        "Thread tension calibration check",
+        "Needle change schedule (every 8 hours)",
+        "Seam type matches tech pack (bound seams where required)",
+        "Skip stitch monitoring on all hem and cuff seams"
+      ],
+      "checklist_by_category": {
+        "mens_outerwear": [
+          { "check_id": "SEW-OUT-01", "item": "SPI count: 10–12 on nylon shell seams (per approved spec)", "type": "Stitch Quality" },
+          { "check_id": "SEW-OUT-02", "item": "Seam type matches tech pack spec — bound seams on Iron-Tuff® shell", "type": "Construction" },
+          { "check_id": "SEW-OUT-03", "item": "First piece seam grab test ≥ 200N (ASTM D5034)", "type": "Strength" },
+          { "check_id": "SEW-OUT-04", "item": "Thread tension balanced — no thread looping, puckering, or skipping", "type": "Stitch Quality" },
+          { "check_id": "SEW-OUT-05", "item": "Correct needle type and size for 400D nylon (Nm 90/14)", "type": "Machine Setup" },
+          { "check_id": "SEW-OUT-06", "item": "Needle change record — every 8 hours operational time", "type": "Machine Setup" },
+          { "check_id": "SEW-OUT-07", "item": "Hem stitch: no skip stitches on cuff or body hem (visual + 10x loupe)", "type": "Stitch Quality" },
+          { "check_id": "SEW-OUT-08", "item": "Pocket seam: correct position (±5mm), fully enclosed bag", "type": "Construction" },
+          { "check_id": "SEW-OUT-09", "item": "Label insertion at correct position and orientation", "type": "Label" },
+          { "check_id": "SEW-OUT-10", "item": "Bar tack placement at all stress points (pocket corners, underarm)", "type": "Reinforcement" },
+          { "check_id": "SEW-OUT-11", "item": "Zipper installation: tape flat, no puckering, chain free of debris", "type": "Hardware" },
+          { "check_id": "SEW-OUT-12", "item": "Knit cuff attachment: 4-thread safety stitch, no puckering or gaping", "type": "Construction" }
+        ],
+        "footwear": [
+          { "check_id": "SEW-FTW-01", "item": "Lasting stitching SPI 8–10, waxed polyester thread confirmed", "type": "Stitch Quality" },
+          { "check_id": "SEW-FTW-02", "item": "Upper stitching skip-free — no skip stitches on upper vamp seam", "type": "Stitch Quality" },
+          { "check_id": "SEW-FTW-03", "item": "Welt stitching: tension and SPI correct, no skip stitches in welt channel", "type": "Construction" }
+        ],
+        "gloves": [
+          { "check_id": "SEW-GLV-01", "item": "Finger crotch seam: narrow seam allowance (4mm), no puckering", "type": "Construction" },
+          { "check_id": "SEW-GLV-02", "item": "Palm-to-back seam: correct SPI and no gaping at seam allowance", "type": "Stitch Quality" },
+          { "check_id": "SEW-GLV-03", "item": "Cuff hem: even width, no skip stitches", "type": "Construction" }
+        ],
+        "headwear": [
+          { "check_id": "SEW-HDW-01", "item": "Knit cap crown seam: even tension, no visible needle holes", "type": "Stitch Quality" },
+          { "check_id": "SEW-HDW-02", "item": "Balaclava face opening: hem is even, no stretched edge", "type": "Construction" }
+        ]
+      }
+    },
+
+    "assembly": {
+      "id": 7,
+      "key": "assembly",
+      "label": "Assembly",
+      "code": "ASM",
+      "phase": "Production",
+      "color": "#7D6608",
+      "icon": "tool",
+      "description": "Component assembly, hardware attachment, special feature application (tape, BOA, rivets, snaps). Final construction before inline QC.",
+      "objective": "Correctly assemble all components and verify all special features function correctly before end-of-line inspection.",
+      "key_activities": [
+        "Zipper attachment and stop setting",
+        "Reflective tape heat-press application",
+        "Brass rivet setting",
+        "BOA dial installation",
+        "Snap fastener attachment",
+        "Suspender strap assembly",
+        "Pocket bag assembly",
+        "Hood and collar attachment",
+        "Outsole cementing and pressing (footwear)"
+      ],
+      "checklist_by_category": {
+        "mens_outerwear": [
+          { "check_id": "ASM-OUT-01", "item": "Reflective tape: heat-press temp within spec (±5°C), dwell time correct (HiVis styles)", "type": "Process Control" },
+          { "check_id": "ASM-OUT-02", "item": "Reflective tape: fully flat, zero edge lift or air bubbles on 100% check", "type": "Quality" },
+          { "check_id": "ASM-OUT-03", "item": "Tape position vs. spec: ±10mm tolerance on placement measurements", "type": "Placement" },
+          { "check_id": "ASM-OUT-04", "item": "Brass rivets: fully set, no sharp edges exposed, pull test ≥ 50N", "type": "Hardware" },
+          { "check_id": "ASM-OUT-05", "item": "Zipper: storm flap clearance check, top/bottom stops set correctly", "type": "Functional" },
+          { "check_id": "ASM-OUT-06", "item": "Insulation distribution: light-table check post-assembly before closing seam", "type": "Insulation" },
+          { "check_id": "ASM-OUT-07", "item": "Hood (Ice Parka): sewn-on hood fully attached, drawstring functional", "type": "Construction" },
+          { "check_id": "ASM-OUT-08", "item": "Suspender clips (bibs): load test 50 lbs, 10-cycle release test", "type": "Hardware" },
+          { "check_id": "ASM-OUT-09", "item": "Snap-On Hood snaps: all snaps correct size and aligned to collar spec", "type": "Hardware" },
+          { "check_id": "ASM-OUT-10", "item": "Pocket bags: fully enclosed, correct depth per spec", "type": "Construction" }
+        ],
+        "footwear": [
+          { "check_id": "ASM-FTW-01", "item": "Cement coverage: 100% outsole surface covered, no dry spots before pressing", "type": "Process Control" },
+          { "check_id": "ASM-FTW-02", "item": "Press machine: 60 PSI pressure, 60-second dwell confirmed per pair", "type": "Process Control" },
+          { "check_id": "ASM-FTW-03", "item": "BOA installation: dial orientation correct, cable routing per diagram", "type": "Functional" },
+          { "check_id": "ASM-FTW-04", "item": "Outsole perimeter: zero edge lift immediately after pressing", "type": "Quality" }
+        ],
+        "gloves": [
+          { "check_id": "ASM-GLV-01", "item": "TPR impact pads: heat-activated adhesive correct, all pads flush", "type": "Construction" },
+          { "check_id": "ASM-GLV-02", "item": "Velcro cuff: bonded and/or sewn, 5 open/close test", "type": "Hardware" },
+          { "check_id": "ASM-GLV-03", "item": "Insulation: tacking complete, no loose areas before glove closed", "type": "Insulation" }
+        ],
+        "headwear": [
+          { "check_id": "ASM-HDW-01", "item": "Snap fasteners on hood: all snaps attached at correct positions", "type": "Hardware" },
+          { "check_id": "ASM-HDW-02", "item": "HiVis reversible knit cap: both layers correctly joined, no missed stitches", "type": "Construction" }
+        ]
+      }
+    },
+
+    "inline_inspection": {
+      "id": 8,
+      "key": "inline_inspection",
+      "label": "Inline Inspection",
+      "code": "INL",
+      "phase": "QC",
+      "color": "#C0392B",
+      "icon": "search",
+      "description": "Real-time quality inspection during active production. Catch defects at the point of production to minimize rework and loss.",
+      "objective": "Detect and correct quality issues while production is running. Every defect caught inline saves rework cost.",
+      "key_activities": [
+        "Roving inspector checks each workstation",
+        "Defect rate tracking by operator and machine",
+        "Hourly defect tallies by defect type",
+        "First-piece check on every new bundle",
+        "100% functional checks (zip, BOA, tape)",
+        "Measurement audit every 50 pcs",
+        "Corrective action if defect rate exceeds 5%"
+      ],
+      "checklist_by_category": {
+        "mens_outerwear": [
+          { "check_id": "INL-OUT-01", "item": "Seam quality: SPI count + tug test on underarm/shoulder — every 50 pcs", "type": "Construction" },
+          { "check_id": "INL-OUT-02", "item": "Zipper: 10-cycle operation test on every garment (100%)", "type": "Functional" },
+          { "check_id": "INL-OUT-03", "item": "Insulation: light-table cold spot check + shake test — every 50 pcs", "type": "Insulation" },
+          { "check_id": "INL-OUT-04", "item": "HiVis tape: tactile edge-adhesion check on every garment (100%)", "type": "Compliance" },
+          { "check_id": "INL-OUT-05", "item": "DWR: spray test on 5 pcs per hour post-finishing", "type": "Performance" },
+          { "check_id": "INL-OUT-06", "item": "Measurements: spot-check chest, body length, sleeve every 50 pcs", "type": "Measurement" },
+          { "check_id": "INL-OUT-07", "item": "Labels: all labels present and correct — every 25 pcs", "type": "Label" },
+          { "check_id": "INL-OUT-08", "item": "Shade: spot shade check under D65 light every 2 hours", "type": "Color" },
+          { "check_id": "INL-OUT-09", "item": "Rivets: tactile check all rivet positions — every 50 pcs", "type": "Hardware" },
+          { "check_id": "INL-OUT-10", "item": "Workmanship: overall garment appearance vs approved sample every 25 pcs", "type": "Aesthetics" }
+        ],
+        "footwear": [
+          { "check_id": "INL-FTW-01", "item": "Outsole perimeter: tactile check every pair for edge lift", "type": "Construction" },
+          { "check_id": "INL-FTW-02", "item": "BOA: 10-cycle operation test every pair (100%)", "type": "Functional" },
+          { "check_id": "INL-FTW-03", "item": "Upper stitching: visual check for skip stitches every 10 pairs", "type": "Stitch Quality" }
+        ],
+        "gloves": [
+          { "check_id": "INL-GLV-01", "item": "Insulation: tactile finger check on every glove for cold spots", "type": "Insulation" },
+          { "check_id": "INL-GLV-02", "item": "Seam check: finger crotch and palm seam every 50 pairs", "type": "Construction" },
+          { "check_id": "INL-GLV-03", "item": "Touch-Rite™/Key-Rite™: functional device test every 25 pairs", "type": "Functional" },
+          { "check_id": "INL-GLV-04", "item": "Yarn identity: burn test spot check every 100 pairs (cut-resistant)", "type": "Material" }
+        ],
+        "headwear": [
+          { "check_id": "INL-HDW-01", "item": "Shade check under D65 — every 50 pcs (HiVis especially)", "type": "Color" },
+          { "check_id": "INL-HDW-02", "item": "Snap function test every 25 pcs (Snap-On Hood)", "type": "Functional" }
+        ]
+      }
+    },
+
+    "final_inspection": {
+      "id": 9,
+      "key": "final_inspection",
+      "label": "Final Inspection",
+      "code": "FIN",
+      "phase": "QC",
+      "color": "#922B21",
+      "icon": "clipboard-check",
+      "description": "Pre-shipment AQL inspection on completed, packed or ready-to-pack production. Pass/fail decision for shipment release.",
+      "objective": "AQL-based statistical sampling of finished goods. Issue pass or fail decision. Document all findings for traceability.",
+      "key_activities": [
+        "Draw AQL sample per ANSI/ASQ Z1.4",
+        "Full inspection of each sampled piece",
+        "Functional tests (zip, BOA, DWR, tape)",
+        "Measurement audit vs spec sheet",
+        "Label and compliance audit (100% in sample)",
+        "Workmanship and appearance evaluation",
+        "Issue final inspection report",
+        "Pass/Fail decision per AQL levels"
+      ],
+      "aql_levels": {
+        "CRITICAL": "1.0",
+        "MAJOR": "2.5",
+        "MINOR": "4.0"
+      },
+      "checklist_by_category": {
+        "mens_outerwear": [
+          { "check_id": "FIN-OUT-01", "item": "Seam strength: grab test (destructive) on 5% of sample — ≥ 200N", "type": "Construction", "severity": "CRITICAL" },
+          { "check_id": "FIN-OUT-02", "item": "Zipper: 10-cycle + 15-lb pull test on all sampled garments", "type": "Functional", "severity": "CRITICAL" },
+          { "check_id": "FIN-OUT-03", "item": "DWR spray test (AATCC 22) on all sampled garments — min 80 rating", "type": "Performance", "severity": "CRITICAL" },
+          { "check_id": "FIN-OUT-04", "item": "Insulation: light-table + shake test on all sampled garments", "type": "Construction", "severity": "MAJOR" },
+          { "check_id": "FIN-OUT-05", "item": "HiVis tape: retroreflectometer on 10% sample + peel test all sampled", "type": "Compliance", "severity": "CRITICAL" },
+          { "check_id": "FIN-OUT-06", "item": "ANSI/ISEA 107 compliance label present on all HiVis garments (100%)", "type": "Compliance", "severity": "CRITICAL" },
+          { "check_id": "FIN-OUT-07", "item": "All labels: care, size, brand, COO on all sampled garments (100% in sample)", "type": "Label", "severity": "CRITICAL" },
+          { "check_id": "FIN-OUT-08", "item": "Measurements: all critical dimensions vs spec sheet (tolerance ±1.5cm)", "type": "Measurement", "severity": "MAJOR" },
+          { "check_id": "FIN-OUT-09", "item": "Shade: all sampled garments vs approved shade bar under D65 light", "type": "Color", "severity": "MAJOR" },
+          { "check_id": "FIN-OUT-10", "item": "Workmanship: overall appearance, cleanliness, no stains or damage", "type": "Aesthetics", "severity": "MAJOR" },
+          { "check_id": "FIN-OUT-11", "item": "Brass rivets: pull test ≥ 50N on 10% of sample", "type": "Hardware", "severity": "MAJOR" },
+          { "check_id": "FIN-OUT-12", "item": "Suspender clip load test 50 lbs on 10% of bib sample", "type": "Hardware", "severity": "CRITICAL" }
+        ],
+        "footwear": [
+          { "check_id": "FIN-FTW-01", "item": "Outsole bond: flex 500 cycles + perimeter peel test on sample", "type": "Construction", "severity": "CRITICAL" },
+          { "check_id": "FIN-FTW-02", "item": "BOA: 20-cycle + 10-lb cable pull test on all sampled pairs", "type": "Functional", "severity": "CRITICAL" },
+          { "check_id": "FIN-FTW-03", "item": "Slip resistance: ASTM F2913 ≥ 0.40 (1 pair per size per shipment)", "type": "Safety", "severity": "CRITICAL" },
+          { "check_id": "FIN-FTW-04", "item": "Pair matching: left/right size and color match on all sampled pairs", "type": "Quality", "severity": "CRITICAL" }
+        ],
+        "gloves": [
+          { "check_id": "FIN-GLV-01", "item": "Cut resistance: destructive TDM-100 test on 1% of lot", "type": "Safety", "severity": "CRITICAL" },
+          { "check_id": "FIN-GLV-02", "item": "Insulation: tactile cold spot + light-table check on all sampled gloves", "type": "Construction", "severity": "MAJOR" },
+          { "check_id": "FIN-GLV-03", "item": "Touch-Rite™/Key-Rite™ nibs: functional device test on 100% of sample", "type": "Functional", "severity": "MAJOR" },
+          { "check_id": "FIN-GLV-04", "item": "ANSI certification label present on all cut-resistant gloves", "type": "Label", "severity": "CRITICAL" }
+        ],
+        "headwear": [
+          { "check_id": "FIN-HDW-01", "item": "HiVis color: spectrophotometric or retroreflectometric test on sample", "type": "Compliance", "severity": "CRITICAL" },
+          { "check_id": "FIN-HDW-02", "item": "Snap: mate to Iron-Tuff® collar sample — 100-cycle test on snap-on hoods", "type": "Functional", "severity": "MAJOR" }
+        ]
+      }
+    },
+
+    "packing": {
+      "id": 10,
+      "key": "packing",
+      "label": "Packing",
+      "code": "PCK",
+      "phase": "QC",
+      "color": "#1F618D",
+      "icon": "package",
+      "description": "Final packing, labeling, and carton operations. Correct packing protects product and ensures accurate order fulfillment.",
+      "objective": "Ensure every carton is correctly packed, labeled, and prepared for shipment without damaging the finished product.",
+      "key_activities": [
+        "Match packing list to actual garments",
+        "Attach hang tags correctly",
+        "Fold and bag per approved packing method",
+        "Seal polybags",
+        "Pack cartons per assortment plan",
+        "Barcode scan verification",
+        "Carton label check (style, size, PO, destination)",
+        "Carton weight and dimension check",
+        "Shipping mark verification"
+      ],
+      "checklist_by_category": {
+        "mens_outerwear": [
+          { "check_id": "PCK-OUT-01", "item": "Garment is clean, pressed if needed, and damage-free before bagging", "type": "Quality" },
+          { "check_id": "PCK-OUT-02", "item": "Main zipper fully closed before folding", "type": "Functional" },
+          { "check_id": "PCK-OUT-03", "item": "Hang tag attached — correct style, size, UPC barcode scans correctly", "type": "Label" },
+          { "check_id": "PCK-OUT-04", "item": "Polybag size label matches garment size label", "type": "Label" },
+          { "check_id": "PCK-OUT-05", "item": "Reflective tape protected — tissue paper between layers (HiVis styles)", "type": "Product Protection" },
+          { "check_id": "PCK-OUT-06", "item": "Folding method matches approved packing standard (not creasing tape/hardware)", "type": "Packing" },
+          { "check_id": "PCK-OUT-07", "item": "Carton contents match packing list (style, size, color, quantity)", "type": "Accuracy" },
+          { "check_id": "PCK-OUT-08", "item": "Carton label: PO#, style#, size ratio, destination port correct", "type": "Shipping" },
+          { "check_id": "PCK-OUT-09", "item": "Carton gross weight within specified range (±0.5 kg)", "type": "Shipping" },
+          { "check_id": "PCK-OUT-10", "item": "Carton sealing tape applied — all edges sealed, no open flaps", "type": "Carton" }
+        ],
+        "footwear": [
+          { "check_id": "PCK-FTW-01", "item": "Pairs matched L/R before boxing", "type": "Accuracy" },
+          { "check_id": "PCK-FTW-02", "item": "24-hr cure time respected before boxing (for cemented boots)", "type": "Process" },
+          { "check_id": "PCK-FTW-03", "item": "BOA dial facing inward in shoe box to avoid transit damage", "type": "Product Protection" },
+          { "check_id": "PCK-FTW-04", "item": "Toe stuffing in place for boot shape retention", "type": "Packing" }
+        ],
+        "gloves": [
+          { "check_id": "PCK-GLV-01", "item": "Pairs matched by size and style before packaging", "type": "Accuracy" },
+          { "check_id": "PCK-GLV-02", "item": "ANSI certification visible on hang tag or label after packing", "type": "Compliance" }
+        ],
+        "headwear": [
+          { "check_id": "PCK-HDW-01", "item": "HiVis items not compressed under heavy weight in cartons", "type": "Product Protection" }
+        ]
+      }
+    }
+
+  }
+}

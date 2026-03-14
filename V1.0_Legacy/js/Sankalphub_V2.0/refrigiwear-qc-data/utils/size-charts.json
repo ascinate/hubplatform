@@ -1,0 +1,120 @@
+{
+  "_meta": { "description": "RefrigiWear size charts for all product categories" },
+
+  "mens_garment": {
+    "label": "Men's Garments",
+    "measurement_notes": "Chest measured at fullest point. Waist at natural waistline. Measure over light clothing. For borderline sizes, choose larger size for insulated layering.",
+    "sizes": ["XS","S","M","L","XL","2XL","3XL","4XL","5XL"],
+    "measurements": {
+      "chest_in":  ["32-34","35-37","38-40","41-43","44-46","48-50","52-54","56-58","60-62"],
+      "waist_in":  ["26-28","29-31","32-34","35-37","38-40","42-44","46-48","50-52","54-56"],
+      "height_ft": ["5'4\"-5'7\"","5'6\"-5'9\"","5'8\"-5'11\"","5'9\"-6'0\"","5'10\"-6'1\"","5'10\"-6'2\"","5'11\"-6'3\"","6'0\"-6'3\"","6'1\"-6'4\""]
+    }
+  },
+
+  "womens_garment": {
+    "label": "Women's Garments",
+    "measurement_notes": "Bust at fullest point. Waist at natural waistline. Hip at fullest point. Choose larger size for layering.",
+    "sizes": ["XS","S","M","L","XL","2XL","3XL"],
+    "measurements": {
+      "bust_in":  ["32-33","34-35","36-37","38-40","41-43","44-46","48-50"],
+      "waist_in": ["25-26","27-28","29-31","32-34","35-37","38-40","42-44"],
+      "hip_in":   ["34-35","36-37","38-40","41-43","44-46","47-49","50-52"]
+    }
+  },
+
+  "footwear_mens": {
+    "label": "Men's Footwear",
+    "measurement_notes": "US sizing. Measure foot length in inches on a flat surface. For thick socks, go up half size.",
+    "sizes": [7,8,9,10,11,12,13,14],
+    "measurements": {
+      "us_size":          [7,8,9,10,11,12,13,14],
+      "eu_size":          [40,41,42,43,44,45,46,47],
+      "uk_size":          [6,7,8,9,10,11,12,13],
+      "foot_length_in":   ["9.8\"","10.2\"","10.5\"","10.8\"","11.2\"","11.5\"","11.8\"","12.2\""]
+    }
+  },
+
+  "footwear_womens": {
+    "label": "Women's Footwear",
+    "measurement_notes": "US women's sizing.",
+    "sizes": [6,7,8,9,10,11],
+    "measurements": {
+      "us_size":        [6,7,8,9,10,11],
+      "eu_size":        [37,38,39,40,41,42],
+      "foot_length_in": ["9.0\"","9.3\"","9.5\"","9.8\"","10.2\"","10.5\""]
+    }
+  },
+
+  "sock": {
+    "label": "Sock Sizing",
+    "sizes": ["S","M","L","XL"],
+    "measurements": {
+      "shoe_size_us": ["4-6","7-9","10-12","13-15"]
+    }
+  },
+
+  "glove": {
+    "label": "Gloves",
+    "measurement_notes": "Measure hand circumference in inches at knuckles (not thumb). Use dominant hand.",
+    "sizes": ["XS","S","M","L","XL","XXL"],
+    "measurements": {
+      "hand_circumference_in": ["< 7\"","7\" – 7.5\"","7.5\" – 8\"","8\" – 8.5\"","8.5\" – 9\"","9\" – 9.5\""]
+    }
+  },
+
+  "temperature_ratings": {
+    "label": "Collection Temperature Comfort Ratings",
+    "collections": [
+      {
+        "collection": "Iron-Tuff®",
+        "temp_f": -50, "temp_c": -46,
+        "insulation": "11.25 oz RefrigiFill™",
+        "shell": "400D nylon",
+        "use_case": "Blast freezers, Cold storage, Alaska Pipeline-grade work"
+      },
+      {
+        "collection": "PolarForce®",
+        "temp_f": -40, "temp_c": -40,
+        "insulation": "9 oz RefrigiFill™",
+        "shell": "PolarShield™ nylon",
+        "use_case": "Heavy cold storage, outdoor subzero environments"
+      },
+      {
+        "collection": "Extreme (Footwear)",
+        "temp_f": -60, "temp_c": -51,
+        "insulation": "200g 3M Thinsulate™",
+        "shell": "Waterproof nylon / leather",
+        "use_case": "Extreme freezer, flash freeze, loading docks"
+      },
+      {
+        "collection": "Softshell",
+        "temp_f": -20, "temp_c": -29,
+        "insulation": "Lightweight polyester",
+        "shell": "96% polyester / 4% spandex",
+        "use_case": "Active work requiring flexibility, cooler environments"
+      },
+      {
+        "collection": "ComfortGuard™",
+        "temp_f": 0, "temp_c": -18,
+        "insulation": "Lightweight fiberfill",
+        "shell": "100% polyester",
+        "use_case": "Light freezer, moderate cold, all-day comfort"
+      },
+      {
+        "collection": "Cooler Wear™",
+        "temp_f": 10, "temp_c": -12,
+        "insulation": "Mid-weight fiberfill",
+        "shell": "Nylon blend",
+        "use_case": "Cooler and refrigerator environments"
+      },
+      {
+        "collection": "Econo-Tuff®",
+        "temp_f": 15, "temp_c": -9,
+        "insulation": "6 oz polyester fiberfill",
+        "shell": "200D polyester",
+        "use_case": "Budget-friendly, light cold work"
+      }
+    ]
+  }
+}

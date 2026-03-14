@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SANKALP 🏆 | Factory Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    primary: "#F3924A",
+                    gold: "#D4AF37",
+                    "background-light": "#F8F9FA",
+                    "background-dark": "#121212",
+                    "card-light": "#FFFFFF",
+                    "card-dark": "#1E1E1E",
+                },
+                fontFamily: { display: ["Inter", "sans-serif"] },
+                borderRadius: { DEFAULT: "12px" },
+            },
+        },
+    };
+    function toggleDarkMode() { document.documentElement.classList.toggle('dark'); }
+</script>
+<style type="text/tailwindcss">
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .input-field {
+        @apply block w-full rounded-xl border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-gray-900 dark:text-gray-100 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors;
+    }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 transition-colors duration-300">
+<div class="flex h-screen overflow-hidden">
+
+<!-- Sidebar -->
+<aside class="w-64 bg-card-light dark:bg-card-dark border-r border-gray-200 dark:border-gray-800 flex flex-col z-20">
+    <div class="p-6">
+        <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <span class="material-icons-round text-white text-xl">emoji_events</span>
+            </div>
+            <span class="text-xl font-bold tracking-tight">SANKALP 🏆</span>
+        </div>
+        <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1 ml-10 font-semibold">Production Discipline System</p>
+    </div>
+    <nav class="flex-1 mt-4 px-3 space-y-1">
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all" href="dashboard.html">
+            <span class="material-icons-round mr-3">dashboard</span>Dashboard
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all" href="production.html">
+            <span class="material-icons-round mr-3">factory</span>Production
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all" href="inspection.html">
+            <span class="material-icons-round mr-3">fact_check</span>Inspection
+        </a>
+        <a class="flex items-center px-4 py-3 text-primary bg-primary/10 border-r-4 border-primary rounded-lg font-medium transition-all" href="factories.html">
+            <span class="material-icons-round mr-3">location_city</span>Factories
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all" href="analytics.html">
+            <span class="material-icons-round mr-3">science</span>Testing
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all" href="advanced_analytics.html">
+            <span class="material-icons-round mr-3">analytics</span>Analytics
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all" href="chat.html">
+            <span class="material-icons-round mr-3">chat_bubble_outline</span>Chats
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all" href="billing.html">
+            <span class="material-icons-round mr-3">credit_card</span>Billing
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all" href="profile.html">
+            <span class="material-icons-round mr-3">manage_accounts</span>Profile
+        </a>
+    </nav>
+    <div class="p-4 border-t border-gray-200 dark:border-gray-800">
+        <button class="flex items-center w-full px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all" onclick="toggleDarkMode()">
+            <span class="material-icons-round mr-3">dark_mode</span>Toggle Theme
+        </button>
+    </div>
+</aside>
+
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-y-auto scrollbar-hide">
+
+    <!-- Header -->
+    <header class="h-16 bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-md sticky top-0 flex items-center justify-between px-8 z-10 border-b border-gray-200 dark:border-gray-800">
+        <div class="flex flex-col relative">
+            <span class="text-lg font-bold tracking-tight">Factory Management</span>
+            <div class="absolute -bottom-1 left-0 w-1/2 h-[2px] bg-gold rounded-full opacity-60"></div>
+        </div>
+        <div class="flex items-center gap-4">
+            <button onclick="openFactoryModal()" class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-xl font-semibold text-sm hover:bg-orange-600 transition-colors shadow-sm shadow-primary/20">
+                <span class="material-icons-round text-base">add</span>
+                Add Factory
+            </button>
+            <div class="flex items-center space-x-3 pl-4 border-l border-gray-200 dark:border-gray-800">
+                <div class="text-right">
+                    <p class="text-xs font-semibold" id="sidebar-user-name">—</p>
+                    <p class="text-[10px] text-gray-500" id="sidebar-user-email">—</p>
+                </div>
+                <div id="user-avatar" class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm shadow-sm">—</div>
+            </div>
+            <button onclick="logout()" class="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all">
+                <span class="material-icons-round text-base">logout</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="p-8 space-y-6 max-w-6xl mx-auto w-full">
+
+        <!-- Stats Row -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="bg-card-light dark:bg-card-dark rounded-2xl border border-gray-100 dark:border-gray-800 p-5 shadow-sm">
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Total</p>
+                <p class="text-2xl font-black mt-1" id="stat-total">—</p>
+            </div>
+            <div class="bg-card-light dark:bg-card-dark rounded-2xl border border-gray-100 dark:border-gray-800 p-5 shadow-sm">
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Active</p>
+                <p class="text-2xl font-black mt-1 text-green-600" id="stat-active">—</p>
+            </div>
+            <div class="bg-card-light dark:bg-card-dark rounded-2xl border border-gray-100 dark:border-gray-800 p-5 shadow-sm">
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Inactive</p>
+                <p class="text-2xl font-black mt-1 text-gray-400" id="stat-inactive">—</p>
+            </div>
+            <div class="bg-card-light dark:bg-card-dark rounded-2xl border border-gray-100 dark:border-gray-800 p-5 shadow-sm">
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Countries</p>
+                <p class="text-2xl font-black mt-1 text-primary" id="stat-countries">—</p>
+            </div>
+        </div>
+
+        <!-- Search + Filter -->
+        <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+            <div class="flex items-center bg-card-light dark:bg-card-dark border border-gray-200 dark:border-gray-700 rounded-xl px-3 py-2 gap-2 flex-1 max-w-xs">
+                <span class="material-icons-round text-gray-400 text-sm">search</span>
+                <input id="factory-search" type="text" placeholder="Search factories..." class="bg-transparent border-none focus:ring-0 text-sm w-full outline-none text-gray-700 dark:text-gray-300" oninput="filterFactories()"/>
+            </div>
+            <select id="factory-filter" onchange="filterFactories()" class="bg-card-light dark:bg-card-dark border border-gray-200 dark:border-gray-700 rounded-xl px-3 py-2 text-sm text-gray-600 dark:text-gray-300 outline-none focus:border-primary">
+                <option value="all">All Status</option>
+                <option value="active">Active only</option>
+                <option value="inactive">Inactive only</option>
+            </select>
+        </div>
+
+        <!-- Factory Cards Grid -->
+        <div id="factories-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div class="sm:col-span-2 lg:col-span-3 text-center py-12 text-gray-400">
+                <span class="material-icons-round animate-spin text-3xl block">autorenew</span>
+                <p class="text-sm mt-2">Loading factories...</p>
+            </div>
+        </div>
+
+    </div>
+</main>
+</div>
+
+<!-- Factory Modal -->
+<div id="factory-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4">
+        <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" onclick="closeFactoryModal()"></div>
+        <div class="relative bg-card-light dark:bg-card-dark rounded-2xl shadow-2xl w-full max-w-lg border border-gray-200 dark:border-gray-700">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-800">
+                <h3 class="font-bold text-lg" id="modal-title">Add Factory</h3>
+                <button onclick="closeFactoryModal()" class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <span class="material-icons-round text-gray-400">close</span>
+                </button>
+            </div>
+            <div class="p-6 space-y-4">
+                <input type="hidden" id="factory-id"/>
+
+                <div id="modal-error" class="hidden bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 rounded-xl p-3 text-sm text-red-700 dark:text-red-400"></div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Factory Name *</label>
+                    <input type="text" id="f-name" class="input-field" placeholder="e.g. East Wing Textiles"/>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Location</label>
+                    <input type="text" id="f-location" class="input-field" placeholder="e.g. Mumbai, India"/>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Contact Person</label>
+                        <input type="text" id="f-contact-person" class="input-field" placeholder="Name"/>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Phone</label>
+                        <input type="tel" id="f-contact-phone" class="input-field" placeholder="+91 ..."/>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Contact Email</label>
+                    <input type="email" id="f-contact-email" class="input-field" placeholder="factory@example.com"/>
+                </div>
+                <div class="flex items-center gap-3 pt-1">
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="f-active" class="sr-only peer" checked/>
+                        <div class="w-10 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-5 peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+                    </label>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Active</span>
+                </div>
+            </div>
+            <div class="px-6 py-4 bg-gray-50 dark:bg-gray-800/50 rounded-b-2xl flex justify-end gap-3">
+                <button onclick="closeFactoryModal()" class="px-4 py-2 text-sm font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors">Cancel</button>
+                <button onclick="saveFactory()" id="modal-save-btn" class="px-5 py-2 bg-primary text-white rounded-xl font-semibold text-sm hover:bg-orange-600 transition-colors flex items-center gap-2">
+                    <span class="material-icons-round text-base">save</span> Save Factory
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirm Modal -->
+<div id="delete-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4">
+        <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" onclick="closeDeleteModal()"></div>
+        <div class="relative bg-card-light dark:bg-card-dark rounded-2xl shadow-2xl w-full max-w-sm border border-gray-200 dark:border-gray-700 p-6 text-center">
+            <div class="w-14 h-14 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="material-icons-round text-red-500 text-2xl">delete</span>
+            </div>
+            <h3 class="font-bold text-lg mb-1">Delete Factory?</h3>
+            <p class="text-sm text-gray-500 mb-5" id="delete-factory-name">This will permanently delete the factory. Associated inspections and production orders will remain.</p>
+            <div class="flex gap-3">
+                <button onclick="closeDeleteModal()" class="flex-1 px-4 py-2.5 border border-gray-300 dark:border-gray-600 text-sm font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">Cancel</button>
+                <button onclick="confirmDelete()" class="flex-1 px-4 py-2.5 bg-red-600 text-white text-sm font-semibold rounded-xl hover:bg-red-700 transition-colors">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+let allFactories = [];
+let deleteTargetId = null;
+
+// ─── Load Factories ───────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', loadFactories);
+
+async function loadFactories() {
+    const res = await apiRequest('/factories/');
+    const grid = document.getElementById('factories-grid');
+
+    if (!res || !res.ok) {
+        grid.innerHTML = '<div class="sm:col-span-3 text-center py-12 text-red-400 text-sm">Failed to load factories. Please refresh.</div>';
+        return;
+    }
+
+    const data = await res.json();
+    allFactories = data.results || data;
+
+    updateStats(allFactories);
+    renderFactories(allFactories);
+}
+
+function updateStats(factories) {
+    const active = factories.filter(f => f.is_active).length;
+    const inactive = factories.length - active;
+    const countries = new Set(factories.map(f => {
+        const parts = (f.location || '').split(',');
+        return parts[parts.length - 1].trim();
+    }).filter(Boolean)).size;
+
+    document.getElementById('stat-total').textContent = factories.length;
+    document.getElementById('stat-active').textContent = active;
+    document.getElementById('stat-inactive').textContent = inactive;
+    document.getElementById('stat-countries').textContent = countries || '—';
+}
+
+function renderFactories(factories) {
+    const grid = document.getElementById('factories-grid');
+    if (!factories.length) {
+        grid.innerHTML = `
+        <div class="sm:col-span-2 lg:col-span-3 text-center py-14">
+            <span class="material-icons-round text-gray-300 text-5xl block mb-3">location_city</span>
+            <p class="font-semibold text-gray-500">No factories yet</p>
+            <p class="text-sm text-gray-400 mt-1 mb-4">Add your first factory to start tracking production and inspections.</p>
+            <button onclick="openFactoryModal()" class="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-xl font-semibold text-sm hover:bg-orange-600 transition-colors">
+                <span class="material-icons-round text-base">add</span> Add Your First Factory
+            </button>
+        </div>`;
+        return;
+    }
+
+    grid.innerHTML = factories.map(f => {
+        const initials = f.name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+        const locationParts = (f.location || '').split(',');
+        const country = locationParts[locationParts.length - 1]?.trim() || '';
+        const city = locationParts[0]?.trim() || '';
+
+        return `
+        <div class="bg-card-light dark:bg-card-dark rounded-2xl border ${f.is_active ? 'border-gray-100 dark:border-gray-800' : 'border-gray-200 dark:border-gray-700 opacity-70'} shadow-sm hover:shadow-md transition-shadow p-5 flex flex-col gap-4">
+            <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl ${f.is_active ? 'bg-primary/10' : 'bg-gray-100 dark:bg-gray-800'} flex items-center justify-center shrink-0">
+                        <span class="text-sm font-black ${f.is_active ? 'text-primary' : 'text-gray-400'}">${initials}</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-base leading-tight">${escapeHtml(f.name)}</h3>
+                        ${f.location ? `<p class="text-xs text-gray-400 mt-0.5">${city}${country ? ', ' + country : ''}</p>` : '<p class="text-xs text-gray-300">No location set</p>'}
+                    </div>
+                </div>
+                <span class="shrink-0 px-2 py-0.5 rounded-full text-[11px] font-bold ${f.is_active ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400'}">
+                    ${f.is_active ? 'Active' : 'Inactive'}
+                </span>
+            </div>
+
+            ${(f.contact_person || f.contact_email || f.contact_phone) ? `
+            <div class="space-y-1.5 text-sm">
+                ${f.contact_person ? `<div class="flex items-center gap-2 text-gray-600 dark:text-gray-400"><span class="material-icons-round text-sm text-gray-400">person</span>${escapeHtml(f.contact_person)}</div>` : ''}
+                ${f.contact_email ? `<div class="flex items-center gap-2 text-gray-600 dark:text-gray-400"><span class="material-icons-round text-sm text-gray-400">email</span><a href="mailto:${f.contact_email}" class="hover:text-primary transition-colors">${escapeHtml(f.contact_email)}</a></div>` : ''}
+                ${f.contact_phone ? `<div class="flex items-center gap-2 text-gray-600 dark:text-gray-400"><span class="material-icons-round text-sm text-gray-400">phone</span>${escapeHtml(f.contact_phone)}</div>` : ''}
+            </div>` : '<p class="text-xs text-gray-300 dark:text-gray-600">No contact info</p>'}
+
+            <div class="flex items-center gap-2 pt-2 border-t border-gray-100 dark:border-gray-800">
+                <button onclick='openFactoryModal(${JSON.stringify(f)})' class="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+                    <span class="material-icons-round text-sm">edit</span> Edit
+                </button>
+                <button onclick="toggleActive('${f.id}', ${f.is_active})" class="flex-1 flex items-center justify-center gap-1.5 py-2 text-xs font-semibold ${f.is_active ? 'text-yellow-600 hover:bg-yellow-50 dark:hover:bg-yellow-900/20' : 'text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20'} rounded-lg transition-colors">
+                    <span class="material-icons-round text-sm">${f.is_active ? 'pause_circle' : 'play_circle'}</span>
+                    ${f.is_active ? 'Deactivate' : 'Activate'}
+                </button>
+                <button onclick="openDeleteModal('${f.id}', '${escapeHtml(f.name).replace(/'/g, "\\'")}')" class="p-2 text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors">
+                    <span class="material-icons-round text-sm">delete</span>
+                </button>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+// ─── Filter ───────────────────────────────────────────────────────────────────
+function filterFactories() {
+    const search = document.getElementById('factory-search').value.toLowerCase();
+    const filter = document.getElementById('factory-filter').value;
+
+    let filtered = allFactories.filter(f => {
+        const matchSearch = !search || f.name.toLowerCase().includes(search) || (f.location || '').toLowerCase().includes(search);
+        const matchFilter = filter === 'all' || (filter === 'active' && f.is_active) || (filter === 'inactive' && !f.is_active);
+        return matchSearch && matchFilter;
+    });
+
+    renderFactories(filtered);
+}
+
+// ─── Modal: Add / Edit ────────────────────────────────────────────────────────
+function openFactoryModal(factory = null) {
+    document.getElementById('factory-modal').classList.remove('hidden');
+    document.getElementById('modal-error').classList.add('hidden');
+
+    if (factory) {
+        document.getElementById('modal-title').textContent = 'Edit Factory';
+        document.getElementById('factory-id').value = factory.id;
+        document.getElementById('f-name').value = factory.name || '';
+        document.getElementById('f-location').value = factory.location || '';
+        document.getElementById('f-contact-person').value = factory.contact_person || '';
+        document.getElementById('f-contact-email').value = factory.contact_email || '';
+        document.getElementById('f-contact-phone').value = factory.contact_phone || '';
+        document.getElementById('f-active').checked = factory.is_active;
+    } else {
+        document.getElementById('modal-title').textContent = 'Add Factory';
+        document.getElementById('factory-id').value = '';
+        document.getElementById('f-name').value = '';
+        document.getElementById('f-location').value = '';
+        document.getElementById('f-contact-person').value = '';
+        document.getElementById('f-contact-email').value = '';
+        document.getElementById('f-contact-phone').value = '';
+        document.getElementById('f-active').checked = true;
+    }
+
+    setTimeout(() => document.getElementById('f-name').focus(), 100);
+}
+
+function closeFactoryModal() {
+    document.getElementById('factory-modal').classList.add('hidden');
+}
+
+async function saveFactory() {
+    const id = document.getElementById('factory-id').value;
+    const name = document.getElementById('f-name').value.trim();
+    const errorEl = document.getElementById('modal-error');
+    const btn = document.getElementById('modal-save-btn');
+
+    errorEl.classList.add('hidden');
+
+    if (!name) {
+        errorEl.textContent = 'Factory name is required.';
+        errorEl.classList.remove('hidden');
+        return;
+    }
+
+    const payload = {
+        name,
+        location: document.getElementById('f-location').value.trim(),
+        contact_person: document.getElementById('f-contact-person').value.trim(),
+        contact_email: document.getElementById('f-contact-email').value.trim(),
+        contact_phone: document.getElementById('f-contact-phone').value.trim(),
+        is_active: document.getElementById('f-active').checked,
+    };
+
+    btn.disabled = true;
+    btn.innerHTML = '<span class="material-icons-round text-base animate-spin">autorenew</span> Saving...';
+
+    const endpoint = id ? `/factories/${id}/` : '/factories/';
+    const method = id ? 'PATCH' : 'POST';
+
+    const res = await apiRequest(endpoint, { method, body: JSON.stringify(payload) });
+
+    if (res && res.ok) {
+        closeFactoryModal();
+        showToast(id ? 'Factory updated successfully!' : 'Factory added successfully!');
+        await loadFactories();
+    } else {
+        const err = res ? await res.json() : {};
+        errorEl.textContent = err.name?.[0] || err.detail || Object.values(err)[0]?.[0] || 'Failed to save factory.';
+        errorEl.classList.remove('hidden');
+    }
+
+    btn.disabled = false;
+    btn.innerHTML = '<span class="material-icons-round text-base">save</span> Save Factory';
+}
+
+// ─── Toggle Active ────────────────────────────────────────────────────────────
+async function toggleActive(id, currentlyActive) {
+    const res = await apiRequest(`/factories/${id}/`, {
+        method: 'PATCH',
+        body: JSON.stringify({ is_active: !currentlyActive }),
+    });
+
+    if (res && res.ok) {
+        showToast(`Factory ${currentlyActive ? 'deactivated' : 'activated'}.`);
+        await loadFactories();
+    } else {
+        showToast('Failed to update status.', 'error');
+    }
+}
+
+// ─── Delete ───────────────────────────────────────────────────────────────────
+function openDeleteModal(id, name) {
+    deleteTargetId = id;
+    document.getElementById('delete-factory-name').textContent = `Delete "${name}"? Associated inspections and orders will remain.`;
+    document.getElementById('delete-modal').classList.remove('hidden');
+}
+
+function closeDeleteModal() {
+    deleteTargetId = null;
+    document.getElementById('delete-modal').classList.add('hidden');
+}
+
+async function confirmDelete() {
+    if (!deleteTargetId) return;
+    const res = await apiRequest(`/factories/${deleteTargetId}/`, { method: 'DELETE' });
+
+    if (res && (res.ok || res.status === 204)) {
+        closeDeleteModal();
+        showToast('Factory deleted.');
+        await loadFactories();
+    } else {
+        closeDeleteModal();
+        showToast('Failed to delete factory.', 'error');
+    }
+}
+
+// Escape key closes modals
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeFactoryModal(); closeDeleteModal(); }
+});
+
+function escapeHtml(text) {
+    return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+</script>
+</body>
+</html>

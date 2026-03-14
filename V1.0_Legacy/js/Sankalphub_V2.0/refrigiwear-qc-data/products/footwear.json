@@ -1,0 +1,137 @@
+{
+  "category_id": "footwear",
+  "category_label": "Footwear",
+  "brand": "RefrigiWear",
+  "source_url": "https://pro.refrigiwear.com/category/footwear/",
+  "products": [
+    {
+      "id": "FTWR-001",
+      "style": "0348",
+      "name": "Extreme Pac Boot",
+      "subcategory": "Pac Boots",
+      "collection": "Extreme",
+      "colors": ["Black"],
+      "description": "BOA® Fit System dial closure. VitaComfort® insole system. Slip-resistant rubber outsole. Rated for extreme freezer environments.",
+      "sizes": ["Mens 7","8","9","10","11","12","13","14"],
+      "temp_rating_f": -60,
+      "temp_rating_c": -51,
+      "specs": {
+        "upper": "Waterproof nylon",
+        "lining": "200g 3M™ Thinsulate™",
+        "insole": "VitaComfort® system",
+        "outsole": "Slip-resistant rubber (ASTM F2913)",
+        "closure": "BOA® Fit System dial",
+        "safety_toe": "Optional",
+        "certifications": ["ASTM F2892", "BOA Technology Certified"]
+      },
+      "size_chart_ref": "footwear_size_chart",
+      "key_materials": ["Waterproof nylon upper", "3M Thinsulate 200g", "BOA dial + cable", "Rubber outsole"]
+    },
+    {
+      "id": "FTWR-002",
+      "style": "0347",
+      "name": "Extreme Hiker",
+      "subcategory": "Crossover Boots",
+      "collection": "Extreme",
+      "colors": ["Black", "Brown"],
+      "description": "Hiker profile. BOA® Fit System. VitaComfort® system. Leather/nylon combo upper. All-terrain slip-resistant sole.",
+      "sizes": ["Mens 7","8","9","10","11","12","13","14"],
+      "temp_rating_f": -60,
+      "temp_rating_c": -51,
+      "specs": {
+        "upper": "Waterproof leather/nylon combination",
+        "lining": "200g 3M™ Thinsulate™",
+        "insole": "VitaComfort® system",
+        "outsole": "Slip/oil-resistant all-terrain rubber",
+        "closure": "BOA® Fit System",
+        "certifications": ["ASTM F2892", "BOA Technology Certified"]
+      },
+      "size_chart_ref": "footwear_size_chart",
+      "key_materials": ["Leather/nylon upper", "3M Thinsulate 200g", "BOA dial + cable", "All-terrain rubber sole"]
+    },
+    {
+      "id": "FTWR-003",
+      "style": "0340",
+      "name": "Classic Moc Toe Boot",
+      "subcategory": "Leather Boots",
+      "collection": "Classic",
+      "colors": ["Brown"],
+      "description": "Traditional moc toe construction. Full-grain leather upper. Slip and oil-resistant outsole. Optional steel toe.",
+      "sizes": ["Mens 7","8","9","10","11","12","13","14"],
+      "temp_rating_f": -40,
+      "temp_rating_c": -40,
+      "specs": {
+        "upper": "Full-grain leather",
+        "lining": "200g 3M™ Thinsulate™",
+        "insole": "VitaComfort® cushioned",
+        "outsole": "Slip/oil-resistant rubber",
+        "construction": "Moc toe welt",
+        "safety_toe": "Optional steel toe",
+        "certifications": ["ASTM F2892"]
+      },
+      "size_chart_ref": "footwear_size_chart",
+      "key_materials": ["Full-grain leather upper", "Thinsulate lining", "Rubber moc welt outsole"]
+    },
+    {
+      "id": "FTWR-004",
+      "style": "0350",
+      "name": "Crossover Boot",
+      "subcategory": "Crossover Boots",
+      "collection": "Crossover",
+      "colors": ["Black"],
+      "description": "Pac boot/work boot hybrid. Versatile indoor/outdoor use. Multi-terrain rubber outsole.",
+      "sizes": ["Mens 7","8","9","10","11","12","13","14"],
+      "temp_rating_f": -40,
+      "temp_rating_c": -40,
+      "specs": {
+        "upper": "Waterproof synthetic nylon",
+        "lining": "3M™ Thinsulate™",
+        "outsole": "Multi-terrain slip-resistant rubber",
+        "certifications": ["ASTM F2892"]
+      },
+      "size_chart_ref": "footwear_size_chart",
+      "key_materials": ["Waterproof synthetic upper", "Thinsulate lining", "Multi-terrain rubber sole"]
+    },
+    {
+      "id": "FTWR-005",
+      "style": "0346W",
+      "name": "Women's Insulated Boot",
+      "subcategory": "Women's Boots",
+      "collection": "Women's",
+      "colors": ["Black"],
+      "description": "Women's last for wider forefoot comfort. Waterproof nylon upper. BOA option. Thinsulate insulation.",
+      "sizes": ["Womens 6","7","8","9","10","11"],
+      "temp_rating_f": -40,
+      "temp_rating_c": -40,
+      "specs": {
+        "upper": "Waterproof nylon",
+        "lining": "3M™ Thinsulate™",
+        "last": "Women's specific wider forefoot last",
+        "outsole": "Slip-resistant rubber",
+        "certifications": []
+      },
+      "size_chart_ref": "footwear_size_chart",
+      "key_materials": ["Waterproof nylon upper", "Thinsulate lining", "Women's last"]
+    },
+    {
+      "id": "FTWR-006",
+      "style": "0398",
+      "name": "Iron-Tuff® Extreme Sock",
+      "subcategory": "Socks",
+      "collection": "Iron-Tuff®",
+      "colors": ["Black", "Gray"],
+      "description": "9-inch height. Merino wool blend for natural warmth and moisture wicking. Cushioned sole.",
+      "sizes": ["S (shoe 4-6)","M (shoe 7-9)","L (shoe 10-12)","XL (shoe 13-15)"],
+      "temp_rating_f": null,
+      "temp_rating_c": null,
+      "specs": {
+        "composition": "85% Merino wool / 15% nylon",
+        "height": "9 inches",
+        "features": "Moisture-wicking, cushioned sole, arch support",
+        "certifications": []
+      },
+      "size_chart_ref": "sock_size_chart",
+      "key_materials": ["Merino wool", "Nylon reinforcement"]
+    }
+  ]
+}

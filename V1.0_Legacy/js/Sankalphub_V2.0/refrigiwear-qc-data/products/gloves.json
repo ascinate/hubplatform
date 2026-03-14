@@ -1,0 +1,199 @@
+{
+  "category_id": "gloves",
+  "category_label": "Gloves",
+  "brand": "RefrigiWear",
+  "source_url": "https://pro.refrigiwear.com/category/gloves/",
+  "products": [
+    {
+      "id": "GLVS-001",
+      "style": "0297",
+      "name": "Iron-Tuff® Insulated Glove",
+      "subcategory": "Performance",
+      "collection": "Iron-Tuff®",
+      "colors": ["Black"],
+      "description": "Grip-pattern palm. Durable nylon back. 3-piece construction. Designed for subzero freezer work.",
+      "sizes": ["S","M","L","XL","XXL"],
+      "temp_rating_f": -30,
+      "temp_rating_c": -34,
+      "specs": {
+        "back": "Nylon",
+        "palm": "Grain leather with grip pattern",
+        "lining": "Tricot",
+        "insulation": "Fiberfill + foam",
+        "construction": "3-piece pattern",
+        "cuff": "Safety cuff",
+        "certifications": []
+      },
+      "size_chart_ref": "glove_size_chart",
+      "key_materials": ["Nylon back", "Grain leather palm", "Fiberfill + foam insulation", "Tricot lining"]
+    },
+    {
+      "id": "GLVS-002",
+      "style": "0318",
+      "name": "ChillBreaker™ Glove",
+      "subcategory": "Performance",
+      "collection": "ChillBreaker™",
+      "colors": ["Black"],
+      "description": "Flexible nylon outershell. Foam insulation. Fleece lining. Vinyl reinforcements on high-wear areas for grip and durability.",
+      "sizes": ["S","M","L","XL","XXL"],
+      "temp_rating_f": -15,
+      "temp_rating_c": -26,
+      "specs": {
+        "shell": "Flexible nylon",
+        "lining": "Fleece",
+        "insulation": "Foam",
+        "reinforcements": "Vinyl grip reinforcements",
+        "certifications": []
+      },
+      "size_chart_ref": "glove_size_chart",
+      "key_materials": ["Flexible nylon shell", "Foam insulation", "Fleece lining", "Vinyl reinforcements"]
+    },
+    {
+      "id": "GLVS-003",
+      "style": "0266",
+      "name": "Nylon & Goatskin Insulated Glove",
+      "subcategory": "Leather",
+      "collection": "Performance",
+      "colors": ["Black"],
+      "description": "Goat grain leather palm. Ergonomic fit. Tricot lining. 180g fiberfill + foam insulation. Natural dexterity with warmth.",
+      "sizes": ["S","M","L","XL","XXL"],
+      "temp_rating_f": -20,
+      "temp_rating_c": -29,
+      "specs": {
+        "back": "Nylon",
+        "palm": "Goat grain leather",
+        "lining": "Tricot",
+        "insulation": "180g fiberfill + foam",
+        "fit": "Ergonomic pre-curved",
+        "certifications": []
+      },
+      "size_chart_ref": "glove_size_chart",
+      "key_materials": ["Goat grain leather palm", "Nylon back", "180g fiberfill insulation", "Tricot lining"]
+    },
+    {
+      "id": "GLVS-004",
+      "style": "0293HV",
+      "name": "HiVis Insulated Impact Pro Glove",
+      "subcategory": "Impact Protection",
+      "collection": "HiVis",
+      "hivis_available": true,
+      "colors": ["HiVis Lime"],
+      "description": "TPR impact protection on back of hand and knuckles. EN 388 rated. ANSI A4 cut resistance. HiVis fabric back.",
+      "sizes": ["S","M","L","XL","XXL"],
+      "temp_rating_f": -15,
+      "temp_rating_c": -26,
+      "specs": {
+        "back": "HiVis fabric with TPR guards",
+        "palm": "Synthetic leather",
+        "insulation": "Moderate fiberfill",
+        "impact": "TPR thermoplastic rubber dorsal protection",
+        "certifications": ["ANSI/ISEA 105 A4", "EN 388 4X43C", "EN ISO 20471"]
+      },
+      "size_chart_ref": "glove_size_chart",
+      "key_materials": ["HiVis back fabric", "TPR impact pads", "Synthetic leather palm", "Fiberfill insulation"]
+    },
+    {
+      "id": "GLVS-005",
+      "style": "0287",
+      "name": "Extreme Ultra Grip Glove",
+      "subcategory": "Cut Resistant",
+      "collection": "Performance",
+      "colors": ["Black/Gray"],
+      "description": "ANSI A4 cut resistance. Sandy nitrile-coated palm for maximum grip. Insulated for cold environments. HPPE/glass fiber shell.",
+      "sizes": ["S","M","L","XL","XXL"],
+      "temp_rating_f": -10,
+      "temp_rating_c": -23,
+      "specs": {
+        "shell": "HPPE/glass fiber cut-resistant yarn",
+        "coating": "Sandy nitrile palm + fingertip",
+        "insulation": "Moderate polyester fill",
+        "cut_level": "ANSI/ISEA A4",
+        "certifications": ["ANSI/ISEA 105 A4", "EN 388"]
+      },
+      "size_chart_ref": "glove_size_chart",
+      "key_materials": ["HPPE/glass fiber shell", "Sandy nitrile coating", "Moderate insulation"]
+    },
+    {
+      "id": "GLVS-006",
+      "style": "0275TR",
+      "name": "Touch-Rite™ Glove",
+      "subcategory": "Touchscreen",
+      "collection": "Touch-Rite™",
+      "colors": ["Black"],
+      "description": "Patent-pending Touch-Rite™ conductive nibs on index and thumb fingertips. Full insulation maintained. No need to remove gloves for touchscreen use.",
+      "sizes": ["S","M","L","XL","XXL"],
+      "temp_rating_f": -20,
+      "temp_rating_c": -29,
+      "specs": {
+        "back": "Nylon",
+        "touchscreen": "Touch-Rite™ conductive nibs (index + thumb)",
+        "insulation": "Foam + fiberfill",
+        "patent": "Patent-pending nib technology",
+        "certifications": []
+      },
+      "size_chart_ref": "glove_size_chart",
+      "key_materials": ["Nylon back", "Touch-Rite™ conductive nibs", "Foam/fiberfill insulation"]
+    },
+    {
+      "id": "GLVS-007",
+      "style": "0275KR",
+      "name": "Key-Rite™ Glove",
+      "subcategory": "Key-Rite",
+      "collection": "Key-Rite™",
+      "colors": ["Black"],
+      "description": "Patent-pending Key-Rite™ raised nibs on fingertips designed for keypad entry. Full insulation. For warehouse data entry workers.",
+      "sizes": ["S","M","L","XL","XXL"],
+      "temp_rating_f": -20,
+      "temp_rating_c": -29,
+      "specs": {
+        "back": "Nylon",
+        "keypad_nibs": "Key-Rite™ raised nibs (fingertips)",
+        "insulation": "Foam + fiberfill",
+        "patent": "Patent-pending nib technology",
+        "certifications": []
+      },
+      "size_chart_ref": "glove_size_chart",
+      "key_materials": ["Nylon back", "Key-Rite™ raised nibs", "Foam/fiberfill insulation"]
+    },
+    {
+      "id": "GLVS-008",
+      "style": "0218",
+      "name": "Stretch Glove Liner",
+      "subcategory": "Liners",
+      "collection": "Liners",
+      "colors": ["Black"],
+      "description": "Lightweight moisture-wicking liner. Fits under any outer glove. Adds 4–15°F of warmth. Machine washable.",
+      "sizes": ["S/M","L/XL"],
+      "temp_rating_f": null,
+      "temp_rating_c": null,
+      "specs": {
+        "composition": "100% polyester stretch knit",
+        "function": "Moisture-wicking inner liner",
+        "fit": "Slim ergonomic fit under outer glove",
+        "certifications": []
+      },
+      "size_chart_ref": "glove_size_chart",
+      "key_materials": ["100% polyester stretch knit"]
+    },
+    {
+      "id": "GLVS-009",
+      "style": "0220",
+      "name": "Coated Grip Glove",
+      "subcategory": "Coated",
+      "collection": "Coated",
+      "colors": ["Black/Blue"],
+      "description": "Nitrile-coated palm and fingertips for waterproof grip. Lightweight insulation. Waterproof dip.",
+      "sizes": ["S","M","L","XL","XXL"],
+      "temp_rating_f": 10,
+      "temp_rating_c": -12,
+      "specs": {
+        "shell": "Nylon",
+        "coating": "Nitrile palm + fingertip waterproof dip",
+        "insulation": "Moderate polyester",
+        "certifications": []
+      },
+      "size_chart_ref": "glove_size_chart",
+      "key_materials": ["Nylon shell", "Nitrile coating", "Moderate insulation"]
+    }
+  ]
+}

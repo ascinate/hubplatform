@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" width="560" height="140">
+  <defs>
+    <linearGradient id="diaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A87C30"/>
+      <stop offset="100%" style="stop-color:#7C5B20"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C9A96E"/>
+      <stop offset="100%" style="stop-color:#8B6520"/>
+    </linearGradient>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- NO background rect — transparent, works on any light surface -->
+
+  <!-- Orbital rings -->
+  <ellipse cx="70" cy="70" rx="56" ry="20" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.25" transform="rotate(-40 70 70)"/>
+  <ellipse cx="70" cy="70" rx="56" ry="20" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.38" transform="rotate(20 70 70)"/>
+  <ellipse cx="70" cy="70" rx="56" ry="20" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.18" transform="rotate(80 70 70)"/>
+
+  <!-- Diamond outer -->
+  <polygon points="70,16 112,70 70,120 28,70" fill="none" stroke="url(#diaGrad)" stroke-width="1.1" opacity="0.5"/>
+  <!-- Diamond mid -->
+  <polygon points="70,30 100,70 70,106 40,70" fill="none" stroke="url(#diaGrad)" stroke-width="1" opacity="0.85"/>
+  <!-- Diamond inner -->
+  <polygon points="70,44 94,70 70,92 46,70" fill="none" stroke="url(#diaGrad)" stroke-width="1.5"/>
+
+  <!-- Orbital nodes -->
+  <circle cx="70"  cy="10"  r="3.5" fill="url(#nodeGrad)" filter="url(#softglow)"/>
+  <circle cx="118" cy="86"  r="2.5" fill="url(#nodeGrad)" opacity="0.65"/>
+  <circle cx="22"  cy="86"  r="2.5" fill="url(#nodeGrad)" opacity="0.65"/>
+
+  <!-- Node connectors -->
+  <line x1="70" y1="10" x2="70" y2="44"  stroke="#C9A96E" stroke-width="0.5" opacity="0.25"/>
+  <line x1="118" y1="86" x2="94" y2="70" stroke="#C9A96E" stroke-width="0.5" opacity="0.18"/>
+  <line x1="22"  y1="86" x2="46" y2="70" stroke="#C9A96E" stroke-width="0.5" opacity="0.18"/>
+
+  <!-- Center hub -->
+  <circle cx="70" cy="70" r="10"  fill="none" stroke="#C9A96E" stroke-width="0.7" opacity="0.4"/>
+  <circle cx="70" cy="70" r="5.5" fill="url(#diaGrad)" filter="url(#softglow)"/>
+  <circle cx="70" cy="70" r="2.2" fill="#FAF8F4"/>
+
+  <!-- Divider -->
+  <line x1="142" y1="26" x2="142" y2="114" stroke="#C9A96E" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Wordmark — dark text on light bg -->
+  <text font-family="Georgia,'Times New Roman',serif" font-size="52" font-weight="700" letter-spacing="0">
+    <tspan x="160" y="84" fill="#1A1208">Sankalp</tspan><tspan fill="#9A7035">Hub</tspan>
+  </text>
+
+  <!-- Underline -->
+  <line x1="160" y1="94" x2="538" y2="94" stroke="#C9A96E" stroke-width="0.4" opacity="0.25"/>
+
+  <!-- Tagline -->
+  <text x="162" y="112"
+        font-family="Arial,Helvetica,sans-serif"
+        font-size="9" font-weight="300"
+        letter-spacing="4.5"
+        fill="#BBA878">PRODUCTION INTELLIGENCE PLATFORM</text>
+</svg>

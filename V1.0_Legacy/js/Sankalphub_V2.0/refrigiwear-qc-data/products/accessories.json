@@ -1,0 +1,77 @@
+{
+  "category_id": "accessories",
+  "category_label": "Accessories",
+  "brand": "RefrigiWear",
+  "source_url": "https://pro.refrigiwear.com/category/accessories/",
+  "products": [
+    {
+      "id": "ACC-001",
+      "style": "5100",
+      "name": "Freezer Blanket / Pallet Cover",
+      "subcategory": "Bags & Blankets",
+      "colors": ["Silver/Black"],
+      "description": "Heavy-duty insulated pallet cover. Moisture barrier inner lining. Protects temperature-sensitive products on pallets.",
+      "sizes": ["Various — specify dimensions on order"],
+      "specs": {
+        "outer": "Woven polyester",
+        "insulation": "Polyester fiberfill",
+        "inner": "Moisture barrier film lining",
+        "certifications": []
+      },
+      "size_chart_ref": "N/A",
+      "key_materials": ["Woven polyester outer", "Polyester fiberfill", "Moisture barrier PE film"]
+    },
+    {
+      "id": "ACC-002",
+      "style": "5200",
+      "name": "Insulated Tote Bag",
+      "subcategory": "Bags & Blankets",
+      "colors": ["Black"],
+      "description": "Thermal insulated tote for food and beverage. 600D polyester outer. Fiberfill insulation. Zippered top closure.",
+      "sizes": ["One Size"],
+      "specs": {
+        "outer": "600-denier polyester",
+        "insulation": "Polyester fiberfill",
+        "closure": "Zippered top",
+        "certifications": []
+      },
+      "size_chart_ref": "N/A",
+      "key_materials": ["600D polyester outer", "Fiberfill insulation"]
+    },
+    {
+      "id": "ACC-003",
+      "style": "5300",
+      "name": "Digital Freezer Thermometer",
+      "subcategory": "Thermometers",
+      "colors": ["Black"],
+      "description": "LCD display digital thermometer. Freezer-rated. Clip or hang mount. Wide temperature range.",
+      "sizes": ["One Size"],
+      "specs": {
+        "housing": "ABS plastic",
+        "display": "LCD",
+        "temp_range": "-40°F to +120°F",
+        "mount": "Clip or hang",
+        "certifications": []
+      },
+      "size_chart_ref": "N/A",
+      "key_materials": ["ABS plastic housing", "LCD display"]
+    },
+    {
+      "id": "ACC-004",
+      "style": "5400",
+      "name": "Hand Warmers (Air-Activated)",
+      "subcategory": "Hand & Foot Warmers",
+      "colors": ["White"],
+      "description": "Single-use air-activated hand warmers. 10-hour warmth. FDA-approved formula.",
+      "sizes": ["Pair"],
+      "specs": {
+        "activation": "Air-activated (open package)",
+        "duration": "10 hours",
+        "composition": "Iron powder, salt, activated carbon",
+        "certifications": ["FDA approved"]
+      },
+      "size_chart_ref": "N/A",
+      "key_materials": ["Iron powder", "Salt", "Activated carbon"]
+    }
+  ]
+}

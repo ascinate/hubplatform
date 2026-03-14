@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /settings
+Disallow: /api/
+Disallow: /website-analytics
+
+Sitemap: https://sankalphub.in/sitemap.xml

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pricing — SANKALP 🏆</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: { primary: "#f19c52", "background-dark": "#0f172a", "card-dark": "#1e293b" },
+                fontFamily: { display: ["Outfit", "sans-serif"], sans: ["Inter", "sans-serif"] },
+            },
+        },
+    };
+</script>
+<style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+</style>
+</head>
+<body class="font-sans antialiased text-slate-900 bg-slate-50 dark:bg-background-dark dark:text-slate-100">
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 border-b border-slate-200/50 dark:border-slate-800/50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white text-sm">emoji_events</span>
+                </div>
+                <span class="text-xl font-black font-display">SANKALP 🏆</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="login.html" class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors">Sign In</a>
+                <a href="login.html?signup=true" class="bg-primary text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-orange-600 transition-colors">Start Free Trial</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<section class="pt-28 pb-16 text-center">
+    <div class="max-w-3xl mx-auto px-4">
+        <div class="inline-flex items-center px-4 py-1.5 mb-6 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold text-sm">
+            <span class="material-symbols-outlined text-base mr-2">workspace_premium</span>
+            Simple, Transparent Pricing
+        </div>
+        <h1 class="text-4xl lg:text-5xl font-extrabold font-display mb-4">Choose Your Plan</h1>
+        <p class="text-lg text-slate-500 dark:text-slate-400">Start with a 14-day free trial. No credit card required.</p>
+    </div>
+</section>
+
+<!-- Plans Grid -->
+<section class="max-w-5xl mx-auto px-4 pb-24">
+    <div id="plans-grid" class="grid md:grid-cols-3 gap-6">
+        <!-- Plans loaded from API -->
+        <div class="md:col-span-3 text-center py-12 text-slate-400">
+            <span class="material-symbols-outlined text-4xl animate-pulse">autorenew</span>
+            <p class="mt-2">Loading plans...</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="max-w-3xl mx-auto px-4 pb-24">
+    <h2 class="text-2xl font-bold font-display text-center mb-10">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+        <details class="bg-white dark:bg-card-dark rounded-xl p-5 border border-slate-200 dark:border-slate-700">
+            <summary class="font-semibold cursor-pointer">Can I cancel anytime?</summary>
+            <p class="mt-3 text-slate-500 dark:text-slate-400 text-sm">Yes. You can cancel your subscription at any time. You'll continue to have access until the end of your current billing period.</p>
+        </details>
+        <details class="bg-white dark:bg-card-dark rounded-xl p-5 border border-slate-200 dark:border-slate-700">
+            <summary class="font-semibold cursor-pointer">Do you support Indian payment methods?</summary>
+            <p class="mt-3 text-slate-500 dark:text-slate-400 text-sm">Yes! We support UPI, Net Banking, Credit/Debit cards via Razorpay for Indian customers. International customers can pay via Stripe.</p>
+        </details>
+        <details class="bg-white dark:bg-card-dark rounded-xl p-5 border border-slate-200 dark:border-slate-700">
+            <summary class="font-semibold cursor-pointer">What happens after my free trial?</summary>
+            <p class="mt-3 text-slate-500 dark:text-slate-400 text-sm">After 14 days, you'll be prompted to choose a paid plan. Your data is preserved. You can also request an extension if needed.</p>
+        </details>
+        <details class="bg-white dark:bg-card-dark rounded-xl p-5 border border-slate-200 dark:border-slate-700">
+            <summary class="font-semibold cursor-pointer">Is there a discount for yearly billing?</summary>
+            <p class="mt-3 text-slate-500 dark:text-slate-400 text-sm">Yes! Annual plans come with 2 months free (equivalent to 17% off). Contact us for enterprise pricing.</p>
+        </details>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-primary py-16 text-center">
+    <div class="max-w-2xl mx-auto px-4">
+        <h2 class="text-3xl font-extrabold font-display text-white mb-4">Ready to get started?</h2>
+        <p class="text-white/80 mb-8">Join hundreds of manufacturing teams using SANKALP to deliver quality at scale.</p>
+        <a href="login.html?signup=true" class="bg-white text-primary px-8 py-3 rounded-full font-bold text-lg hover:bg-orange-50 transition-colors shadow-lg">
+            Start Your Free Trial
+        </a>
+    </div>
+</section>
+
+<footer class="py-8 text-center text-sm text-slate-400">
+    <p>© 2024 SANKALP Management Systems · <a href="index.html" class="hover:text-primary">Home</a> · <a href="#" class="hover:text-primary">Privacy</a> · <a href="#" class="hover:text-primary">Terms</a></p>
+</footer>
+
+<script>
+const API_BASE = 'https://app.sankalphub.in/api';
+
+async function loadPlans() {
+    const grid = document.getElementById('plans-grid');
+    try {
+        const res = await fetch(`${API_BASE}/billing/plans/`);
+        const plans = await res.json();
+
+        const planColors = ['slate', 'primary', 'slate'];
+        const highlighted = [false, true, false];
+
+        grid.innerHTML = plans.map((plan, i) => {
+            const isHighlighted = highlighted[i];
+            const isPro = isHighlighted;
+            return `
+            <div class="relative rounded-2xl border ${isPro ? 'border-primary bg-primary text-white' : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-card-dark'} p-8 flex flex-col shadow-lg ${isPro ? 'shadow-primary/20 scale-105' : ''}">
+                ${isPro ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-1 rounded-full">MOST POPULAR</div>' : ''}
+                <div class="mb-6">
+                    <h3 class="text-xl font-bold font-display mb-1">${plan.name}</h3>
+                    <p class="text-sm ${isPro ? 'text-white/80' : 'text-slate-500 dark:text-slate-400'}">${plan.description}</p>
+                </div>
+                <div class="mb-6">
+                    ${plan.price_inr > 0 ? `
+                    <div class="flex items-end gap-1">
+                        <span class="text-4xl font-black">₹${Number(plan.price_inr).toLocaleString('en-IN')}</span>
+                        <span class="${isPro ? 'text-white/70' : 'text-slate-400'} text-sm mb-1">/month</span>
+                    </div>
+                    <p class="${isPro ? 'text-white/70' : 'text-slate-400'} text-xs mt-1">$${plan.price_usd} USD · billed monthly</p>
+                    ` : `
+                    <div class="text-4xl font-black">Custom</div>
+                    <p class="${isPro ? 'text-white/70' : 'text-slate-400'} text-xs mt-1">Contact us for pricing</p>
+                    `}
+                </div>
+                <ul class="space-y-3 flex-1 mb-8">
+                    ${plan.features.map(f => `
+                    <li class="flex items-center gap-2 text-sm">
+                        <span class="material-symbols-outlined text-base ${isPro ? 'text-white' : 'text-green-500'}">check_circle</span>
+                        <span>${f}</span>
+                    </li>`).join('')}
+                </ul>
+                ${plan.price_inr > 0 ? `
+                <a href="login.html?signup=true&plan=${plan.slug}" class="block text-center py-3 px-6 rounded-xl font-bold text-sm transition-all ${isPro ? 'bg-white text-primary hover:bg-orange-50' : 'bg-primary text-white hover:bg-orange-600'}">
+                    Get Started
+                </a>` : `
+                <a href="mailto:hello@sankalphub.in" class="block text-center py-3 px-6 rounded-xl font-bold text-sm border ${isPro ? 'border-white text-white hover:bg-white/10' : 'border-primary text-primary hover:bg-primary/5'} transition-all">
+                    Contact Sales
+                </a>`}
+            </div>`;
+        }).join('');
+    } catch (e) {
+        grid.innerHTML = '<div class="md:col-span-3 text-center py-12 text-slate-400">Failed to load plans. Please refresh the page.</div>';
+    }
+}
+
+loadPlans();
+</script>
+</body>
+</html>

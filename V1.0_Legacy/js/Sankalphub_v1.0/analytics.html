@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SANKALP 🏆 | Lab Testing &amp; Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #1565C0;
+            --background-light: #E3F2FD;
+            --background-dark: #0F172A;
+        }
+        @layer base {
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .logo-font {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            letter-spacing: -0.025em;
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1565C0",
+                        "background-light": "#E3F2FD",
+                        "background-dark": "#0F172A",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-[#E3F2FD] dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-200">
+<nav class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16 items-center">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/20">
+<span class="material-symbols-outlined text-white text-2xl">biotech</span>
+</div>
+<span class="text-2xl logo-font tracking-tighter">SANKALP <span class="text-primary tracking-normal font-bold">🏆</span></span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white font-medium" href="dashboard.html">Dashboard</a>
+<a class="text-primary font-semibold border-b-2 border-primary py-5" href="analytics.html">Lab Testing</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white font-medium" href="inspection.html">Inspections</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white font-medium" href="advanced_analytics.html">Analytics</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white font-medium" href="billing.html">Billing</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block">light_mode</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden border-2 border-primary/20">
+<img alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbVR3pVnr2W7ZOEkGeNxkUFDil1PAod6q8-g7OSXVsRdITYQ9fqvdAfqrHjEXsOak1OhOtc7sbt_W353ww-GEfRhGNntgHnNeR0FUjHz7KL-vGd23sXQRmi5gXkysSgKDTwYga3pjKEARJj5DVL_G4ZwWfv5rIM1mSR8lwkz2ctU8R5hFFtj7RgXh_jPDhY1zz8RtnQb-ICM2D2n6SBnUrQkZtkIXYD4dBXO6iFXbx9vUpf_vNt7l1UK8vj_Hx08g3PB4zIlyFcadb"/>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white">Lab Testing &amp; QA</h1>
+<p class="text-slate-600 dark:text-slate-400 mt-1 font-medium">SANKALP 🏆 Quality Control &amp; Real-time Analytics</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-700 transition font-medium">
+<span class="material-symbols-outlined text-lg">file_download</span> Export PDF
+            </button>
+<button class="bg-primary text-white px-6 py-2 rounded-lg font-bold flex items-center gap-2 shadow-lg shadow-blue-500/20 hover:opacity-90 transition">
+<span class="material-symbols-outlined text-lg text-white">add_circle</span> New Submission
+            </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+<div class="glass-card p-6 rounded-2xl shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider">Total Samples</span>
+<span class="material-symbols-outlined text-blue-500">inventory_2</span>
+</div>
+<div class="text-3xl font-bold" id="kpi-total-samples">—</div>
+<div class="text-xs text-green-500 mt-2 font-bold">+12% from last month</div>
+</div>
+<div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-l-orange-400">
+<div class="flex items-center justify-between mb-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider">Pending Tests</span>
+<span class="material-symbols-outlined text-orange-400">pending_actions</span>
+</div>
+<div class="text-3xl font-bold" id="kpi-pending-tests">—</div>
+<div class="text-xs text-slate-400 mt-2 font-medium">Awaiting lab results</div>
+</div>
+<div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-l-green-500">
+<div class="flex items-center justify-between mb-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider">Passed Quality</span>
+<span class="material-symbols-outlined text-green-500">check_circle</span>
+</div>
+<div class="text-3xl font-bold" id="kpi-passed-quality">—</div>
+<div class="text-xs text-green-500 mt-2 font-bold">93.3% Success Rate</div>
+</div>
+<div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-l-red-500">
+<div class="flex items-center justify-between mb-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider">Failed Tests</span>
+<span class="material-symbols-outlined text-red-500">dangerous</span>
+</div>
+<div class="text-3xl font-bold" id="kpi-failed-tests">—</div>
+<div class="text-xs text-red-500 mt-2 font-bold">Requires Immediate Action</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-1">
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+<h2 class="text-lg font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                    Log SANKALP Result
+                </h2>
+<form class="space-y-5">
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Sample ID</label>
+<input id="lab-sample-id" class="w-full rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary text-sm" placeholder="e.g. LAB-2024-001" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Laboratory Name</label>
+<select id="lab-lab-name" class="w-full rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary focus:border-primary text-sm">
+<option value="internal">SANKALP 🏆 Internal Labs</option>
+<option value="global_quality">Global Quality Labs</option>
+<option value="eurotech">EuroTech Testing</option>
+<option value="sgs">SGS International</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Test Result</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="cursor-pointer">
+<input class="sr-only peer" id="lab-result-pass" name="result" value="passed" type="radio"/>
+<div class="px-3 py-2 text-center rounded-lg border border-slate-200 dark:border-slate-700 peer-checked:bg-green-100 peer-checked:border-green-500 peer-checked:text-green-700 dark:peer-checked:bg-green-900/30 text-xs font-bold transition">Pass</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" id="lab-result-fail" name="result" value="failed" type="radio"/>
+<div class="px-3 py-2 text-center rounded-lg border border-slate-200 dark:border-slate-700 peer-checked:bg-red-100 peer-checked:border-red-500 peer-checked:text-red-700 dark:peer-checked:bg-red-900/30 text-xs font-bold transition">Fail</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" id="lab-result-hold" name="result" value="pending" type="radio"/>
+<div class="px-3 py-2 text-center rounded-lg border border-slate-200 dark:border-slate-700 peer-checked:bg-orange-100 peer-checked:border-orange-500 peer-checked:text-orange-700 dark:peer-checked:bg-orange-900/30 text-xs font-bold transition">Hold</div>
+</label>
+</div>
+</div>
+<div>
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Upload Report</label>
+<div class="border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-xl p-6 text-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition cursor-pointer group">
+<span class="material-symbols-outlined text-3xl text-slate-400 mb-2 group-hover:text-primary transition">upload_file</span>
+<p class="text-xs text-slate-500">Upload PDF for SANKALP 🏆 Verification</p>
+</div>
+</div>
+<div id="lab-form-error" class="hidden text-xs text-red-600 font-medium"></div>
+<button id="lab-submit-btn" class="w-full bg-primary text-white py-3 rounded-lg font-bold hover:bg-primary/90 transition shadow-lg shadow-blue-500/10 text-sm" type="submit">
+                        Submit SANKALP Result
+                    </button>
+</form>
+</div>
+<div class="mt-8 bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+<h3 class="font-bold text-slate-900 dark:text-white mb-4">Quality Scorecard</h3>
+<div class="flex items-center justify-center py-6">
+<div class="relative">
+<svg class="w-32 h-32 transform -rotate-90">
+<circle class="text-slate-100 dark:text-slate-800" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-width="8"></circle>
+<circle id="donut-arc" class="text-primary" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-dasharray="351.85" stroke-dashoffset="23" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold" id="lab-pass-percent">93%</span>
+<span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Execution</span>
+</div>
+</div>
+</div>
+<div class="space-y-4 mt-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500 font-medium">Material Integrity</span>
+<span class="font-bold text-green-500">98%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-green-500 h-full w-[98%]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500 font-medium">Chemical Composition</span>
+<span class="font-bold text-yellow-500">85%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-yellow-500 h-full w-[85%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 space-y-8">
+<div class="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-bold text-slate-900 dark:text-white">Failure Trend Analytics</h3>
+<select class="bg-transparent border-none text-xs text-slate-500 font-bold focus:ring-0 uppercase tracking-wider">
+<option>Last 30 Days</option>
+<option>Last 90 Days</option>
+</select>
+</div>
+<div class="flex items-end h-48 gap-4 px-2">
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-red-100 dark:bg-red-900/20 rounded-t-lg relative flex items-end justify-center h-[70%]">
+<div class="w-3/4 bg-red-500 rounded-t-lg transition-all duration-500 group-hover:bg-red-600 h-[85%]"></div>
+</div>
+<span class="text-[10px] mt-2 font-bold text-slate-500">DIMENSIONAL</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-blue-100 dark:bg-blue-900/20 rounded-t-lg relative flex items-end justify-center h-[70%]">
+<div class="w-3/4 bg-primary rounded-t-lg transition-all duration-500 group-hover:bg-primary/80 h-[45%]"></div>
+</div>
+<span class="text-[10px] mt-2 font-bold text-slate-500">DENSITY</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-blue-100 dark:bg-blue-900/20 rounded-t-lg relative flex items-end justify-center h-[70%]">
+<div class="w-3/4 bg-primary rounded-t-lg transition-all duration-500 group-hover:bg-primary/80 h-[92%]"></div>
+</div>
+<span class="text-[10px] mt-2 font-bold text-slate-500">CHEMICAL</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-blue-100 dark:bg-blue-900/20 rounded-t-lg relative flex items-end justify-center h-[70%]">
+<div class="w-3/4 bg-primary rounded-t-lg transition-all duration-500 group-hover:bg-primary/80 h-[60%]"></div>
+</div>
+<span class="text-[10px] mt-2 font-bold text-slate-500">TEXTURE</span>
+</div>
+<div class="flex-1 flex flex-col items-center group">
+<div class="w-full bg-blue-100 dark:bg-blue-900/20 rounded-t-lg relative flex items-end justify-center h-[70%]">
+<div class="w-3/4 bg-primary rounded-t-lg transition-all duration-500 group-hover:bg-primary/80 h-[30%]"></div>
+</div>
+<span class="text-[10px] mt-2 font-bold text-slate-500">PACKAGING</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row gap-4 justify-between items-center">
+<h3 class="font-bold">Recent Lab Submissions</h3>
+<div class="flex gap-2 w-full sm:w-auto">
+<div class="relative flex-grow">
+<span class="material-symbols-outlined absolute left-3 top-2 text-slate-400 text-lg">search</span>
+<input class="pl-10 pr-4 py-2 text-sm rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:ring-primary w-full" placeholder="Search SANKALP ID..." type="text"/>
+</div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-slate-500">filter_list</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">Sample ID</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">Lab Name</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">Date</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800" id="lab-tests-tbody">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="px-6 py-4">
+<div class="font-bold text-slate-900 dark:text-white">LAB-2024-042</div>
+<div class="text-[10px] text-slate-400 uppercase font-medium">Cotton Fabric / White</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">SANKALP 🏆 Internal</td>
+<td class="px-6 py-4 text-sm text-slate-500 font-medium">Oct 24, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></span> Passed
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline text-xs font-bold">View PDF</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="px-6 py-4">
+<div class="font-bold text-slate-900 dark:text-white">LAB-2024-041</div>
+<div class="text-[10px] text-slate-400 uppercase font-medium">Polyester Mix / Grey</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">SGS International</td>
+<td class="px-6 py-4 text-sm text-slate-500 font-medium">Oct 23, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
+<span class="w-1.5 h-1.5 rounded-full bg-red-500 mr-1.5"></span> Failed
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline text-xs font-bold">Review Issue</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+<td class="px-6 py-4">
+<div class="font-bold text-slate-900 dark:text-white">LAB-2024-040</div>
+<div class="text-[10px] text-slate-400 uppercase font-medium">Hard Hardware / Zinc</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">EuroTech Testing</td>
+<td class="px-6 py-4 text-sm text-slate-500 font-medium">Oct 23, 2023</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400">
+<span class="w-1.5 h-1.5 rounded-full bg-orange-500 mr-1.5 animate-pulse"></span> Pending
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 cursor-not-allowed text-xs font-bold">Awaiting</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<span class="text-xs text-slate-500 font-medium">Showing SANKALP 🏆 batch 1-3 of 24</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white font-bold text-xs shadow-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-bold text-slate-600">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm text-white p-3 text-center text-sm font-medium z-[100] flex justify-center items-center gap-6 shadow-2xl border-t border-white/10">
+<div class="flex items-center gap-2">
+<span class="text-lg">🏆</span>
+<span>Welcome to the new <span class="font-bold">SANKALP</span> Lab Management environment.</span>
+</div>
+<button class="bg-white text-primary hover:bg-slate-100 px-4 py-1 rounded-full font-bold text-xs uppercase transition shadow-md" onclick="this.parentElement.remove()">Acknowledge</button>
+</div>
+<script src="js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    if (!isLoggedIn()) return;
+
+    // ── Summary KPIs + donut ──
+    try {
+        const res = await apiRequest('/analytics/summary/');
+        if (res && res.ok) {
+            const d = await res.json();
+
+            document.getElementById('kpi-total-samples').textContent = d.total_lab_tests.toLocaleString();
+            document.getElementById('kpi-passed-quality').textContent = d.passed_lab_tests.toLocaleString();
+
+            const failed = d.total_lab_tests - d.passed_lab_tests;
+            document.getElementById('kpi-failed-tests').textContent = Math.max(0, failed).toLocaleString();
+
+            // Donut: circumference = 2π * 56 ≈ 351.85
+            const passRate = d.total_lab_tests > 0
+                ? Math.round((d.passed_lab_tests / d.total_lab_tests) * 100)
+                : 0;
+            document.getElementById('lab-pass-percent').textContent = passRate + '%';
+            const circumference = 351.85;
+            document.getElementById('donut-arc').setAttribute(
+                'stroke-dashoffset',
+                (circumference * (1 - passRate / 100)).toFixed(2)
+            );
+        }
+    } catch(e) { console.error('Lab summary error:', e); }
+
+    // ── Lab test submission form ──
+    const labForm = document.querySelector('form.space-y-5');
+    if (labForm) {
+        labForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const sampleId = document.getElementById('lab-sample-id')?.value.trim();
+            const labName = document.getElementById('lab-lab-name')?.value;
+            const resultRadio = labForm.querySelector('input[name="result"]:checked');
+            const errorEl = document.getElementById('lab-form-error');
+            const submitBtn = document.getElementById('lab-submit-btn');
+
+            if (!sampleId) {
+                if (errorEl) { errorEl.textContent = 'Sample ID is required.'; errorEl.classList.remove('hidden'); }
+                return;
+            }
+            if (errorEl) errorEl.classList.add('hidden');
+
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+
+            try {
+                const res = await apiRequest('/lab-tests/', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        sample_id: sampleId,
+                        test_name: labName || 'general',
+                        test_type: labName || 'general',
+                        status: resultRadio ? resultRadio.value : 'pending',
+                        pass_threshold: 80,
+                    }),
+                });
+                if (res && res.ok) {
+                    labForm.reset();
+                    if (errorEl) errorEl.classList.add('hidden');
+                    // Show success inline
+                    const successMsg = document.createElement('div');
+                    successMsg.className = 'text-xs text-green-600 font-semibold text-center';
+                    successMsg.textContent = 'Lab test submitted successfully!';
+                    submitBtn.insertAdjacentElement('beforebegin', successMsg);
+                    setTimeout(() => successMsg.remove(), 3000);
+                    // Reload table
+                    location.reload();
+                } else {
+                    const err = res ? await res.json() : {};
+                    const msg = err.sample_id?.[0] || err.detail || 'Submission failed.';
+                    if (errorEl) { errorEl.textContent = msg; errorEl.classList.remove('hidden'); }
+                }
+            } catch (err) {
+                if (errorEl) { errorEl.textContent = 'Connection error. Please try again.'; errorEl.classList.remove('hidden'); }
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+    // ── Lab tests table + pending count ──
+    try {
+        const res = await apiRequest('/lab-tests/?ordering=-submitted_at');
+        if (res && res.ok) {
+            const data = await res.json();
+            const tests = data.results || data;
+
+            const pending = tests.filter(t => t.status === 'pending').length;
+            document.getElementById('kpi-pending-tests').textContent = pending;
+
+            const tbody = document.getElementById('lab-tests-tbody');
+            if (tests.length > 0) {
+                tbody.innerHTML = tests.slice(0, 10).map(t => {
+                    const statusMap = {
+                        passed: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
+                        failed: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400',
+                        pending: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
+                    };
+                    const dotMap = {
+                        passed: 'bg-green-500',
+                        failed: 'bg-red-500',
+                        pending: 'bg-orange-500 animate-pulse',
+                    };
+                    const sClass = statusMap[t.status] || statusMap.pending;
+                    const sDot = dotMap[t.status] || dotMap.pending;
+                    const date = t.submitted_at
+                        ? new Date(t.submitted_at).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
+                        : '—';
+                    const statusLabel = t.status_display || t.status;
+                    return `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition">
+                        <td class="px-6 py-4">
+                            <div class="font-bold text-slate-900 dark:text-white">${t.sample_id}</div>
+                            <div class="text-[10px] text-slate-400 uppercase font-medium">${t.test_name || '—'}</div>
+                        </td>
+                        <td class="px-6 py-4 text-sm font-medium">${t.test_type || '—'}</td>
+                        <td class="px-6 py-4 text-sm text-slate-500 font-medium">${date}</td>
+                        <td class="px-6 py-4">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${sClass}">
+                                <span class="w-1.5 h-1.5 rounded-full ${sDot} mr-1.5"></span> ${statusLabel}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <button class="text-primary hover:underline text-xs font-bold">View</button>
+                        </td>
+                    </tr>`;
+                }).join('');
+            } else {
+                tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-slate-400 text-sm">No lab tests recorded yet.</td></tr>';
+            }
+        }
+    } catch(e) { console.error('Lab tests error:', e); }
+});
+</script>
+</body></html>

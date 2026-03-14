@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SANKALP 🏆 Inspection Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#10B981",
+                        secondary: "#059669",
+                        "background-light": "#E6F4EA",
+                        "background-dark": "#0F172A",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#1E293B",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+        function toggleRow(id) {
+            const el = document.getElementById(id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-200 flex">
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-emerald-100 dark:border-slate-800 hidden lg:flex flex-col sticky top-0 h-screen">
+<div class="p-6 border-b border-emerald-50 dark:border-slate-800">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-emerald-500/20">
+<span class="material-symbols-outlined">emoji_events</span>
+</div>
+<span class="text-xl font-black tracking-tighter text-slate-900 dark:text-white">SANKALP 🏆</span>
+</div>
+<p class="text-[10px] font-bold text-primary uppercase tracking-widest leading-tight">Determination &amp; Execution</p>
+</div>
+<nav class="flex-1 p-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-primary bg-emerald-50 dark:bg-emerald-900/20 rounded-lg" href="inspection.html">
+<span class="material-symbols-outlined">fact_check</span>
+            Inspections
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">factory</span>
+            Factories
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="advanced_analytics.html">
+<span class="material-symbols-outlined">analytics</span>
+            Analytics
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+            Settings
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="billing.html">
+<span class="material-symbols-outlined">credit_card</span>
+            Billing
+        </a>
+</nav>
+<div class="p-6 mt-auto">
+<div class="bg-emerald-900 rounded-xl p-4 text-white">
+<p class="text-xs font-bold mb-1 opacity-80 uppercase">Focused Execution</p>
+<p class="text-sm">Real-time tracking of production quality.</p>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-w-0">
+<nav class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-emerald-100 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16 items-center">
+<div class="flex items-center gap-4">
+<span class="lg:hidden text-xl font-bold text-slate-900 dark:text-white">SANKALP 🏆</span>
+<h2 class="text-sm font-bold text-slate-500 dark:text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">admin_panel_settings</span>
+                        SANKALP 🏆 Control Panel
+                    </h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-emerald-50 dark:hover:bg-slate-800 rounded-full transition-colors" onclick="toggleTheme()">
+<span class="material-symbols-outlined dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block">light_mode</span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-slate-700">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-slate-900 dark:text-white" id="sidebar-user-name">—</p>
+<p class="text-[10px] text-slate-400" id="sidebar-user-email">—</p>
+</div>
+<div class="h-9 w-9 rounded-full bg-emerald-100 dark:bg-emerald-900 flex items-center justify-center border border-emerald-200 dark:border-emerald-700">
+<span class="text-xs font-bold text-emerald-700 dark:text-emerald-300" id="user-avatar">—</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h1 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Inspection Portal</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Monitor and manage real-time production quality audits with determination.</p>
+</div>
+<button class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg shadow-emerald-500/20 active:scale-95">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                Create New Inspection
+            </button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<div class="bg-card-light dark:bg-card-dark p-5 rounded-xl border border-emerald-100 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Total Inspections</span>
+<span class="material-symbols-outlined text-emerald-500">assignment</span>
+</div>
+<div class="text-2xl font-black">1,284</div>
+<div class="text-xs text-emerald-600 font-bold mt-1 flex items-center">
+<span class="material-symbols-outlined text-xs mr-1">trending_up</span>
+                    +12% from last month
+                </div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-5 rounded-xl border border-emerald-100 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Passed</span>
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+<div class="text-2xl font-black text-primary">1,102</div>
+<div class="text-xs text-slate-400 mt-1 font-medium">85.8% Pass rate</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-5 rounded-xl border border-emerald-100 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Failed</span>
+<span class="material-symbols-outlined text-rose-500">cancel</span>
+</div>
+<div class="text-2xl font-black text-rose-500">142</div>
+<div class="text-xs text-rose-400 mt-1 font-medium">11.1% Rejection rate</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-5 rounded-xl border border-emerald-100 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Rework</span>
+<span class="material-symbols-outlined text-amber-500">build</span>
+</div>
+<div class="text-2xl font-black text-amber-500">40</div>
+<div class="text-xs text-amber-400 mt-1 font-medium">Pending action</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-xl border border-emerald-100 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-4 border-b border-emerald-50 dark:border-slate-800 flex flex-wrap gap-4 items-center justify-between bg-white dark:bg-slate-900">
+<div class="flex gap-2">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="pl-10 pr-4 py-2 text-sm bg-background-light dark:bg-slate-800 border-none rounded-lg focus:ring-2 focus:ring-primary w-64 placeholder:text-slate-500" placeholder="Search audits..." type="text"/>
+</div>
+<button class="flex items-center gap-1 px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                        Filter
+                    </button>
+</div>
+<button class="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-800 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">file_download</span>
+                    Export
+                </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-emerald-50/50 dark:bg-slate-800/50">
+<tr>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Audit Date</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Auditor</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Factory</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Type</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Defect Rate</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">Status</th>
+<th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 text-right">Action</th>
+</tr>
+</thead>
+<tbody id="inspection-tbody" class="divide-y divide-emerald-50 dark:divide-slate-800">
+<tr class="hover:bg-emerald-50/30 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group" onclick="toggleRow('details-1')">
+<td class="px-6 py-4">
+<div class="text-sm font-bold text-slate-900 dark:text-white">Oct 24, 2023</div>
+<div class="text-xs text-slate-400">10:45 AM</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900 flex items-center justify-center text-[10px] font-black text-emerald-700 dark:text-emerald-300">SM</div>
+<span class="text-sm font-medium">Sarah Miller</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-bold">Evergreen Textiles</div>
+<div class="text-xs text-slate-400">Vinh Phuc, VN</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 text-[10px] font-black uppercase rounded bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300">Inline</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 bg-slate-100 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 2.4%"></div>
+</div>
+<span class="text-sm font-bold">2.4%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-700">
+                                    Passed
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">keyboard_arrow_down</span>
+</button>
+</td>
+</tr>
+<tr class="hidden bg-emerald-50/10 dark:bg-slate-900/50" id="details-1">
+<td class="px-8 py-6" colspan="7">
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-emerald-100 dark:border-slate-700 p-6 shadow-sm">
+<h4 class="text-xs font-black uppercase tracking-widest mb-4 flex items-center gap-2 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-lg">fact_check</span>
+                                        Inspection Checklist Results
+                                    </h4>
+<div class="space-y-3">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl border border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50">
+<div class="flex-1">
+<div class="text-sm font-bold">Stitching Consistency</div>
+<div class="text-xs text-slate-500">Verify SPI (Stitches Per Inch) meets standard of 10-12.</div>
+</div>
+<div class="flex bg-slate-200 dark:bg-slate-900 p-1 rounded-lg">
+<button class="px-6 py-1.5 text-[10px] font-black uppercase rounded bg-primary text-white shadow-md">YES</button>
+<button class="px-6 py-1.5 text-[10px] font-black uppercase rounded text-slate-500 dark:text-slate-400">NO</button>
+<button class="px-6 py-1.5 text-[10px] font-black uppercase rounded text-slate-500 dark:text-slate-400">N.A</button>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl border border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50">
+<div class="flex-1">
+<div class="text-sm font-bold">Color Matching (Shade Band)</div>
+<div class="text-xs text-slate-500">Compare production sample against approved lab dip.</div>
+</div>
+<div class="flex bg-slate-200 dark:bg-slate-900 p-1 rounded-lg">
+<button class="px-6 py-1.5 text-[10px] font-black uppercase rounded text-slate-500 dark:text-slate-400">YES</button>
+<button class="px-6 py-1.5 text-[10px] font-black uppercase rounded text-slate-500 dark:text-slate-400">NO</button>
+<button class="px-6 py-1.5 text-[10px] font-black uppercase rounded bg-slate-300 dark:bg-slate-700 text-slate-700 dark:text-slate-300">N.A</button>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-700 flex justify-end gap-4">
+<button class="text-[10px] font-black uppercase tracking-wider text-slate-500 hover:text-slate-900 transition-colors">View Photo Logs</button>
+<button class="text-[10px] font-black uppercase tracking-wider text-primary hover:text-secondary underline underline-offset-4 decoration-2">Export Audit Report (PDF)</button>
+</div>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-emerald-50/30 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group" onclick="toggleRow('details-2')">
+<td class="px-6 py-4">
+<div class="text-sm font-bold text-slate-900 dark:text-white">Oct 23, 2023</div>
+<div class="text-xs text-slate-400">03:20 PM</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900 flex items-center justify-center text-[10px] font-black text-emerald-700 dark:text-emerald-300">AK</div>
+<span class="text-sm font-medium">Alex Kim</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-bold">Oceanic Garments</div>
+<div class="text-xs text-slate-400">Chittagong, BD</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 text-[10px] font-black uppercase rounded bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300">Final</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-16 bg-slate-100 dark:bg-slate-700 h-2 rounded-full overflow-hidden">
+<div class="bg-rose-500 h-full" style="width: 14.8%"></div>
+</div>
+<span class="text-sm font-bold">14.8%</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300 border border-rose-200 dark:border-rose-700">
+                                    Failed
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">keyboard_arrow_down</span>
+</button>
+</td>
+</tr>
+<tr class="hidden" id="details-2">
+<td class="px-8 py-6 text-center text-xs font-bold text-slate-400" colspan="7">Loading full report data...</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-white dark:bg-slate-900 border-t border-emerald-50 dark:border-slate-800 flex items-center justify-between">
+<span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Audit Stream: 1 - 10 of 1,284</span>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-emerald-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-xs font-black rounded-lg bg-primary text-white shadow-md shadow-emerald-500/20">1</button>
+<button class="w-8 h-8 flex items-center justify-center text-xs font-bold rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-emerald-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-12">
+<h3 class="text-xs font-black uppercase tracking-widest mb-6 text-slate-500 dark:text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-rose-500">error</span>
+                Critical Defects: Focused Execution Log
+            </h3>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+<div class="group relative aspect-square rounded-2xl overflow-hidden bg-white dark:bg-slate-800 border border-emerald-100 dark:border-slate-800 cursor-pointer shadow-sm">
+<img alt="Defect 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzjrXSO_NsvRUbtXI_BYqzMl2B8FPfvGemfWrVj2y9jLctOMVXvqpmriHyKXlo4UcziVs7Q2BtJcJiCnDJugUHxYTtew1jbBN7Jq5YSY-Hgsv5CMm9K9DPta4YZaU9t1uHiUTSaF0rnhSR8cTz23sb4goWbt7YzDzbNwEPwln1Vf7iTRCcfCZLzctjj5nNc00_zm4Kb-5WCmtyokLMH7ZBPlY9McSZBGFWSeUNoHkPEVPSxTLT_9hoGcAK01A8RoPDQGtPKt0_TfUF"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
+<div class="absolute inset-0 p-4 flex items-end">
+<span class="text-[10px] text-white font-black uppercase tracking-wider">Loose Thread</span>
+</div>
+</div>
+<div class="group relative aspect-square rounded-2xl overflow-hidden bg-white dark:bg-slate-800 border border-emerald-100 dark:border-slate-800 cursor-pointer shadow-sm">
+<img alt="Defect 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx9Nbe64cEoKKtFkj9Vqsva4EiHlbyFc_xrnL5YckiiUoIUl16T5u3OZysCMMPSi0ZImOEvvixl0ZjFzsdymG9UgRUdtyBlmfzsUXT6LpkOTq2ceelqM79icpCxHZxu_SvzQdy3pQIIsA-er7Uv8KDV5aZBQfXUvkQEMbqi9nfKNoK7bJrePfGDZ33x2ASrK6-1KGS6lLnInLIFlXdGKJ4zad2KdqHQZvqzTMLYWDe3uERUzABPqrPpn9xzYkovrnvbsrSDFgxfXUu"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
+<div class="absolute inset-0 p-4 flex items-end">
+<span class="text-[10px] text-white font-black uppercase tracking-wider">Color Stain</span>
+</div>
+</div>
+<div class="group relative aspect-square rounded-2xl overflow-hidden bg-white dark:bg-slate-800 border border-emerald-100 dark:border-slate-800 cursor-pointer shadow-sm">
+<img alt="Defect 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC800l9ne1WKi5_8zFz0W2QKhAZ7xLHmr_Xn4nBfmvRtPQvxZF4Tal65uWaMwhhNb4j2HN1nsqUqnMI8NMZcb4GhUR1v6CCTLeL_lFm8jGprKpLvVebOGBN2WVwIlk8_GABbB4iLYVo7lIXZDxOcuBU5RfVFuadypoE-8-yJLXig9Ek-i49fyACpaJzHea1uecgdb3xzHgWubUcidHJx2i2zvR90vZ5007RWDC6wUaFvJ9QGekxlJOEzAKx41xlItR3OYpl6E-UooeJ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
+<div class="absolute inset-0 p-4 flex items-end">
+<span class="text-[10px] text-white font-black uppercase tracking-wider">Zip Malfunction</span>
+</div>
+</div>
+<div class="group relative aspect-square rounded-2xl overflow-hidden bg-primary cursor-pointer shadow-lg shadow-emerald-500/20 flex flex-col items-center justify-center p-4 text-center">
+<span class="material-symbols-outlined text-white text-3xl mb-2">collections</span>
+<span class="text-[10px] text-white font-black uppercase tracking-wider leading-tight">View Full Visual Log</span>
+</div>
+<div class="group relative aspect-square rounded-2xl overflow-hidden border-2 border-dashed border-emerald-200 dark:border-slate-700 flex items-center justify-center hover:bg-white dark:hover:bg-slate-800 transition-all cursor-pointer">
+<div class="text-center text-slate-400">
+<span class="material-symbols-outlined text-3xl">add_a_photo</span>
+<p class="text-[10px] font-black uppercase tracking-widest mt-2">Add Proof</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto py-8 border-t border-emerald-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+<div class="max-w-7xl mx-auto px-4 text-center">
+<div class="flex items-center justify-center gap-3 mb-4">
+<div class="w-8 h-8 bg-emerald-100 dark:bg-emerald-900/40 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl">verified</span>
+</div>
+<span class="text-xs font-black text-slate-700 dark:text-slate-300 tracking-[0.2em] uppercase">SANKALP 🏆 ENTERPRISE QC</span>
+</div>
+<p class="text-[10px] font-bold text-slate-400 tracking-widest uppercase">© 2024 Determination &amp; Execution Systems. All rights reserved.</p>
+</div>
+</footer>
+</div>
+<script src="js/app.js"></script></body></html>

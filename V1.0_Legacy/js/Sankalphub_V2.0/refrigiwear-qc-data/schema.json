@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "name": "RefrigiWear QC Intelligence Schema",
+    "version": "1.0.0",
+    "source": "pro.refrigiwear.com",
+    "brand_family": ["RefrigiWear", "Samco", "Avaska"],
+    "last_updated": "2026-03",
+    "description": "Production QC defect library mapped across 10 manufacturing process stages for all product categories"
+  },
+  "process_stages": [
+    { "id": 1, "key": "development_samples",  "label": "Development Samples",   "code": "DEV", "phase": "Pre-Production" },
+    { "id": 2, "key": "size_set",             "label": "Size Set",              "code": "SZS", "phase": "Pre-Production" },
+    { "id": 3, "key": "pp_samples",           "label": "PP Samples",            "code": "PPS", "phase": "Pre-Production" },
+    { "id": 4, "key": "material",             "label": "Material / Fabric",     "code": "MAT", "phase": "Pre-Production" },
+    { "id": 5, "key": "cutting",              "label": "Cutting",               "code": "CUT", "phase": "Production" },
+    { "id": 6, "key": "sewing_stitching",     "label": "Sewing / Stitching",    "code": "SEW", "phase": "Production" },
+    { "id": 7, "key": "assembly",             "label": "Assembly",              "code": "ASM", "phase": "Production" },
+    { "id": 8, "key": "inline_inspection",    "label": "Inline Inspection",     "code": "INL", "phase": "QC" },
+    { "id": 9, "key": "final_inspection",     "label": "Final Inspection",      "code": "FIN", "phase": "QC" },
+    { "id": 10,"key": "packing",              "label": "Packing",               "code": "PCK", "phase": "QC" }
+  ],
+  "product_categories": [
+    { "id": "mens_outerwear",    "label": "Men's Outerwear",    "subcategories": ["Jackets","Bibs & Pants","Coveralls","Vests","Layers & Shirts","Sweats & Fleece"] },
+    { "id": "womens_outerwear",  "label": "Women's Outerwear",  "subcategories": ["Jackets","Bibs & Pants","Layers & Shirts","Sweats & Fleece"] },
+    { "id": "footwear",          "label": "Footwear",           "subcategories": ["Pac Boots","Leather Boots","Crossover Boots","Lightweight Boots","Women's Boots","Socks"] },
+    { "id": "gloves",            "label": "Gloves",             "subcategories": ["Performance","Leather","Touchscreen","Impact Protection","Cut Resistant","Mitts","Knit","Coated","Liners"] },
+    { "id": "headwear",          "label": "Headwear",           "subcategories": ["Knit Caps","Masks & Balaclavas","Gaiters & Headbands","Snap-On Hoods","High-Visibility","Ball Caps","Hard Hat Liners"] },
+    { "id": "accessories",       "label": "Accessories",        "subcategories": ["Bags & Blankets","Pallet Covers","Thermometers","Safety Gear","Hand & Foot Warmers"] }
+  ],
+  "severity_levels": [
+    { "level": "CRITICAL", "aql": "1.0",  "action": "HALT production / 100% inspect",        "color": "#C0392B" },
+    { "level": "MAJOR",    "aql": "2.5",  "action": "Reject AQL sample lot / rework",          "color": "#E67E22" },
+    { "level": "MINOR",    "aql": "4.0",  "action": "Note and monitor / conditional accept",   "color": "#2E86C1" },
+    { "level": "COSMETIC", "aql": "6.5",  "action": "Accept with notation / 2nd quality eval", "color": "#8E44AD" }
+  ],
+  "defect_types": ["Material", "Construction", "Print/Label", "Fit/Sizing", "Functional", "Packaging"],
+  "certifications": ["ANSI/ISEA 107", "ANSI/ISEA 105", "EN ISO 20471", "EN 388", "ASTM F2913", "EN 14058", "ASTM D5034"]
+}

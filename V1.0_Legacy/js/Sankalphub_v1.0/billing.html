@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SANKALP 🏆 | Billing & Subscription</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<!-- Razorpay Checkout SDK -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    primary: "#F3924A",
+                    gold: "#D4AF37",
+                    "background-light": "#F8F9FA",
+                    "background-dark": "#121212",
+                    "card-light": "#FFFFFF",
+                    "card-dark": "#1E1E1E",
+                },
+                fontFamily: { display: ["Inter", "sans-serif"] },
+                borderRadius: { DEFAULT: "12px" },
+            },
+        },
+    };
+    function toggleDarkMode() {
+        document.documentElement.classList.toggle('dark');
+    }
+</script>
+<style type="text/tailwindcss">
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 transition-colors duration-300">
+<div class="flex h-screen overflow-hidden">
+
+<!-- Sidebar -->
+<aside class="w-64 bg-card-light dark:bg-card-dark border-r border-gray-200 dark:border-gray-800 flex flex-col z-20">
+    <div class="p-6">
+        <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <span class="material-icons-round text-white text-xl">emoji_events</span>
+            </div>
+            <span class="text-xl font-bold tracking-tight">SANKALP 🏆</span>
+        </div>
+        <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1 ml-10 font-semibold">Production Discipline System</p>
+    </div>
+    <nav class="flex-1 mt-4 px-3 space-y-1">
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="dashboard.html">
+            <span class="material-icons-round mr-3">dashboard</span>Dashboard
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="production.html">
+            <span class="material-icons-round mr-3">factory</span>Production
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="inspection.html">
+            <span class="material-icons-round mr-3">fact_check</span>Inspection
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="analytics.html">
+            <span class="material-icons-round mr-3">science</span>Testing
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="advanced_analytics.html">
+            <span class="material-icons-round mr-3">analytics</span>Analytics
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="chat.html">
+            <span class="material-icons-round mr-3">chat_bubble_outline</span>Chats
+        </a>
+        <a class="flex items-center px-4 py-3 text-primary bg-primary/10 border-r-4 border-primary rounded-lg font-medium transition-all" href="billing.html">
+            <span class="material-icons-round mr-3">credit_card</span>Billing
+        </a>
+    </nav>
+    <div class="p-4 border-t border-gray-200 dark:border-gray-800">
+        <button class="flex items-center w-full px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all" onclick="toggleDarkMode()">
+            <span class="material-icons-round mr-3">dark_mode</span>Toggle Theme
+        </button>
+    </div>
+</aside>
+
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-y-auto scrollbar-hide">
+
+    <!-- Header -->
+    <header class="h-16 bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-md sticky top-0 flex items-center justify-between px-8 z-10 border-b border-gray-200 dark:border-gray-800">
+        <div class="flex flex-col relative">
+            <span class="text-lg font-bold tracking-tight">Billing & Subscription</span>
+            <div class="absolute -bottom-1 left-0 w-1/2 h-[2px] bg-gold rounded-full opacity-60"></div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div id="header-user" class="flex items-center space-x-3 pl-4 border-l border-gray-200 dark:border-gray-800">
+                <div class="text-right">
+                    <p class="text-xs font-semibold" id="sidebar-user-name">—</p>
+                    <p class="text-[10px] text-gray-500" id="sidebar-user-email">—</p>
+                </div>
+                <div id="user-avatar" class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm shadow-sm">—</div>
+            </div>
+            <button onclick="logout()" class="flex items-center gap-1 px-3 py-2 text-sm text-gray-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all">
+                <span class="material-icons-round text-base">logout</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="p-8 space-y-8 max-w-5xl mx-auto w-full">
+
+        <!-- Page Title -->
+        <div>
+            <h1 class="text-2xl font-bold tracking-tight">Your Subscription</h1>
+            <p class="text-gray-500 text-sm mt-1">Manage your plan, view payment history, and upgrade anytime.</p>
+        </div>
+
+        <!-- Stripe success banner -->
+        <div id="stripe-success-banner" class="hidden bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 rounded-xl p-4 flex items-center gap-3">
+            <span class="material-icons-round text-green-600 text-2xl">check_circle</span>
+            <div>
+                <p class="font-semibold text-green-800 dark:text-green-300">Payment successful!</p>
+                <p class="text-sm text-green-700 dark:text-green-400">Your subscription has been activated.</p>
+            </div>
+        </div>
+
+        <!-- Current Plan Card -->
+        <div id="current-plan-card" class="bg-card-light dark:bg-card-dark rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm p-6">
+            <!-- Loading state -->
+            <div id="plan-loading" class="flex items-center gap-3 text-gray-400">
+                <span class="material-icons-round animate-spin">autorenew</span>
+                <span class="text-sm">Loading subscription...</span>
+            </div>
+
+            <!-- Loaded state (hidden until data arrives) -->
+            <div id="plan-content" class="hidden">
+                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                                <span class="material-icons-round text-primary">workspace_premium</span>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-medium uppercase tracking-wider">Current Plan</p>
+                                <h2 class="text-xl font-bold" id="plan-name">—</h2>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-1" id="plan-description">—</p>
+                    </div>
+                    <div class="flex flex-col items-end gap-2 shrink-0">
+                        <span id="plan-status-badge" class="px-3 py-1 rounded-full text-xs font-bold">—</span>
+                        <p class="text-sm text-gray-500" id="plan-renewal">—</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-3 text-center">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Price</p>
+                        <p class="font-bold text-base" id="plan-price">—</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-3 text-center">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Billing</p>
+                        <p class="font-bold text-base" id="plan-interval">—</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-3 text-center">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Max Users</p>
+                        <p class="font-bold text-base" id="plan-users">—</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-3 text-center">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Gateway</p>
+                        <p class="font-bold text-base capitalize" id="plan-gateway">—</p>
+                    </div>
+                </div>
+
+                <!-- Plan Features -->
+                <div id="plan-features" class="mt-5 flex flex-wrap gap-2"></div>
+            </div>
+
+            <!-- No subscription state -->
+            <div id="plan-none" class="hidden text-center py-4">
+                <span class="material-icons-round text-gray-300 text-4xl mb-2 block">credit_card_off</span>
+                <p class="font-semibold text-gray-700 dark:text-gray-300">No active subscription</p>
+                <p class="text-sm text-gray-500 mt-1">Choose a plan below to get started.</p>
+            </div>
+        </div>
+
+        <!-- Upgrade Plans Section -->
+        <div>
+            <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+                <span class="material-icons-round text-primary">upgrade</span>
+                Available Plans
+            </h2>
+            <div id="plans-grid" class="grid sm:grid-cols-3 gap-5">
+                <!-- Loading -->
+                <div class="sm:col-span-3 text-center py-8 text-gray-400">
+                    <span class="material-icons-round animate-spin text-3xl block">autorenew</span>
+                    <p class="text-sm mt-2">Loading plans...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment History -->
+        <div>
+            <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+                <span class="material-icons-round text-primary">receipt_long</span>
+                Payment History
+            </h2>
+            <div class="bg-card-light dark:bg-card-dark rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+                <div id="payment-history-loading" class="p-6 text-center text-gray-400 text-sm">
+                    <span class="material-icons-round animate-spin">autorenew</span>
+                </div>
+                <div id="payment-history-empty" class="hidden p-8 text-center">
+                    <span class="material-icons-round text-gray-300 text-4xl block mb-2">receipt</span>
+                    <p class="text-gray-500 text-sm">No payments yet. Make your first payment to see history here.</p>
+                </div>
+                <table id="payment-table" class="hidden w-full text-sm">
+                    <thead class="bg-gray-50 dark:bg-gray-800/50 text-xs text-gray-500 uppercase tracking-wider">
+                        <tr>
+                            <th class="px-5 py-3 text-left">Date</th>
+                            <th class="px-5 py-3 text-left">Amount</th>
+                            <th class="px-5 py-3 text-left">Gateway</th>
+                            <th class="px-5 py-3 text-left">Reference</th>
+                            <th class="px-5 py-3 text-left">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="payment-tbody" class="divide-y divide-gray-100 dark:divide-gray-800"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Support Note -->
+        <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-xl p-4 flex items-start gap-3">
+            <span class="material-icons-round text-blue-500 shrink-0">info</span>
+            <div class="text-sm">
+                <p class="font-semibold text-blue-800 dark:text-blue-300">Need help with billing?</p>
+                <p class="text-blue-700 dark:text-blue-400 mt-0.5">
+                    Contact us at <a href="mailto:hello@sankalphub.in" class="font-semibold underline">hello@sankalphub.in</a>
+                    or write to us on the Chat page for plan changes, invoices, or billing issues.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</main>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+const API_BASE_BILLING = 'https://app.sankalphub.in/api';
+
+// ─── Billing Page Init ────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async () => {
+    // Stripe success banner
+    if (new URLSearchParams(window.location.search).get('stripe_success') === '1') {
+        document.getElementById('stripe-success-banner').classList.remove('hidden');
+    }
+
+    // Populate header user info
+    const user = getUser();
+    if (user) {
+        const nameEl = document.getElementById('sidebar-user-name');
+        const emailEl = document.getElementById('sidebar-user-email');
+        const avatarEl = document.getElementById('user-avatar');
+        if (nameEl) nameEl.textContent = user.full_name || user.email;
+        if (emailEl) emailEl.textContent = user.email;
+        if (avatarEl) avatarEl.textContent = (user.full_name || user.email || 'U').substring(0, 2).toUpperCase();
+    }
+
+    await Promise.all([
+        loadCurrentSubscription(),
+        loadAvailablePlans(),
+    ]);
+});
+
+// ─── Current Subscription ─────────────────────────────────────────────────────
+async function loadCurrentSubscription() {
+    const res = await apiRequest('/billing/my-subscription/');
+    const loadingEl = document.getElementById('plan-loading');
+    const contentEl = document.getElementById('plan-content');
+    const noneEl = document.getElementById('plan-none');
+
+    if (!res || !res.ok) {
+        loadingEl.classList.add('hidden');
+        noneEl.classList.remove('hidden');
+        document.getElementById('payment-history-loading').classList.add('hidden');
+        document.getElementById('payment-history-empty').classList.remove('hidden');
+        return;
+    }
+
+    const data = await res.json();
+    loadingEl.classList.add('hidden');
+
+    if (!data.plan || data.status === 'none') {
+        noneEl.classList.remove('hidden');
+        document.getElementById('payment-history-loading').classList.add('hidden');
+        document.getElementById('payment-history-empty').classList.remove('hidden');
+        return;
+    }
+
+    contentEl.classList.remove('hidden');
+
+    // Plan name & description
+    document.getElementById('plan-name').textContent = data.plan.name;
+    document.getElementById('plan-description').textContent = data.plan.description || '';
+
+    // Status badge
+    const badge = document.getElementById('plan-status-badge');
+    const statusColors = {
+        active: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
+        trialing: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+        past_due: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400',
+        cancelled: 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400',
+        expired: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
+    };
+    badge.className = 'px-3 py-1 rounded-full text-xs font-bold ' + (statusColors[data.status] || statusColors.expired);
+    badge.textContent = data.status.charAt(0).toUpperCase() + data.status.slice(1).replace('_', ' ');
+
+    // Renewal date
+    const renewalEl = document.getElementById('plan-renewal');
+    if (data.current_period_end) {
+        const date = new Date(data.current_period_end).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+        const daysLeft = Math.ceil((new Date(data.current_period_end) - new Date()) / 86400000);
+        renewalEl.textContent = `Renews ${date} · ${daysLeft > 0 ? daysLeft + ' days left' : 'Expired'}`;
+    } else if (data.trial_end) {
+        const date = new Date(data.trial_end).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+        renewalEl.textContent = `Trial ends ${date}`;
+    } else {
+        renewalEl.textContent = '';
+    }
+
+    // Stats grid
+    const priceInr = parseFloat(data.plan.price_inr);
+    document.getElementById('plan-price').textContent = priceInr > 0 ? '₹' + Number(priceInr).toLocaleString('en-IN') + '/mo' : 'Custom';
+    document.getElementById('plan-interval').textContent = data.plan.interval === 'month' ? 'Monthly' : 'Annual';
+    document.getElementById('plan-users').textContent = data.plan.max_users >= 9999 ? 'Unlimited' : data.plan.max_users;
+    document.getElementById('plan-gateway').textContent = data.gateway || '—';
+
+    // Features
+    const featuresEl = document.getElementById('plan-features');
+    if (data.plan.features && data.plan.features.length) {
+        featuresEl.innerHTML = data.plan.features.map(f => `
+            <span class="flex items-center gap-1 text-xs bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 px-2.5 py-1 rounded-full border border-green-200 dark:border-green-800">
+                <span class="material-icons-round text-xs">check</span>${f}
+            </span>`).join('');
+    }
+
+    // Payment history
+    renderPaymentHistory(data.payments || []);
+}
+
+function renderPaymentHistory(payments) {
+    const loadingEl = document.getElementById('payment-history-loading');
+    const emptyEl = document.getElementById('payment-history-empty');
+    const tableEl = document.getElementById('payment-table');
+    const tbodyEl = document.getElementById('payment-tbody');
+
+    loadingEl.classList.add('hidden');
+
+    if (!payments.length) {
+        emptyEl.classList.remove('hidden');
+        return;
+    }
+
+    tableEl.classList.remove('hidden');
+    tbodyEl.innerHTML = payments.map(p => {
+        const date = new Date(p.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+        const amount = p.currency === 'INR'
+            ? '₹' + Number(p.amount).toLocaleString('en-IN')
+            : '$' + parseFloat(p.amount).toFixed(2);
+        const statusClass = p.status === 'success'
+            ? 'bg-green-100 text-green-700'
+            : p.status === 'pending'
+            ? 'bg-yellow-100 text-yellow-700'
+            : 'bg-red-100 text-red-700';
+        const gatewayIcon = p.gateway === 'razorpay' ? '🇮🇳' : p.gateway === 'stripe' ? '🌐' : '—';
+        return `
+        <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/40 transition-colors">
+            <td class="px-5 py-3.5 text-gray-700 dark:text-gray-300">${date}</td>
+            <td class="px-5 py-3.5 font-semibold">${amount}</td>
+            <td class="px-5 py-3.5 capitalize text-gray-600 dark:text-gray-400">${gatewayIcon} ${p.gateway}</td>
+            <td class="px-5 py-3.5 font-mono text-xs text-gray-500">${p.gateway_payment_id ? p.gateway_payment_id.substring(0, 20) + '…' : '—'}</td>
+            <td class="px-5 py-3.5">
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold ${statusClass}">${p.status}</span>
+            </td>
+        </tr>`;
+    }).join('');
+}
+
+// ─── Available Plans ──────────────────────────────────────────────────────────
+async function loadAvailablePlans() {
+    const grid = document.getElementById('plans-grid');
+    try {
+        const res = await fetch(`${API_BASE_BILLING}/billing/plans/`);
+        const plans = await res.json();
+
+        const highlighted = [false, true, false];
+        grid.innerHTML = plans.map((plan, i) => {
+            const isPro = highlighted[i] || false;
+            const priceInr = parseFloat(plan.price_inr);
+            const hasPrice = priceInr > 0;
+            return `
+            <div class="relative rounded-2xl border ${isPro ? 'border-primary bg-gradient-to-b from-primary/5 to-transparent' : 'border-gray-200 dark:border-gray-700 bg-card-light dark:bg-card-dark'} p-6 flex flex-col shadow-sm ${isPro ? 'ring-2 ring-primary/30' : ''}">
+                ${isPro ? '<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full shadow">MOST POPULAR</div>' : ''}
+                <div class="mb-4">
+                    <h3 class="text-lg font-bold mb-0.5">${plan.name}</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">${plan.description || ''}</p>
+                </div>
+                <div class="mb-5">
+                    ${hasPrice ? `
+                    <div class="flex items-end gap-1">
+                        <span class="text-3xl font-black">₹${Number(priceInr).toLocaleString('en-IN')}</span>
+                        <span class="text-gray-400 text-sm mb-1">/month</span>
+                    </div>
+                    <p class="text-gray-400 text-xs mt-0.5">$${plan.price_usd} USD · billed monthly</p>
+                    ` : `
+                    <div class="text-3xl font-black">Custom</div>
+                    <p class="text-gray-400 text-xs mt-0.5">Contact us for pricing</p>
+                    `}
+                </div>
+                <ul class="space-y-2 flex-1 mb-5">
+                    ${(plan.features || []).map(f => `
+                    <li class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+                        <span class="material-icons-round text-green-500 text-base">check_circle</span>
+                        <span>${f}</span>
+                    </li>`).join('')}
+                </ul>
+                ${hasPrice
+                    ? `<button onclick="startRazorpayCheckout('${plan.slug}', '${plan.name}', ${priceInr})"
+                        class="w-full py-2.5 px-4 rounded-xl font-bold text-sm transition-all ${isPro ? 'bg-primary text-white hover:bg-orange-600 shadow-md shadow-primary/20' : 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700'}">
+                        Upgrade to ${plan.name}
+                       </button>`
+                    : `<a href="mailto:hello@sankalphub.in"
+                        class="block text-center w-full py-2.5 px-4 rounded-xl font-bold text-sm border border-primary text-primary hover:bg-primary/5 transition-all">
+                        Contact Sales
+                       </a>`
+                }
+            </div>`;
+        }).join('');
+    } catch (e) {
+        grid.innerHTML = '<div class="sm:col-span-3 text-center py-8 text-red-400 text-sm">Failed to load plans. Please refresh.</div>';
+    }
+}
+
+// ─── Razorpay Checkout ────────────────────────────────────────────────────────
+async function startRazorpayCheckout(planSlug, planName, priceInr) {
+    const btn = event.currentTarget;
+    const originalText = btn.textContent.trim();
+    btn.textContent = 'Preparing checkout...';
+    btn.disabled = true;
+
+    try {
+        const res = await apiRequest('/billing/razorpay/create-order/', {
+            method: 'POST',
+            body: JSON.stringify({ plan_slug: planSlug }),
+        });
+
+        if (!res || !res.ok) {
+            const err = res ? await res.json() : {};
+            showBillingToast(err.error || 'Could not initiate payment. Please try again.', 'error');
+            return;
+        }
+
+        const order = await res.json();
+        const user = getUser();
+
+        const options = {
+            key: order.key,
+            amount: order.amount,
+            currency: order.currency,
+            name: 'SANKALP 🏆',
+            description: `${order.plan_name} Subscription`,
+            image: '',
+            order_id: order.order_id,
+            handler: async function(response) {
+                await verifyRazorpayPayment(response, planSlug);
+            },
+            prefill: {
+                name: user ? (user.full_name || '') : '',
+                email: user ? user.email : '',
+            },
+            theme: { color: '#F3924A' },
+            modal: {
+                ondismiss: function() {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }
+            }
+        };
+
+        const rzp = new Razorpay(options);
+        rzp.on('payment.failed', function(response) {
+            showBillingToast('Payment failed: ' + (response.error.description || 'Unknown error'), 'error');
+            btn.textContent = originalText;
+            btn.disabled = false;
+        });
+        rzp.open();
+        btn.textContent = originalText;
+        btn.disabled = false;
+
+    } catch (e) {
+        showBillingToast('Unexpected error. Please try again.', 'error');
+        btn.textContent = originalText;
+        btn.disabled = false;
+    }
+}
+
+async function verifyRazorpayPayment(response, planSlug) {
+    showBillingToast('Verifying payment...', 'info');
+
+    const res = await apiRequest('/billing/razorpay/verify/', {
+        method: 'POST',
+        body: JSON.stringify({
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+            plan_slug: planSlug,
+        }),
+    });
+
+    if (res && res.ok) {
+        showBillingToast('Payment successful! Your plan has been upgraded.', 'success');
+        setTimeout(() => location.reload(), 2000);
+    } else {
+        const err = res ? await res.json() : {};
+        showBillingToast('Verification failed: ' + (err.error || 'Please contact support.'), 'error');
+    }
+}
+
+function showBillingToast(message, type = 'success') {
+    const existing = document.getElementById('billing-toast');
+    if (existing) existing.remove();
+
+    const colors = {
+        success: 'bg-green-600',
+        error: 'bg-red-600',
+        info: 'bg-blue-600',
+    };
+    const toast = document.createElement('div');
+    toast.id = 'billing-toast';
+    toast.className = `fixed bottom-6 right-6 z-50 px-5 py-3 rounded-xl shadow-xl text-white font-medium text-sm flex items-center gap-2 transition-all duration-300 ${colors[type] || colors.success}`;
+    const iconMap = { success: 'check_circle', error: 'error', info: 'info' };
+    toast.innerHTML = `<span class="material-icons-round text-base">${iconMap[type] || 'info'}</span>${message}`;
+    document.body.appendChild(toast);
+    if (type !== 'info') {
+        setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 4000);
+    }
+}
+</script>
+</body>
+</html>

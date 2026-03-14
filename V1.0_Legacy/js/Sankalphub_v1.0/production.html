@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SANKALP 🏆 | Production Status</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #F28C33;
+            --background-light: #F8E6E8;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .table-row-hover:hover {
+            background-color: rgba(242, 140, 51, 0.05);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#F28C33",
+                        "background-light": "#F8E6E8",
+                        "background-dark": "#121212",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1E1E1E",
+                    },
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-800 dark:text-slate-200 flex">
+<aside class="w-64 bg-white dark:bg-black border-r border-rose-200 dark:border-slate-800 flex-shrink-0 flex flex-col hidden lg:flex">
+<div class="p-6 border-b border-rose-100 dark:border-slate-800 flex items-center gap-3">
+<div class="bg-primary p-2 rounded-xl text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined block">target</span>
+</div>
+<span class="font-black text-xl tracking-tight text-slate-900 dark:text-white">SANKALP 🏆</span>
+</div>
+<nav class="flex-1 p-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-lg font-semibold" href="production.html">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+                Production
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-rose-50 dark:hover:bg-slate-900 rounded-lg transition-colors font-medium" href="inspection.html">
+<span class="material-symbols-outlined">fact_check</span>
+                Inspections
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-rose-50 dark:hover:bg-slate-900 rounded-lg transition-colors font-medium" href="advanced_analytics.html">
+<span class="material-symbols-outlined">analytics</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-rose-50 dark:hover:bg-slate-900 rounded-lg transition-colors font-medium" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                Inventory
+            </a>
+<div class="pt-4 mt-4 border-t border-rose-100 dark:border-slate-800">
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-4 mb-2">Management</p>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-rose-50 dark:hover:bg-slate-900 rounded-lg transition-colors font-medium" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-rose-50 dark:hover:bg-slate-900 rounded-lg transition-colors font-medium" href="billing.html">
+<span class="material-symbols-outlined">credit_card</span>
+                    Billing
+                </a>
+</div>
+</nav>
+<div class="p-4 border-t border-rose-100 dark:border-slate-800">
+<div class="bg-rose-50 dark:bg-slate-900 p-3 rounded-lg flex items-center gap-3">
+<div class="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<div class="overflow-hidden">
+<p class="text-xs font-bold text-slate-900 dark:text-white truncate" id="sidebar-user-name">—</p>
+<p class="text-[10px] text-slate-500 truncate" id="sidebar-user-email">—</p>
+</div>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-w-0">
+<header class="bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-rose-200 dark:border-slate-800 sticky top-0 z-50">
+<div class="px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16 items-center">
+<div class="flex items-center lg:hidden gap-2">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined block">target</span>
+</div>
+<span class="font-bold text-lg tracking-tight text-slate-900 dark:text-white uppercase">SANKALP 🏆</span>
+</div>
+<div class="hidden lg:flex items-center">
+<h2 class="text-sm font-semibold text-slate-400 uppercase tracking-widest">Focused Execution</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="absolute top-2 right-2 w-2 h-2 bg-rose-500 border-2 border-white rounded-full"></span>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+<div class="h-px w-6 bg-rose-200 dark:bg-slate-800 hidden sm:block"></div>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors lg:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Production Status Tracking</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-1">Real-time oversight of determined manufacturing progress.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-card-dark border border-rose-200 dark:border-slate-700 rounded-lg shadow-sm text-sm font-semibold hover:bg-slate-50 transition-all">
+<span class="material-symbols-outlined text-[18px]">download</span> Export Report
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg shadow-lg shadow-primary/20 text-sm font-semibold hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span> Create Entry
+                    </button>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-rose-100 dark:border-slate-800 p-4 mb-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="space-y-1">
+<label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Factory Unit</label>
+<select class="w-full bg-slate-50 dark:bg-slate-900 border-rose-100 dark:border-slate-800 rounded-lg text-sm focus:ring-2 focus:ring-primary/20">
+<option>All Factories</option>
+<option>East Wing Textiles</option>
+<option>South Coast Manufacturing</option>
+<option>Global Sourcing A1</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">PO Number</label>
+<input class="w-full bg-slate-50 dark:bg-slate-900 border-rose-100 dark:border-slate-800 rounded-lg text-sm focus:ring-2 focus:ring-primary/20" placeholder="Search PO..." type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Production Date</label>
+<input class="w-full bg-slate-50 dark:bg-slate-900 border-rose-100 dark:border-slate-800 rounded-lg text-sm focus:ring-2 focus:ring-primary/20" type="date"/>
+</div>
+<div class="flex items-end">
+<button class="w-full h-[38px] flex items-center justify-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list_off</span> Reset
+                        </button>
+</div>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-rose-100 dark:border-slate-800 overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/50 dark:bg-slate-900/50 border-b border-rose-100 dark:border-slate-800">
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">PO Number</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Style Details</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Order Qty</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Produced</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Completion</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider"></th>
+</tr>
+</thead>
+<tbody id="production-tbody" class="divide-y divide-rose-50 dark:divide-slate-800">
+<tr class="table-row-hover group cursor-pointer transition-colors">
+<td class="px-6 py-5 font-bold text-slate-900 dark:text-white">PO-2024-0892</td>
+<td class="px-6 py-5">
+<div class="text-sm font-semibold">Summer Linen Shirt</div>
+<div class="text-[10px] text-slate-400 font-medium">SKU: LNN-WHT-01</div>
+</td>
+<td class="px-6 py-5 text-sm font-medium">5,000</td>
+<td class="px-6 py-5 text-sm font-medium">4,200</td>
+<td class="px-6 py-5">
+<div class="w-32 bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full w-[84%]"></div>
+</div>
+<span class="text-[10px] text-slate-400 mt-1 font-bold block">84% DONE</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400 border border-emerald-200/50">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-2"></span>
+                                        ON TRACK
+                                    </span>
+</td>
+<td class="px-6 py-5 text-slate-400">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">chevron_right</span>
+</td>
+</tr>
+<tr class="bg-amber-50/30 dark:bg-amber-900/5">
+<td class="px-6 py-5 font-bold text-slate-900 dark:text-white">PO-2024-0905</td>
+<td class="px-6 py-5">
+<div class="text-sm font-semibold">Denim Jacket V2</div>
+<div class="text-[10px] text-slate-400 font-medium">SKU: DNM-BLU-99</div>
+</td>
+<td class="px-6 py-5 text-sm font-medium">2,500</td>
+<td class="px-6 py-5 text-sm font-medium">1,100</td>
+<td class="px-6 py-5">
+<div class="w-32 bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full w-[44%]"></div>
+</div>
+<span class="text-[10px] text-slate-400 mt-1 font-bold block">44% DONE</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400 border border-amber-200/50">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-2"></span>
+                                        AT RISK
+                                    </span>
+</td>
+<td class="px-6 py-5 text-slate-400">
+<span class="material-symbols-outlined text-[20px] text-primary rotate-90">expand_circle_down</span>
+</td>
+</tr>
+<tr class="bg-slate-50/80 dark:bg-slate-900/40">
+<td class="px-6 py-6 border-l-4 border-amber-500" colspan="7">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="space-y-3">
+<h4 class="text-[10px] font-bold uppercase text-slate-400 flex items-center gap-2 tracking-widest">
+<span class="material-symbols-outlined text-[16px]">warning</span> Critical Issues
+                                            </h4>
+<div class="bg-white dark:bg-card-dark p-4 rounded-lg border border-rose-100 dark:border-slate-800 shadow-sm">
+<p class="font-bold text-rose-600 text-sm mb-1 uppercase tracking-tight">Fabric Supply Shortage</p>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Dye lot variation detected in the latest batch. 400 meters quarantined awaiting QA approval.</p>
+</div>
+</div>
+<div class="space-y-3">
+<h4 class="text-[10px] font-bold uppercase text-slate-400 flex items-center gap-2 tracking-widest">
+<span class="material-symbols-outlined text-[16px]">photo_camera</span> Documentation
+                                            </h4>
+<div class="flex gap-2">
+<img alt="Fabric dye variation sample" class="w-20 h-20 object-cover rounded-lg border border-rose-100 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSqHRWUstRC1p4_yF5oSLarzHacIw-oBV5_U9K60Q1v664BspodxW0-IaFnOfomPbjEHo8dwkieuPczQC1Bvp5W9VPGp2dUlZh_GuNJ7OfGzhYwQ_nOu1mA1xvC36dfqLHBmAbH5e8m1sBZDUrycoQD4g1Rjke8D4O8Hni5b7eKPJPJPiUFrWRsOLDqc6V9djmbbpDgeMdNK_Cd-dnXcKAAcLygdAX9UMstWCXgIF2Z_wHenalhwdOM8CZljGZn5Jcct4Ybxf1vZQK"/>
+<img alt="Inspection station photo" class="w-20 h-20 object-cover rounded-lg border border-rose-100 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkV3RmPF-Vsu2Z_TuES7GwCqp75ivuy7yY88hu2JIByaetArYHFXqlAArqviCfZfzoRNG5jqcI3EzXsPZ_ev4cQLDY_sMZqvflls8tWF0Rzi4TYk4nZY295AcZqF5MRzAT3BrJs9_liBGM1DK6zKrnoddERnpWQqfLNjuGz6zzReUJwQlDvzqqGjr65hNQisc7H656o9UnNAU629hC0aQdlo1xqhnodcrE9-qEABnVhMoF0uJFx70Y17c-cBDkB4M4L_OQ9UeOUxJu"/>
+<div class="w-20 h-20 rounded-lg bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-400 text-[10px] font-bold text-center border-2 border-dashed border-slate-300">
+                                                    +2 MORE
+                                                </div>
+</div>
+</div>
+<div class="space-y-3">
+<h4 class="text-[10px] font-bold uppercase text-slate-400 flex items-center gap-2 tracking-widest">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span> Action Log
+                                            </h4>
+<div class="text-sm space-y-3">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-[10px] font-bold text-blue-600 shrink-0">JD</div>
+<div>
+<p class="text-xs"><span class="font-bold text-slate-900 dark:text-white">Jane Doe:</span> Supplier promised replacement by Friday. <span class="text-slate-400 text-[9px] ml-1">2H AGO</span></p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[10px] font-bold text-slate-600 shrink-0">MK</div>
+<div>
+<p class="text-xs"><span class="font-bold text-slate-900 dark:text-white">Mark K:</span> Proceeding with other modules. <span class="text-slate-400 text-[9px] ml-1">1H AGO</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr class="table-row-hover group cursor-pointer transition-colors">
+<td class="px-6 py-5 font-bold text-slate-900 dark:text-white">PO-2024-0711</td>
+<td class="px-6 py-5">
+<div class="text-sm font-semibold">Leather Weekend Bag</div>
+<div class="text-[10px] text-slate-400 font-medium">SKU: ACC-LTH-42</div>
+</td>
+<td class="px-6 py-5 text-sm font-medium">800</td>
+<td class="px-6 py-5 text-sm font-medium">120</td>
+<td class="px-6 py-5">
+<div class="w-32 bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-rose-500 h-full w-[15%]"></div>
+</div>
+<span class="text-[10px] text-slate-400 mt-1 font-bold block">15% DONE</span>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-bold bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-400 border border-rose-200/50">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-500 mr-2"></span>
+                                        DELAY
+                                    </span>
+</td>
+<td class="px-6 py-5 text-slate-400">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">chevron_right</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between border-t border-rose-100 dark:border-slate-800">
+<span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Page 1 of 6 <span class="mx-2 text-slate-300">|</span> 4 of 24 purchase orders</span>
+<div class="flex gap-2">
+<button class="p-2 border border-rose-200 dark:border-slate-700 rounded bg-white dark:bg-card-dark text-slate-400 hover:text-primary disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-sm">arrow_back_ios_new</span>
+</button>
+<button class="p-2 border border-rose-200 dark:border-slate-700 rounded bg-white dark:bg-card-dark text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-8 flex flex-col md:flex-row gap-6">
+<div class="flex-1 bg-white dark:bg-card-dark p-6 rounded-xl border border-rose-100 dark:border-slate-800 shadow-sm flex items-center gap-5">
+<div class="bg-primary/10 p-4 rounded-2xl text-primary">
+<span class="material-symbols-outlined text-3xl">trending_up</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white text-lg">Efficiency is up 12%</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Focused execution impact in East Wing Unit.</p>
+</div>
+</div>
+<div class="flex-1 bg-white dark:bg-card-dark p-6 rounded-xl border border-rose-100 dark:border-slate-800 shadow-sm flex items-center gap-5">
+<div class="bg-rose-100 dark:bg-rose-900/30 p-4 rounded-2xl text-rose-600">
+<span class="material-symbols-outlined text-3xl">priority_high</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white text-lg">2 Critical Delays</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Immediate attention required for PO-2024-0711.</p>
+</div>
+</div>
+</div>
+<footer class="mt-12 py-10 border-t border-rose-200 dark:border-slate-800 text-center">
+<p class="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-black">SANKALP 🏆 Production Intelligence © 2024</p>
+<p class="text-[9px] text-slate-300 mt-1 uppercase tracking-widest font-bold">Determination • Focused Execution</p>
+</footer>
+</main>
+</div>
+<script src="js/app.js"></script></body></html>

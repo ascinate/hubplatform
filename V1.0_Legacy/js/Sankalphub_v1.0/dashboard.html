@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SANKALP 🏆 | Production &amp; Inspection Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#F3924A",
+                        gold: "#D4AF37",
+                        "background-light": "#F8F9FA",
+                        "background-dark": "#121212",
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#1E1E1E",
+                        "text-light": "#333333",
+                        "text-dark": "#E0E0E0",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "12px",
+                    },
+                },
+            },
+        };
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .sidebar-link.active {
+            @apply bg-primary/10 text-primary border-r-4 border-primary;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 bg-card-light dark:bg-card-dark border-r border-gray-200 dark:border-gray-800 flex flex-col z-20">
+<div class="p-6">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-icons-round text-white text-xl">emoji_events</span>
+</div>
+<span class="text-xl font-bold tracking-tight">SANKALP 🏆</span>
+</div>
+<p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1 ml-10 font-semibold">Production Discipline System</p>
+</div>
+<nav class="flex-1 mt-4 px-3 space-y-1">
+<a class="flex items-center px-4 py-3 text-primary bg-primary/5 rounded-lg font-medium group transition-all" href="dashboard.html">
+<span class="material-icons-round mr-3">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="production.html">
+<span class="material-icons-round mr-3">factory</span>
+                Production
+            </a>
+<a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="inspection.html">
+<span class="material-icons-round mr-3">fact_check</span>
+                Inspection
+            </a>
+<a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="factories.html">
+<span class="material-icons-round mr-3">location_city</span>
+                Factories
+            </a>
+<a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="analytics.html">
+<span class="material-icons-round mr-3">science</span>
+                Testing
+            </a>
+<a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="advanced_analytics.html">
+<span class="material-icons-round mr-3">analytics</span>
+                Analytics
+            </a>
+<a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="chat.html">
+<span class="material-icons-round mr-3">chat_bubble_outline</span>
+                Chats
+            </a>
+<a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="billing.html">
+<span class="material-icons-round mr-3">credit_card</span>
+                Billing
+            </a>
+<a class="flex items-center px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg group transition-all" href="profile.html">
+<span class="material-icons-round mr-3">manage_accounts</span>
+                Profile
+            </a>
+</nav>
+<div class="p-4 border-t border-gray-200 dark:border-gray-800">
+<button class="flex items-center w-full px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-all" onclick="toggleDarkMode()">
+<span class="material-icons-round mr-3">dark_mode</span>
+                Toggle Theme
+            </button>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-y-auto scrollbar-hide">
+<header class="h-16 bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-md sticky top-0 flex items-center justify-between px-8 z-10 border-b border-gray-200 dark:border-gray-800">
+<div class="flex flex-col relative">
+<span class="text-lg font-bold tracking-tight">SANKALP 🏆 Control Panel</span>
+<div class="absolute -bottom-1 left-0 w-1/2 h-[2px] bg-gold rounded-full opacity-60"></div>
+</div>
+<div class="flex items-center space-x-6">
+<div class="hidden md:flex items-center bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full w-64 mr-4">
+<span class="material-icons-round text-gray-400 text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder-gray-500" placeholder="Search data..." type="text"/>
+</div>
+<button class="relative p-2 text-gray-500 hover:text-primary transition-colors">
+<span class="material-icons-round">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-card-dark"></span>
+</button>
+<div class="flex items-center space-x-3 pl-6 border-l border-gray-200 dark:border-gray-800">
+<div class="text-right">
+<p class="text-xs font-semibold" id="sidebar-user-name">—</p>
+<p class="text-[10px] text-gray-500" id="sidebar-user-email">—</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-sm" id="user-avatar">—</div>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-8 max-w-7xl mx-auto w-full">
+<div>
+<h1 class="text-2xl font-bold tracking-tight">SANKALP 🏆 Dashboard</h1>
+<p class="text-gray-500 text-sm mt-1">Real-time status of your global production supply chain and determination metrics.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Total Orders</p>
+<h3 class="text-2xl font-bold mt-1" id="kpi-total-orders">1,482</h3>
+</div>
+<div class="bg-blue-50 dark:bg-blue-900/20 p-2 rounded-lg">
+<span class="material-icons-round text-blue-500">shopping_bag</span>
+</div>
+</div>
+<div class="mt-4 flex items-center text-xs">
+<span class="text-green-500 flex items-center mr-1">
+<span class="material-icons-round text-sm">trending_up</span> 12%
+                        </span>
+<span class="text-gray-400">vs last month</span>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Pending Sampling</p>
+<h3 class="text-2xl font-bold mt-1" id="kpi-pending-orders">42</h3>
+</div>
+<div class="bg-primary/10 p-2 rounded-lg">
+<span class="material-icons-round text-primary">hourglass_empty</span>
+</div>
+</div>
+<div class="mt-4 flex items-center text-xs">
+<span class="text-red-500 flex items-center mr-1">
+<span class="material-icons-round text-sm">trending_up</span> 3
+                        </span>
+<span class="text-gray-400">awaiting approval</span>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Inline Issues</p>
+<h3 class="text-2xl font-bold mt-1" id="kpi-failed-inspections">18</h3>
+</div>
+<div class="bg-orange-50 dark:bg-orange-900/20 p-2 rounded-lg">
+<span class="material-icons-round text-orange-500">warning_amber</span>
+</div>
+</div>
+<div class="mt-4 flex items-center text-xs">
+<span class="text-green-500 flex items-center mr-1">
+<span class="material-icons-round text-sm">trending_down</span> 5%
+                        </span>
+<span class="text-gray-400">defect rate</span>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs font-medium text-gray-500 uppercase tracking-wider">Final Audit Failures</p>
+<h3 class="text-2xl font-bold mt-1" id="kpi-avg-defect-rate">04</h3>
+</div>
+<div class="bg-red-50 dark:bg-red-900/20 p-2 rounded-lg">
+<span class="material-icons-round text-red-500">report_problem</span>
+</div>
+</div>
+<div class="mt-4 flex items-center text-xs">
+<span class="text-gray-500">Across 3 suppliers</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-8">
+<div class="col-span-12 lg:col-span-8 space-y-6">
+<div class="bg-card-light dark:bg-card-dark rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
+<div class="p-6 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
+<h4 class="font-bold">Recent Activity Feed</h4>
+<button class="text-primary text-sm font-medium">View all</button>
+</div>
+<div class="divide-y divide-gray-50 dark:divide-gray-800" id="activity-feed">
+<div class="p-6 flex space-x-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+<span class="material-icons-round text-green-600 dark:text-green-400 text-sm">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<p class="text-sm font-semibold">Final Inspection Passed</p>
+<span class="text-xs text-gray-400">12 mins ago</span>
+</div>
+<p class="text-xs text-gray-500 mt-1">Order #PO-9923 for <span class="font-medium text-gray-700 dark:text-gray-300">Global Textiles Co.</span> was approved with AQL 1.5.</p>
+</div>
+</div>
+<div class="p-6 flex space-x-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+<span class="material-icons-round text-orange-600 dark:text-orange-400 text-sm">error</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<p class="text-sm font-semibold">Defect Detected - Inline</p>
+<span class="text-xs text-gray-400">1 hour ago</span>
+</div>
+<p class="text-xs text-gray-500 mt-1">Stitching misalignment found in Production Line B at <span class="font-medium text-gray-700 dark:text-gray-300">Apex Garments</span>.</p>
+</div>
+</div>
+<div class="p-6 flex space-x-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+<span class="material-icons-round text-blue-600 dark:text-blue-400 text-sm">description</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between">
+<p class="text-sm font-semibold">New Lab Report Uploaded</p>
+<span class="text-xs text-gray-400">4 hours ago</span>
+</div>
+<p class="text-xs text-gray-500 mt-1">Chemical testing results for Batch #882 are now available for review.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-primary p-6 rounded-2xl shadow-lg relative overflow-hidden group">
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between">
+<div class="text-white">
+<h4 class="text-xl font-bold">Try our Efficiency Calculator</h4>
+<p class="text-white/80 text-sm mt-2 max-w-md">Discover how much SANKALP 🏆 can improve your production discipline and execution time.</p>
+<button class="mt-4 bg-white text-primary px-6 py-2 rounded-full font-bold text-sm hover:bg-opacity-90 transition-all">Calculate Now</button>
+</div>
+<div class="mt-6 md:mt-0 opacity-20 group-hover:scale-110 transition-transform duration-700">
+<span class="material-icons-round text-[120px]">calculate</span>
+</div>
+</div>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full"></div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+<h4 class="font-bold mb-4">Quick Actions</h4>
+<div class="space-y-3">
+<button id="quick-create-inspection" class="w-full flex items-center justify-between p-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-medium">
+<span class="flex items-center">
+<span class="material-icons-round mr-3">add_task</span>
+                                    Create Inspection
+                                </span>
+<span class="material-icons-round">chevron_right</span>
+</button>
+<button id="quick-add-production" class="w-full flex items-center justify-between p-4 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-all font-medium">
+<span class="flex items-center">
+<span class="material-icons-round mr-3">update</span>
+                                    Add Production Update
+                                </span>
+<span class="material-icons-round">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+<h4 class="font-bold mb-4">Top Suppliers Quality</h4>
+<div class="space-y-6" id="factory-quality-list">
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium">Elite Garments</span>
+<span class="text-sm font-bold text-green-500">98% Pass</span>
+</div>
+<div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+<div class="bg-green-500 h-2 rounded-full" style="width: 98%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium">Standard Fabrics</span>
+<span class="text-sm font-bold text-primary">82% Pass</span>
+</div>
+<div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 82%"></div>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 text-sm text-gray-500 dark:text-gray-400 font-medium hover:text-primary transition-colors">View Analytics Report</button>
+</div>
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+<img alt="Factory floor" class="w-full h-32 object-cover rounded-xl mb-3 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwtE7aXX9YDJtC3K5UDIX9mZ3QDD2bq3R8y2M5JIIPsduSe2Kr262fy_UJC54qK574RTtrZYOk4b7VPOdA5R1orungKiGFn2l0RBrVTzhIddRtQUNMtdubuwnp3UetTMbhlJBw847KGPiOuxKs7vHjW1eK9BYYjdfm9o1HkfnT9K0-Hc22gjFh68QRUYl6FNbeVCwm3GfCjtkukrGQ7T8SNK1C0qUwtrFBIWCcjLbac9kkWl-3c8QrCx8hP-7YoKgMPK1tsKFlOl49"/>
+<p class="text-xs font-semibold text-primary flex items-center">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse mr-2"></span>
+                            LIVE FACTORY FEED - LINE 03
+                        </p>
+<p class="text-[10px] text-gray-500 mt-1 uppercase">Suzhou Industrial Park • 11:42 PM Local Time</p>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-auto border-t border-gray-200 dark:border-gray-800 p-8 text-center text-sm text-gray-500">
+<p>© 2024 SANKALP 🏆 Production Discipline System. All rights reserved.</p>
+<div class="flex justify-center space-x-6 mt-4">
+<a class="hover:text-primary transition-colors" href="#">System Documentation</a>
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</footer>
+</main>
+</div>
+<script src="js/app.js"></script></body></html>

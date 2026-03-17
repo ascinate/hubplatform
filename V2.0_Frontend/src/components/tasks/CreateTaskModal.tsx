@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { X, Plus, Calendar, User, Mail, Upload } from 'lucide-react'
+import { X, Plus, Calendar, User, Mail, Upload, ChevronDown } from 'lucide-react'
 import { toast } from 'sonner'
 import api from '@/lib/api'
 import { cn } from '@/lib/utils'
@@ -174,6 +174,7 @@ export default function CreateTaskModal({ isOpen, onClose, onCreated }: CreateTa
   if (!isOpen) return null
 
   const inputClass = 'w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary'
+  const selectClass = cn(inputClass, 'appearance-none pr-10 transition-all cursor-pointer bg-white')
   const labelClass = 'block text-sm font-medium text-gray-700 mb-1'
 
   return (
@@ -199,17 +200,23 @@ export default function CreateTaskModal({ isOpen, onClose, onCreated }: CreateTa
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className={labelClass}>Task Type *</label>
-                <select value={taskType} onChange={e => setTaskType(e.target.value)} className={inputClass}>
-                  {TASK_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
-                </select>
+                <div className="relative group">
+                  <select value={taskType} onChange={e => setTaskType(e.target.value)} className={selectClass}>
+                    {TASK_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
+                  </select>
+                  <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-colors group-hover:text-primary" />
+                </div>
               </div>
               <div>
                 <label className={labelClass}>Priority *</label>
-                <select value={priority} onChange={e => setPriority(e.target.value)} className={inputClass}>
-                  {PRIORITIES.map(p => (
-                    <option key={p.value} value={p.value}>{p.label}</option>
-                  ))}
-                </select>
+                <div className="relative group">
+                  <select value={priority} onChange={e => setPriority(e.target.value)} className={selectClass}>
+                    {PRIORITIES.map(p => (
+                      <option key={p.value} value={p.value}>{p.label}</option>
+                    ))}
+                  </select>
+                  <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-colors group-hover:text-primary" />
+                </div>
               </div>
             </div>
             <div>
@@ -241,12 +248,15 @@ export default function CreateTaskModal({ isOpen, onClose, onCreated }: CreateTa
             {assignMode === 'platform' ? (
               <div>
                 <label className={labelClass}>Assign To</label>
-                <select value={assignedTo} onChange={e => setAssignedTo(e.target.value)} className={inputClass}>
-                  <option value="">Select a user...</option>
-                  {users.map(u => (
-                    <option key={u.id} value={u.id}>{u.full_name || u.email} ({u.role})</option>
-                  ))}
-                </select>
+                <div className="relative group">
+                  <select value={assignedTo} onChange={e => setAssignedTo(e.target.value)} className={selectClass}>
+                    <option value="">Select a user...</option>
+                    {users.map(u => (
+                      <option key={u.id} value={u.id}>{u.full_name || u.email} ({u.role})</option>
+                    ))}
+                  </select>
+                  <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-colors group-hover:text-primary" />
+                </div>
               </div>
             ) : (
               <div className="grid grid-cols-2 gap-4">
@@ -295,21 +305,27 @@ export default function CreateTaskModal({ isOpen, onClose, onCreated }: CreateTa
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className={labelClass}>Order No</label>
-                <select value={orderId} onChange={e => setOrderId(e.target.value)} className={inputClass}>
-                  <option value="">None</option>
-                  {orders.map(o => (
-                    <option key={o.id} value={o.id}>{o.po_number}{o.style_name ? ` — ${o.style_name}` : ''}</option>
-                  ))}
-                </select>
+                <div className="relative group">
+                  <select value={orderId} onChange={e => setOrderId(e.target.value)} className={selectClass}>
+                    <option value="">None</option>
+                    {orders.map(o => (
+                      <option key={o.id} value={o.id}>{o.po_number}{o.style_name ? ` — ${o.style_name}` : ''}</option>
+                    ))}
+                  </select>
+                  <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-colors group-hover:text-primary" />
+                </div>
               </div>
               <div>
                 <label className={labelClass}>Factory</label>
-                <select value={factoryId} onChange={e => setFactoryId(e.target.value)} className={inputClass}>
-                  <option value="">None</option>
-                  {factories.map(f => (
-                    <option key={f.id} value={f.id}>{f.name}</option>
-                  ))}
-                </select>
+                <div className="relative group">
+                  <select value={factoryId} onChange={e => setFactoryId(e.target.value)} className={selectClass}>
+                    <option value="">None</option>
+                    {factories.map(f => (
+                      <option key={f.id} value={f.id}>{f.name}</option>
+                    ))}
+                  </select>
+                  <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-colors group-hover:text-primary" />
+                </div>
               </div>
             </div>
           </div>
@@ -327,11 +343,14 @@ export default function CreateTaskModal({ isOpen, onClose, onCreated }: CreateTa
               </div>
               <div>
                 <label className={labelClass}>Reminder</label>
-                <select value={reminderDays} onChange={e => setReminderDays(Number(e.target.value))} className={inputClass}>
-                  {REMINDER_OPTIONS.map(r => (
-                    <option key={r.value} value={r.value}>{r.label}</option>
-                  ))}
-                </select>
+                <div className="relative group">
+                  <select value={reminderDays} onChange={e => setReminderDays(Number(e.target.value))} className={selectClass}>
+                    {REMINDER_OPTIONS.map(r => (
+                      <option key={r.value} value={r.value}>{r.label}</option>
+                    ))}
+                  </select>
+                  <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-colors group-hover:text-primary" />
+                </div>
               </div>
             </div>
           </div>

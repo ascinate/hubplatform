@@ -10,6 +10,7 @@ import {
   XCircle,
   Plus,
   ListChecks,
+  ChevronDown,
 } from 'lucide-react'
 import api from '@/lib/api'
 import { useAuthStore } from '@/lib/auth-store'
@@ -92,7 +93,7 @@ export default function TasksPage() {
     setStatusFilter(statusFilter === key ? '' : key)
   }
 
-  const selectClass = 'px-3 py-2 border border-gray-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/30'
+  const selectClass = 'appearance-none pl-3 pr-10 py-2 border border-gray-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-primary/30 w-full sm:w-auto transition-all'
 
   return (
     <div className="space-y-4 lg:space-y-6">
@@ -141,23 +142,32 @@ export default function TasksPage() {
             className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
           />
         </div>
-        <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)} className={selectClass}>
-          <option value="">All Statuses</option>
-          <option value="open">Open</option>
-          <option value="in_progress">In Progress</option>
-          <option value="overdue">Overdue</option>
-          <option value="completed">Completed</option>
-          <option value="cancelled">Cancelled</option>
-        </select>
-        <select value={priorityFilter} onChange={e => setPriorityFilter(e.target.value)} className={selectClass}>
-          {PRIORITY_OPTIONS.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
-        </select>
-        <select value={typeFilter} onChange={e => setTypeFilter(e.target.value)} className={selectClass}>
-          {TASK_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
-        </select>
+        <div className="relative group">
+          <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)} className={selectClass}>
+            <option value="">All Statuse</option>
+            <option value="open">Open</option>
+            <option value="in_progress">In Progress</option>
+            <option value="overdue">Overdue</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+          <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-colors group-hover:text-primary" />
+        </div>
+        <div className="relative group">
+          <select value={priorityFilter} onChange={e => setPriorityFilter(e.target.value)} className={selectClass}>
+            {PRIORITY_OPTIONS.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
+          </select>
+          <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-colors group-hover:text-primary" />
+        </div>
+        <div className="relative group">
+          <select value={typeFilter} onChange={e => setTypeFilter(e.target.value)} className={selectClass}>
+            {TASK_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
+          </select>
+          <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-colors group-hover:text-primary" />
+        </div>
       </div>
 
-      {/* Mobile task cards */}
+      {/* Mobile task  cards */}
       <div className="lg:hidden space-y-3">
         {loading ? (
           <div className="flex items-center justify-center py-16">

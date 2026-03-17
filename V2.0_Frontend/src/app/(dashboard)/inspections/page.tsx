@@ -182,10 +182,10 @@ export default function InspectionsPage() {
             className="w-full pl-10 pr-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
           />
         </div>
-        <button className="flex items-center justify-center gap-2 px-4 py-2.5 border border-border rounded-lg text-sm text-text-muted hover:bg-gray-50">
+        {/* <button className="flex items-center justify-center gap-2 px-4 py-2.5 border border-border rounded-lg text-sm text-text-muted hover:bg-gray-50">
           <Filter size={14} />
           Filter
-        </button>
+        </button> */}
       </div>
 
       {/* Mobile card list */}

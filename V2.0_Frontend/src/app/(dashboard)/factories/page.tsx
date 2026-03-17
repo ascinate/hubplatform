@@ -14,6 +14,7 @@ import {
   ToggleLeft,
   ToggleRight,
   Globe,
+  ChevronDown,
 } from 'lucide-react'
 import { toast } from 'sonner'
 import api from '@/lib/api'
@@ -209,15 +210,21 @@ export default function FactoriesPage() {
             className="w-full pl-10 pr-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
           />
         </div>
-        <select
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-          className="w-full sm:w-auto px-4 py-2.5 border border-border rounded-lg text-sm text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-white"
-        >
-          <option value="all">All Status</option>
-          <option value="active">Active</option>
-          <option value="inactive">Inactive</option>
-        </select>
+        <div className="w-full sm:w-auto relative">
+          <select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="w-full px-4 py-2.5 border border-border rounded-lg text-sm text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-white appearance-none pr-10"
+          >
+            <option value="all">All Status</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+          <ChevronDown
+            size={16}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none"
+          />
+        </div>
       </div>
 
       {/* Factory Cards Grid */}

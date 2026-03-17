@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, Upload } from 'lucide-react'
+import { ArrowLeft, Upload, ChevronDown } from 'lucide-react'
 import { toast } from 'sonner'
 import api from '@/lib/api'
 import { cn } from '@/lib/utils'
@@ -226,36 +226,42 @@ export default function CreateOrderPage() {
                 <label className="block text-sm font-medium text-text-primary mb-1.5">
                   Gender / Category <span className="text-danger">*</span>
                 </label>
-                <select
-                  name="gender"
-                  value={form.gender}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-white"
-                >
-                  <option value="">Select Gender / Category</option>
-                  <option value="men">Men</option>
-                  <option value="women">Women</option>
-                  <option value="kids">Kids</option>
-                  <option value="unisex">Unisex</option>
-                </select>
+                <div className="relative group">
+                  <select
+                    name="gender"
+                    value={form.gender}
+                    onChange={handleChange}
+                    required
+                    className="w-full pl-4 pr-10 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-white appearance-none transition-all cursor-pointer"
+                  >
+                    <option value="">Select Gender / Category</option>
+                    <option value="men">Men</option>
+                    <option value="women">Women</option>
+                    <option value="kids">Kids</option>
+                    <option value="unisex">Unisex</option>
+                  </select>
+                  <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none transition-colors group-hover:text-primary" />
+                </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-text-primary mb-1.5">Factory</label>
-                <select
-                  name="factory"
-                  value={form.factory}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-white"
-                >
-                  <option value="">Select Factory</option>
-                  {factories.map((f) => (
-                    <option key={f.id} value={f.id}>
-                      {f.name} {f.location ? `— ${f.location}` : ''}
-                    </option>
-                  ))}
-                </select>
+                <div className="relative group">
+                  <select
+                    name="factory"
+                    value={form.factory}
+                    onChange={handleChange}
+                    className="w-full pl-4 pr-10 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-white appearance-none transition-all cursor-pointer"
+                  >
+                    <option value="">Select Factory</option>
+                    {factories.map((f) => (
+                      <option key={f.id} value={f.id}>
+                        {f.name} {f.location ? `— ${f.location}` : ''}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none transition-colors group-hover:text-primary" />
+                </div>
               </div>
 
               <div>
@@ -318,16 +324,19 @@ export default function CreateOrderPage() {
                 <label className="block text-sm font-medium text-text-primary mb-1.5">
                   Order Status
                 </label>
-                <select
-                  name="status"
-                  value={form.status}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-white"
-                >
-                  <option value="pending">Pending</option>
-                  <option value="in_progress">In Progress</option>
-                  <option value="on_hold">On Hold</option>
-                </select>
+                <div className="relative group">
+                  <select
+                    name="status"
+                    value={form.status}
+                    onChange={handleChange}
+                    className="w-full pl-4 pr-10 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-white appearance-none transition-all cursor-pointer"
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="on_hold">On Hold</option>
+                  </select>
+                  <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none transition-colors group-hover:text-primary" />
+                </div>
               </div>
 
               <div>

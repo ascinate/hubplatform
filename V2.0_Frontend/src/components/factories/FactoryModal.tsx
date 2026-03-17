@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { X } from 'lucide-react'
+import { X, ChevronDown } from 'lucide-react'
 import { toast } from 'sonner'
 import api from '@/lib/api'
 
@@ -177,16 +177,22 @@ export default function FactoryModal({ open, onClose, factory, onSaved }: Factor
             </div>
             <div>
               <label className={labelClass}>Country</label>
-              <select
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                className={`${inputClass} bg-white`}
-              >
-                <option value="">Select Country</option>
-                {COUNTRY_OPTIONS.map((c) => (
-                  <option key={c} value={c}>{c}</option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  className={`${inputClass} bg-white appearance-none pr-10`}
+                >
+                  <option value="">Select Country</option>
+                  {COUNTRY_OPTIONS.map((c) => (
+                    <option key={c} value={c}>{c}</option>
+                  ))}
+                </select>
+                <ChevronDown
+                  size={16}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none"
+                />
+              </div>
             </div>
           </div>
 
@@ -247,16 +253,22 @@ export default function FactoryModal({ open, onClose, factory, onSaved }: Factor
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className={labelClass}>Audit Compliance</label>
-                  <select
-                    value={auditCompliance}
-                    onChange={(e) => setAuditCompliance(e.target.value)}
-                    className={`${inputClass} bg-white`}
-                  >
-                    <option value="">Select Status</option>
-                    <option value="compliant">Compliant</option>
-                    <option value="non_compliant">Non-Compliant</option>
-                    <option value="pending">Pending</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={auditCompliance}
+                      onChange={(e) => setAuditCompliance(e.target.value)}
+                      className={`${inputClass} bg-white appearance-none pr-10`}
+                    >
+                      <option value="">Select Status</option>
+                      <option value="compliant">Compliant</option>
+                      <option value="non_compliant">Non-Compliant</option>
+                      <option value="pending">Pending</option>
+                    </select>
+                    <ChevronDown
+                      size={16}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label className={labelClass}>Last Audit Date</label>

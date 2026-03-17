@@ -144,7 +144,7 @@ export default function TasksPage() {
         </div>
         <div className="relative group">
           <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)} className={selectClass}>
-            <option value="">All Statuse</option>
+            <option value="">All Statuses</option>
             <option value="open">Open</option>
             <option value="in_progress">In Progress</option>
             <option value="overdue">Overdue</option>

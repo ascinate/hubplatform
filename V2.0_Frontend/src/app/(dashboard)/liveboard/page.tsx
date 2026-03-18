@@ -261,9 +261,9 @@ export default function LiveboardPage() {
               <div className="flex items-center justify-between mb-3">
                 <AlertTriangle size={20} className="text-red-500" />
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1.5 sm:gap-3">
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-red-600">12</p>
+                  <p className="text-xl sm:text-2xl font-bold text-red-600">12</p>
                   <div className="flex items-center justify-center gap-1 mt-0.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
                     <span className="text-[9px] text-text-muted uppercase">Crit</span>
@@ -271,7 +271,7 @@ export default function LiveboardPage() {
                 </div>
                 <div className="w-px h-8 bg-gray-200" />
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-orange-500">48</p>
+                  <p className="text-xl sm:text-2xl font-bold text-orange-500">48</p>
                   <div className="flex items-center justify-center gap-1 mt-0.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
                     <span className="text-[9px] text-text-muted uppercase">Major</span>
@@ -279,7 +279,7 @@ export default function LiveboardPage() {
                 </div>
                 <div className="w-px h-8 bg-gray-200" />
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-blue-500">165</p>
+                  <p className="text-xl sm:text-2xl font-bold text-blue-500">165</p>
                   <div className="flex items-center justify-center gap-1 mt-0.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                     <span className="text-[9px] text-text-muted uppercase">Minor</span>

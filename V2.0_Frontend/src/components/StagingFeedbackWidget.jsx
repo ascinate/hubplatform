@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { ChevronDown } from 'lucide-react'
 
 const N8N_WEBHOOK_URL = "https://n8n.srv1372067.hstgr.cloud/webhook/sankalphub-feedback"
 
@@ -111,29 +112,38 @@ export default function StagingFeedbackWidget() {
 
                 <div className="flex flex-col gap-1">
                   <label className="text-xs font-medium text-gray-600">Your Role *</label>
-                  <select value={form.role} onChange={e => set('role', e.target.value)}
-                    className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white">
-                    <option value="">Select role…</option>
-                    {ROLES.map(r => <option key={r}>{r}</option>)}
-                  </select>
+                  <div className="relative">
+                    <select value={form.role} onChange={e => set('role', e.target.value)}
+                      className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white appearance-none">
+                      <option value="">Select role…</option>
+                      {ROLES.map(r => <option key={r}>{r}</option>)}
+                    </select>
+                    <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-medium text-gray-600">Screen / Feature *</label>
-                    <select value={form.screen} onChange={e => set('screen', e.target.value)}
-                      className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white">
-                      <option value="">Select screen…</option>
-                      {SCREENS.map(s => <option key={s}>{s}</option>)}
-                    </select>
+                    <div className="relative">
+                      <select value={form.screen} onChange={e => set('screen', e.target.value)}
+                        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white appearance-none">
+                        <option value="">Select screen…</option>
+                        {SCREENS.map(s => <option key={s}>{s}</option>)}
+                      </select>
+                      <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                    </div>
                   </div>
                   <div className="flex flex-col gap-1">
                     <label className="text-xs font-medium text-gray-600">Issue Type *</label>
-                    <select value={form.issueType} onChange={e => set('issueType', e.target.value)}
-                      className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white">
-                      <option value="">Select type…</option>
-                      {ISSUE_TYPES.map(t => <option key={t}>{t}</option>)}
-                    </select>
+                    <div className="relative">
+                      <select value={form.issueType} onChange={e => set('issueType', e.target.value)}
+                        className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white appearance-none">
+                        <option value="">Select type…</option>
+                        {ISSUE_TYPES.map(t => <option key={t}>{t}</option>)}
+                      </select>
+                      <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                    </div>
                   </div>
                 </div>
 

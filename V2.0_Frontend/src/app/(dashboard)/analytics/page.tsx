@@ -210,13 +210,13 @@ export default function AnalyticsPage() {
             onChange={(e) => setDateTo(e.target.value)}
             className="w-full sm:w-auto px-3 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
           />
-          <button
+          {/* <button
             onClick={handleFilter}
             className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded-lg transition-colors"
           >
             <Filter size={14} />
             Filter
-          </button>
+          </button> */}
         </div>
       </div>
 

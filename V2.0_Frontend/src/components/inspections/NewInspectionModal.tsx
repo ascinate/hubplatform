@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { X } from 'lucide-react'
+import { X, ChevronDown } from 'lucide-react'
 import { toast } from 'sonner'
 import api from '@/lib/api'
 
@@ -152,21 +152,24 @@ export default function NewInspectionModal({ open, onClose, onCreated }: NewInsp
               <label className="block text-sm font-medium text-text-primary mb-1.5">
                 Factory <span className="text-danger">*</span>
               </label>
-              <select
-                value={factory}
-                onChange={(e) => setFactory(e.target.value)}
-                required
-                className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-              >
-                <option value="">
-                  {loadingFactories ? 'Loading factories...' : 'Select a factory'}
-                </option>
-                {factories.map((f) => (
-                  <option key={f.id} value={f.id}>
-                    {f.name}
+              <div className="relative">
+                <select
+                  value={factory}
+                  onChange={(e) => setFactory(e.target.value)}
+                  required
+                  className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary appearance-none pr-10 bg-white"
+                >
+                  <option value="">
+                    {loadingFactories ? 'Loading factories...' : 'Select a factory'}
                   </option>
-                ))}
-              </select>
+                  {factories.map((f) => (
+                    <option key={f.id} value={f.id}>
+                      {f.name}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none" />
+              </div>
             </div>
 
             {/* Inspection Type */}
@@ -174,21 +177,24 @@ export default function NewInspectionModal({ open, onClose, onCreated }: NewInsp
               <label className="block text-sm font-medium text-text-primary mb-1.5">
                 Inspection Type <span className="text-danger">*</span>
               </label>
-              <select
-                value={inspectionType}
-                onChange={(e) => setInspectionType(e.target.value)}
-                required
-                className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-              >
-                <option value="">Select inspection type</option>
-                <option value="pre_production">Pre-Production</option>
-                <option value="inline">Inline Inspection</option>
-                <option value="final">Final Inspection</option>
-                <option value="lab_test">Lab Test</option>
-                <option value="fri">FRI</option>
-                <option value="dupro">Dupro</option>
-                <option value="pre_final">Pre-Final</option>
-              </select>
+              <div className="relative">
+                <select
+                  value={inspectionType}
+                  onChange={(e) => setInspectionType(e.target.value)}
+                  required
+                  className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary appearance-none pr-10 bg-white"
+                >
+                  <option value="">Select inspection type</option>
+                  <option value="pre_production">Pre-Production</option>
+                  <option value="inline">Inline Inspection</option>
+                  <option value="final">Final Inspection</option>
+                  <option value="lab_test">Lab Test</option>
+                  <option value="fri">FRI</option>
+                  <option value="dupro">Dupro</option>
+                  <option value="pre_final">Pre-Final</option>
+                </select>
+                <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none" />
+              </div>
             </div>
 
             {/* Inspection Template */}
@@ -196,24 +202,27 @@ export default function NewInspectionModal({ open, onClose, onCreated }: NewInsp
               <label className="block text-sm font-medium text-text-primary mb-1.5">
                 Inspection Template
               </label>
-              <select
-                value={template}
-                onChange={(e) => setTemplate(e.target.value)}
-                className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-              >
-                <option value="">
-                  {loadingTemplates ? 'Loading templates...' : 'Select a template (optional)'}
-                </option>
-                {Object.entries(templatesByPhase).map(([phase, tpls]) => (
-                  <optgroup key={phase} label={PHASE_LABELS[phase] || phase}>
-                    {tpls.map((t) => (
-                      <option key={t.id} value={t.id}>
-                        {t.code} — {t.name}
-                      </option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  value={template}
+                  onChange={(e) => setTemplate(e.target.value)}
+                  className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary appearance-none pr-10 bg-white"
+                >
+                  <option value="">
+                    {loadingTemplates ? 'Loading templates...' : 'Select a template (optional)'}
+                  </option>
+                  {Object.entries(templatesByPhase).map(([phase, tpls]) => (
+                    <optgroup key={phase} label={PHASE_LABELS[phase] || phase}>
+                      {tpls.map((t) => (
+                        <option key={t.id} value={t.id}>
+                          {t.code} — {t.name}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+                <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none" />
+              </div>
             </div>
 
             {/* Inspection Date */}
@@ -235,17 +244,20 @@ export default function NewInspectionModal({ open, onClose, onCreated }: NewInsp
               <label className="block text-sm font-medium text-text-primary mb-1.5">
                 Auditor Name <span className="text-danger">*</span>
               </label>
-              <select
-                value={auditorName}
-                onChange={(e) => setAuditorName(e.target.value)}
-                required
-                className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-              >
-                <option value="">Select auditor type</option>
-                <option value="Brand Auditor">Brand Auditor</option>
-                <option value="3rd Party Auditor">3rd Party Auditor</option>
-                <option value="Factory QC Auditor">Factory QC Auditor</option>
-              </select>
+              <div className="relative">
+                <select
+                  value={auditorName}
+                  onChange={(e) => setAuditorName(e.target.value)}
+                  required
+                  className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary appearance-none pr-10 bg-white"
+                >
+                  <option value="">Select auditor type</option>
+                  <option value="Brand Auditor">Brand Auditor</option>
+                  <option value="3rd Party Auditor">3rd Party Auditor</option>
+                  <option value="Factory QC Auditor">Factory QC Auditor</option>
+                </select>
+                <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none" />
+              </div>
             </div>
 
             {/* Status */}
@@ -253,15 +265,18 @@ export default function NewInspectionModal({ open, onClose, onCreated }: NewInsp
               <label className="block text-sm font-medium text-text-primary mb-1.5">
                 Status <span className="text-danger">*</span>
               </label>
-              <select
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
-                required
-                className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-              >
-                <option value="draft">Draft</option>
-                <option value="scheduled">Scheduled</option>
-              </select>
+              <div className="relative">
+                <select
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                  required
+                  className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary appearance-none pr-10 bg-white"
+                >
+                  <option value="draft">Draft</option>
+                  <option value="scheduled">Scheduled</option>
+                </select>
+                <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none" />
+              </div>
             </div>
           </div>
 

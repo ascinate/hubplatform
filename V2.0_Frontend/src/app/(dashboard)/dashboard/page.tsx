@@ -168,15 +168,38 @@ export default function DashboardPage() {
             {getGreeting()}, {user?.full_name || 'User'}
           </p>
         </div>
-        <div className="relative w-full sm:w-80">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" />
-          <input
-            type="text"
-            placeholder="Search orders, inspections, factories..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-          />
+        <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 w-full md:w-auto">
+          {/* Quick Actions */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <button
+              onClick={() => router.push('/orders/new')}
+              className="flex items-center justify-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary-hover text-white text-sm font-semibold rounded-xl transition-all hover:shadow-lg active:scale-95 shadow-sm"
+            >
+              <Plus size={18} />
+              Create New Order
+            </button>
+            <button
+              onClick={() => router.push('/inspections')}
+              className="flex items-center justify-center gap-2 px-5 py-2.5 border border-border bg-white rounded-xl text-sm font-semibold text-text-primary hover:bg-gray-50 transition-all hover:shadow-md active:scale-95 shadow-sm"
+            >
+              <ClipboardCheck size={18} />
+              Create Inspection
+            </button>
+          </div>
+          
+          <div className="relative w-full md:w-72">
+            <Search 
+              size={18} 
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none" 
+            />
+            <input
+              type="text"
+              placeholder="Search orders, inspections..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 bg-white border border-border rounded-xl text-sm focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all placeholder:text-text-light shadow-sm"
+            />
+          </div>
         </div>
       </div>
 
@@ -347,23 +370,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Quick Actions */}
-      <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
-        <button
-          onClick={() => router.push('/orders/new')}
-          className="flex items-center justify-center gap-2 px-4 py-2.5 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded-lg transition-colors"
-        >
-          <Plus size={16} />
-          Create New Order
-        </button>
-        <button
-          onClick={() => router.push('/inspections')}
-          className="flex items-center justify-center gap-2 px-4 py-2.5 border border-border rounded-lg text-sm font-medium text-text-primary hover:bg-gray-50 transition-colors"
-        >
-          <ClipboardCheck size={16} />
-          Create Inspection
-        </button>
-      </div>
+
     </div>
   )
 }

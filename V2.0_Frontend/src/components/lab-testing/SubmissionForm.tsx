@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import { Upload, FileText, X } from 'lucide-react'
+import { Upload, FileText, X, ChevronDown } from 'lucide-react'
 import { toast } from 'sonner'
 import api from '@/lib/api'
 import { cn } from '@/lib/utils'
@@ -90,18 +90,24 @@ export default function SubmissionForm({ onSubmitted }: SubmissionFormProps) {
           <label className="block text-sm font-medium text-text-primary mb-1.5">
             Laboratory Name
           </label>
-          <select
-            value={selectedLab}
-            onChange={(e) => setSelectedLab(e.target.value)}
-            className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-white"
-          >
-            <option value="">Select laboratory</option>
-            {laboratories.map((lab) => (
-              <option key={lab} value={lab}>
-                {lab}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              value={selectedLab}
+              onChange={(e) => setSelectedLab(e.target.value)}
+              className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary bg-white appearance-none"
+            >
+              <option value="">Select laboratory</option>
+              {laboratories.map((lab) => (
+                <option key={lab} value={lab}>
+                  {lab}
+                </option>
+              ))}
+            </select>
+            <ChevronDown
+              size={16}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none"
+            />
+          </div>
         </div>
 
         {/* Test Result */}

@@ -293,7 +293,7 @@ export default function CreateOrderPage() {
             </div>
 
             {/* Right column */}
-            <div className="space-y-5">
+            <div className="flex flex-col gap-5 h-full">
               <div>
                 <label className="block text-sm font-medium text-text-primary mb-1.5">
                   Order Image
@@ -339,7 +339,7 @@ export default function CreateOrderPage() {
                 </div>
               </div>
 
-              <div>
+              <div className="flex-1 flex flex-col">
                 <label className="block text-sm font-medium text-text-primary mb-1.5">
                   Description
                 </label>
@@ -347,9 +347,8 @@ export default function CreateOrderPage() {
                   name="description"
                   value={form.description}
                   onChange={handleChange}
-                  rows={4}
                   placeholder="Order description..."
-                  className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary resize-none"
+                  className="w-full h-full flex-1 px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary resize-none min-h-[120px]"
                 />
               </div>
             </div>
@@ -379,13 +378,13 @@ export default function CreateOrderPage() {
         >
           Cancel
         </button>
-        <button
+        {/* <button
           onClick={() => handleSave(false)}
           disabled={saving}
           className="px-5 py-2.5 border border-primary rounded-lg text-sm font-medium text-primary hover:bg-primary-light transition-colors disabled:opacity-60"
         >
           Save and Close
-        </button>
+        </button> */}
         <button
           onClick={() => handleSave(true)}
           disabled={saving}

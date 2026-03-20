@@ -188,9 +188,9 @@ export default function AnalyticsPage() {
   /* ---------------------------------------------------------------- */
 
   return (
-    <div className="space-y-4 lg:space-y-6">
+    <div className="h-full flex flex-col gap-4 lg:gap-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div className="flex-shrink-0 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <h1 className="text-xl lg:text-2xl font-bold text-text-primary">Performance Analytics</h1>
 
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
@@ -210,18 +210,18 @@ export default function AnalyticsPage() {
             onChange={(e) => setDateTo(e.target.value)}
             className="w-full sm:w-auto px-3 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
           />
-          {/* <button
+          {/*<button
             onClick={handleFilter}
             className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded-lg transition-colors"
           >
             <Filter size={14} />
             Filter
-          </button> */}
+          </button>*/}
         </div>
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+      <div className="flex-shrink-0 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
         {kpiCards.map((card) => (
           <div
             key={card.key}
@@ -242,27 +242,26 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Charts Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
-        {/* Row 1 — left: Production Trend (col-span-2) */}
-        <div className="lg:col-span-2">
-          <ProductionTrendChart data={trends.length > 0 ? trends : undefined} />
+      <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 gap-4 lg:gap-6">
+        {/* Row 1 — 3 charts */}
+        <div className="min-h-0">
+          <ProductionTrendChart className="h-full" data={trends.length > 0 ? trends : undefined} />
         </div>
 
-        {/* Row 1 — right: Defect Rate Bars (col-span-1) */}
-        <div className="lg:col-span-1">
-          <DefectRateBars />
+        <div className="min-h-0">
+          <DefectRateBars className="h-full" />
         </div>
 
-        {/* Row 2 — left: Factory Performance (col-span-1) */}
-        <div className="lg:col-span-1">
+        <div className="min-h-0">
           <FactoryPerformanceMap
+            className="h-full"
             factories={factoryPerformance.length > 0 ? factoryPerformance : undefined}
           />
         </div>
 
-        {/* Row 2 — right: Live Inspection Stream (col-span-2) */}
-        <div className="lg:col-span-2 bg-white rounded-xl border border-border">
-          <div className="flex items-center justify-between p-5 border-b border-border">
+        {/* Row 2 — Live Inspection Stream (full width) */}
+        <div className="lg:col-span-3 min-h-0 bg-white rounded-xl border border-border flex flex-col">
+          <div className="flex-shrink-0 flex items-center justify-between p-5 border-b border-border">
             <h3 className="text-base font-semibold text-text-primary">
               Live Inspection Stream
             </h3>
@@ -303,9 +302,9 @@ export default function AnalyticsPage() {
           </div>
 
           {/* Desktop table */}
-          <div className="hidden lg:block overflow-x-auto">
-            <table className="w-full">
-              <thead>
+          <div className="hidden lg:block flex-1 min-h-0 overflow-y-auto custom-scrollbar">
+            <table className="w-full border-separate border-spacing-0">
+              <thead className="sticky top-0 z-10">
                 <tr className="border-b border-border bg-gray-50/50">
                   <th className="text-left px-4 py-3 text-xs font-semibold text-text-muted uppercase">
                     Incident ID

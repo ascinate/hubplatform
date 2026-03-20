@@ -1,19 +1,21 @@
 'use client'
 
 import { TrendingDown } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 interface DefectRateBarsProps {
   data?: { name: string; rate: number }[]
+  className?: string
 }
 
-export default function DefectRateBars({ data }: DefectRateBarsProps) {
+export default function DefectRateBars({ data, className }: DefectRateBarsProps) {
   if (!data || data.length === 0) {
     return (
-      <div className="bg-white rounded-xl border border-border p-6">
-        <h3 className="text-base font-semibold text-text-primary mb-4">
+      <div className={cn('bg-white rounded-xl border border-border p-6 flex flex-col', className)}>
+        <h3 className="text-base font-semibold text-text-primary mb-4 shrink-0">
           Inspection Defect Rate
         </h3>
-        <div className="flex flex-col items-center justify-center h-36 text-gray-400">
+        <div className="flex-1 flex flex-col items-center justify-center min-h-[150px] text-gray-400">
           <TrendingDown size={36} className="mb-2 opacity-30" />
           <p className="text-sm text-center">No defect data yet. Data will appear once inspections are logged.</p>
         </div>
@@ -24,12 +26,12 @@ export default function DefectRateBars({ data }: DefectRateBarsProps) {
   const maxRate = Math.max(...data.map((d) => d.rate), 1)
 
   return (
-    <div className="bg-white rounded-xl border border-border p-6">
-      <h3 className="text-base font-semibold text-text-primary mb-4">
+    <div className={cn('bg-white rounded-xl border border-border p-6 flex flex-col', className)}>
+      <h3 className="text-base font-semibold text-text-primary mb-4 shrink-0">
         Inspection Defect Rate
       </h3>
 
-      <div className="space-y-4">
+      <div className="flex-1 min-h-0 overflow-y-auto space-y-4">
         {data.map((item) => (
           <div key={item.name}>
             <div className="flex items-center justify-between mb-1.5">

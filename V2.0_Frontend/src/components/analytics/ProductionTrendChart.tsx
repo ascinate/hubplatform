@@ -10,25 +10,27 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts'
-import { BarChart3 } from 'lucide-react'
+import { BarChart3, Loader2 } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 interface ProductionTrendChartProps {
   data?: { month: string; actual: number; target: number }[]
+  className?: string
 }
 
-export default function ProductionTrendChart({ data }: ProductionTrendChartProps) {
+export default function ProductionTrendChart({ data, className }: ProductionTrendChartProps) {
   return (
-    <div className="bg-white rounded-xl border border-border p-6">
-      <h3 className="text-base font-semibold text-text-primary mb-4">
+    <div className={cn('bg-white rounded-xl border border-border p-6 flex flex-col', className)}>
+      <h3 className="text-base font-semibold text-text-primary mb-4 shrink-0">
         Production Completion Trend
       </h3>
       {!data || data.length === 0 ? (
-        <div className="flex flex-col items-center justify-center h-48 text-gray-400">
+        <div className="flex-1 flex flex-col items-center justify-center min-h-[200px] text-gray-400">
           <BarChart3 size={36} className="mb-2 opacity-30" />
           <p className="text-sm text-center">No trend data yet. Data will appear once orders are processed.</p>
         </div>
       ) : (
-        <div className="h-72">
+        <div className="flex-1 min-h-0">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />

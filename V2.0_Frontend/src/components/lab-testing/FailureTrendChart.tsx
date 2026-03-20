@@ -12,19 +12,20 @@ import {
 
 interface FailureTrendChartProps {
   data?: { name: string; value: number }[]
+  title?: string
 }
 
 const BAR_COLOR = '#E67E22'
 
-export default function FailureTrendChart({ data }: FailureTrendChartProps) {
+export default function FailureTrendChart({ data, title = 'Trend Analytics' }: FailureTrendChartProps) {
   const hasData = data && data.length > 0
 
   return (
-    <div className="bg-white rounded-xl border border-border p-6">
-      <h3 className="text-base font-semibold text-text-primary mb-4">Failure Trend Analytics</h3>
+    <div className="bg-white rounded-xl border border-border p-4 h-full flex flex-col">
+      <h3 className="text-xs font-bold text-text-primary mb-3 uppercase tracking-tight flex-shrink-0">{title}</h3>
 
       {hasData ? (
-        <div className="h-[300px]">
+        <div className="flex-1 min-h-0">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data} margin={{ top: 10, right: 20, left: 10, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" vertical={false} />
@@ -58,7 +59,7 @@ export default function FailureTrendChart({ data }: FailureTrendChartProps) {
           </ResponsiveContainer>
         </div>
       ) : (
-        <div className="h-[300px] flex items-center justify-center">
+        <div className="flex-1 min-h-0 flex items-center justify-center">
           <div className="text-center">
             <p className="text-text-muted text-sm">No lab test data yet.</p>
             <p className="text-text-light text-xs mt-1">Submit your first sample to see failure trends.</p>

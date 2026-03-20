@@ -97,7 +97,7 @@ export default function LabTestingPage() {
     },
     {
       label: 'Passed Quality',
-      value: `${passedTests} (${passRate}%)`,
+      value: `${passedTests}`,
       icon: CheckCircle,
       accent: 'border-l-4 border-l-success',
       iconBg: 'bg-green-50',
@@ -114,18 +114,18 @@ export default function LabTestingPage() {
   ]
 
   return (
-    <div className="space-y-4 lg:space-y-6">
+    <div className="h-[calc(100vh-160px)] flex flex-col space-y-4 lg:space-y-6 overflow-hidden">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 flex-shrink-0">
         <h1 className="text-xl lg:text-2xl font-bold text-text-primary">Lab Testing</h1>
         <div className="flex items-center gap-3">
-          <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 border border-border rounded-lg text-sm text-text-muted hover:bg-gray-50 transition-colors">
+          <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-white border border-border rounded-lg text-sm text-text-muted hover:bg-gray-50 transition-all shadow-sm">
             <FileDown size={16} />
             Export PDF
           </button>
           <button
             onClick={scrollToForm}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded-lg transition-colors"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded-lg transition-all shadow-sm"
           >
             <Plus size={16} />
             New Submission
@@ -134,153 +134,162 @@ export default function LabTestingPage() {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 flex-shrink-0">
         {kpiCards.map((card) => (
           <div
             key={card.label}
-            className={cn('bg-white rounded-xl border border-border p-5', card.accent)}
+            className={cn('bg-white rounded-xl border border-border p-4 transition-all hover:shadow-md', card.accent)}
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-text-muted">{card.label}</p>
-                <p className="text-2xl font-bold text-text-primary mt-1">{card.value}</p>
+                <p className="text-xs text-text-muted uppercase tracking-wider font-semibold">{card.label}</p>
+                <p className="text-xl font-bold text-text-primary mt-1">{card.value}</p>
               </div>
-              <div className={cn('w-10 h-10 rounded-lg flex items-center justify-center', card.iconBg)}>
-                <card.icon size={20} className={card.iconColor} />
+              <div className={cn('w-9 h-9 rounded-lg flex items-center justify-center', card.iconBg)}>
+                <card.icon size={18} className={card.iconColor} />
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Two-column layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
-        {/* Left column */}
-        <div className="col-span-1 space-y-6">
-          <div ref={formRef}>
-            <SubmissionForm onSubmitted={loadData} />
-          </div>
-          <QualityScorecard passed={passedTests} total={totalSamples} />
+      {/* Main Content Area */}
+      <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 overflow-hidden">
+        {/* Left column: Form */}
+        <div className="lg:col-span-4 flex flex-col overflow-hidden">
+          <SubmissionForm onSubmitted={loadData} />
         </div>
 
-        {/* Right column */}
-        <div className="col-span-1 lg:col-span-2 space-y-6">
-          <FailureTrendChart data={
-            labTests.length > 0
-              ? Object.entries(
-                  labTests.reduce((acc, t) => {
-                    const category = t.test_type || t.test_name || 'Other'
-                    acc[category] = (acc[category] || 0) + (t.status === 'failed' ? 1 : 0)
-                    return acc
-                  }, {} as Record<string, number>)
-                ).map(([name, value]) => ({ name, value }))
-              : []
-          } />
+        {/* Right column: Analytics & Reports */}
+        <div className="lg:col-span-8 flex flex-col gap-4 overflow-hidden">
+          {/* Graphs - Top Half (50%) */}
+          <div className="flex-1 min-h-0 grid grid-cols-1 md:grid-cols-2 gap-4 overflow-hidden">
+            <FailureTrendChart 
+              title="Failure Analytics"
+              data={
+                labTests.length > 0
+                  ? Object.entries(
+                    labTests.reduce((acc, t) => {
+                      const category = t.test_type || t.test_name || 'Other'
+                      acc[category] = (acc[category] || 0) + (t.status === 'failed' ? 1 : 0)
+                      return acc
+                    }, {} as Record<string, number>)
+                  ).map(([name, value]) => ({ name, value }))
+                  : []
+              } 
+            />
+            <QualityScorecard passed={passedTests} total={totalSamples} />
+          </div>
 
-          {/* Recent Lab Submissions table */}
-          <div className="bg-white rounded-xl border border-border overflow-hidden">
-            <div className="px-6 py-4 border-b border-border">
-              <h3 className="text-base font-semibold text-text-primary">Recent Lab Submissions</h3>
+          {/* Recent Lab Submissions - Bottom Half (50%) */}
+          <div className="flex-1 min-h-0 bg-white rounded-xl border border-border flex flex-col overflow-hidden">
+            <div className="px-5 py-3 border-b border-border flex-shrink-0 flex items-center justify-between bg-gray-50/30">
+              <h3 className="text-xs font-bold text-text-primary uppercase tracking-tight">Recent Lab Submissions</h3>
+              <span className="text-[10px] font-bold text-text-muted">{labTests.length} Total</span>
             </div>
-            {/* Mobile card view */}
-            <div className="lg:hidden p-4 space-y-3">
-              {loading ? (
-                <div className="flex justify-center py-8">
-                  <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-                </div>
-              ) : labTests.length === 0 ? (
-                <div className="text-center py-8 text-text-muted">
-                  <FlaskConical size={40} className="mx-auto text-text-light mb-3" />
-                  <p className="text-sm">No lab submissions yet. Submit your first sample above.</p>
-                </div>
-              ) : (
-                labTests.map((test) => (
-                  <div key={test.id} className="bg-gray-50 rounded-lg p-4 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-text-primary">{test.sample_id}</span>
-                      <span className={cn('inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize', statusBadge[test.status] || 'bg-gray-50 text-text-muted border border-gray-200')}>
-                        {test.status_display || test.status}
-                      </span>
-                    </div>
-                    <p className="text-sm text-text-muted">{test.test_name}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-text-muted">{formatDate(test.submitted_at)}</span>
-                      <button className="flex items-center gap-1.5 text-sm text-primary hover:text-primary-hover transition-colors">
-                        <Eye size={14} />
-                        View
-                      </button>
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-
-            {/* Desktop table */}
-            <table className="hidden lg:table w-full">
-              <thead>
-                <tr className="border-b border-border bg-gray-50/50">
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-text-muted uppercase">
-                    Sample ID
-                  </th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-text-muted uppercase">
-                    Lab Name
-                  </th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-text-muted uppercase">
-                    Date
-                  </th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-text-muted uppercase">
-                    Status
-                  </th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-text-muted uppercase">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border-light">
+            
+            {/* Table Area - Scrollable */}
+            <div className="flex-1 overflow-y-auto custom-scrollbar">
+              {/* Mobile card view */}
+              <div className="lg:hidden p-4 space-y-3">
                 {loading ? (
-                  <tr>
-                    <td colSpan={5} className="px-4 py-12 text-center">
-                      <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
-                    </td>
-                  </tr>
+                  <div className="flex justify-center py-8">
+                    <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                  </div>
                 ) : labTests.length === 0 ? (
-                  <tr>
-                    <td colSpan={5} className="px-4 py-12 text-center text-text-muted">
-                      <FlaskConical size={40} className="mx-auto text-text-light mb-3" />
-                      <p className="text-sm">No lab submissions yet. Submit your first sample above.</p>
-                    </td>
-                  </tr>
+                  <div className="text-center py-8 text-text-muted">
+                    <FlaskConical size={40} className="mx-auto text-text-light mb-3" />
+                    <p className="text-sm">No lab submissions yet.</p>
+                  </div>
                 ) : (
                   labTests.map((test) => (
-                    <tr key={test.id} className="hover:bg-gray-50/50 transition-colors">
-                      <td className="px-4 py-3 text-sm font-medium text-text-primary">
-                        {test.sample_id}
-                      </td>
-                      <td className="px-4 py-3 text-sm text-text-muted">{test.test_name}</td>
-                      <td className="px-4 py-3 text-sm text-text-muted">
-                        {formatDate(test.submitted_at)}
-                      </td>
-                      <td className="px-4 py-3">
-                        <span
-                          className={cn(
-                            'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize',
-                            statusBadge[test.status] || 'bg-gray-50 text-text-muted border border-gray-200'
-                          )}
-                        >
+                    <div key={test.id} className="bg-gray-50 rounded-lg p-4 pb-3 space-y-2 border border-border/50">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-bold text-text-primary">{test.sample_id}</span>
+                        <span className={cn('inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase', statusBadge[test.status] || 'bg-gray-50 text-text-muted border border-gray-200')}>
                           {test.status_display || test.status}
                         </span>
-                      </td>
-                      <td className="px-4 py-3">
-                        <button className="flex items-center gap-1.5 text-sm text-primary hover:text-primary-hover transition-colors">
-                          <Eye size={14} />
+                      </div>
+                      <p className="text-xs text-text-muted font-medium">{test.test_name}</p>
+                      <div className="flex items-center justify-between pt-1 border-t border-border/30">
+                        <span className="text-[10px] text-text-muted">{formatDate(test.submitted_at)}</span>
+                        <button className="flex items-center gap-1.5 text-xs text-primary font-bold hover:text-primary-hover transition-colors">
+                          <Eye size={12} />
                           View
                         </button>
-                      </td>
-                    </tr>
+                      </div>
+                    </div>
                   ))
                 )}
-              </tbody>
-            </table>
+              </div>
+
+              {/* Desktop table */}
+              <table className="hidden lg:table w-full border-separate border-spacing-0">
+                <thead className="sticky top-0 z-10 bg-white shadow-sm">
+                  <tr className="border-b border-border">
+                    <th className="text-left px-4 py-3 text-xs font-bold text-text-muted uppercase tracking-wider">
+                      Sample ID
+                    </th>
+                    <th className="text-left px-4 py-3 text-xs font-bold text-text-muted uppercase tracking-wider">
+                      Lab Name
+                    </th>
+                    <th className="text-left px-4 py-3 text-xs font-bold text-text-muted uppercase tracking-wider">
+                      Date
+                    </th>
+                    <th className="text-left px-4 py-3 text-xs font-bold text-text-muted uppercase tracking-wider">
+                      Status
+                    </th>
+                    <th className="text-left px-4 py-3 text-xs font-bold text-text-muted uppercase tracking-wider">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border/50">
+                  {loading ? (
+                    <tr>
+                      <td colSpan={5} className="px-4 py-12 text-center">
+                        <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto" />
+                      </td>
+                    </tr>
+                  ) : labTests.length === 0 ? (
+                    <tr>
+                      <td colSpan={5} className="px-4 py-12 text-center text-text-muted">
+                        <FlaskConical size={32} className="mx-auto text-text-light mb-3 opacity-50" />
+                        <p className="text-sm font-medium">No lab submissions found</p>
+                      </td>
+                    </tr>
+                  ) : (
+                    labTests.map((test) => (
+                      <tr key={test.id} className="hover:bg-primary/[0.02] transition-colors group">
+                        <td className="px-4 py-3.5 text-sm font-bold text-text-primary">
+                          {test.sample_id}
+                        </td>
+                        <td className="px-4 py-3.5 text-sm text-text-muted font-medium">{test.test_name}</td>
+                        <td className="px-4 py-3.5 text-sm text-text-muted font-medium">
+                          {formatDate(test.submitted_at)}
+                        </td>
+                        <td className="px-4 py-3.5">
+                          <span
+                            className={cn(
+                              'inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase border whitespace-nowrap',
+                              statusBadge[test.status] || 'bg-gray-50 text-text-muted border border-gray-200'
+                            )}
+                          >
+                            {test.status_display || test.status}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3.5">
+                          <button className="flex items-center gap-1.5 text-sm text-primary font-bold hover:text-primary-hover transition-colors opacity-0 group-hover:opacity-100">
+                            <Eye size={14} />
+                            View
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

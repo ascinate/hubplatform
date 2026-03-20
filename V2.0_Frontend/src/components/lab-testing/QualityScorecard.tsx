@@ -30,74 +30,76 @@ export default function QualityScorecard({ passed, total }: QualityScorecardProp
   ]
 
   return (
-    <div className="bg-white rounded-xl border border-border p-6">
-      <h3 className="text-base font-semibold text-text-primary mb-4">Quality Scorecard</h3>
+    <div className="bg-white rounded-xl border border-border p-3 h-full flex flex-col overflow-hidden">
+      <h3 className="text-[10px] font-bold text-text-primary mb-2 uppercase tracking-tight flex-shrink-0">Quality Scorecard</h3>
 
-      {/* Donut Chart */}
-      <div className="relative h-[200px]">
-        {hasData ? (
-          <>
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={chartData}
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={80}
-                  innerRadius={55}
-                  dataKey="value"
-                  startAngle={90}
-                  endAngle={-270}
-                  strokeWidth={0}
-                >
-                  <Cell fill={COLORS.passed} />
-                  <Cell fill={COLORS.failed} />
-                </Pie>
-              </PieChart>
-            </ResponsiveContainer>
-            {/* Center percentage */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-2xl font-bold text-text-primary">{percentage}%</span>
+      <div className="flex-1 flex flex-col min-h-0 min-w-0">
+        {/* Donut Chart */}
+        <div className="relative flex-1 min-h-0 overflow-hidden">
+          {hasData ? (
+            <>
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={chartData}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius="90%"
+                    innerRadius="65%"
+                    dataKey="value"
+                    startAngle={90}
+                    endAngle={-270}
+                    strokeWidth={0}
+                  >
+                    <Cell fill={COLORS.passed} />
+                    <Cell fill={COLORS.failed} />
+                  </Pie>
+                </PieChart>
+              </ResponsiveContainer>
+              {/* Center percentage */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="text-lg font-bold text-text-primary">{percentage}%</span>
+              </div>
+            </>
+          ) : (
+            <div className="flex items-center justify-center h-full">
+              <p className="text-[10px] text-text-muted">No data</p>
             </div>
-          </>
-        ) : (
-          <div className="flex items-center justify-center h-full">
-            <p className="text-sm text-text-muted">No data available</p>
-          </div>
-        )}
-      </div>
-
-      {/* Legend */}
-      <div className="flex items-center justify-center gap-5 mt-2 mb-5">
-        <div className="flex items-center gap-1.5">
-          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS.passed }} />
-          <span className="text-xs text-text-muted">Passed</span>
+          )}
         </div>
-        <div className="flex items-center gap-1.5">
-          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS.failed }} />
-          <span className="text-xs text-text-muted">Failed</span>
-        </div>
-      </div>
 
-      {/* Breakdown rows */}
-      <div className="space-y-3">
-        {breakdownItems.map((item) => (
-          <div key={item.label}>
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-sm text-text-muted">{item.label}</span>
-              <span className="text-sm font-medium text-text-primary">{item.value}%</span>
-            </div>
-            <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-              <div
-                className="h-full rounded-full transition-all duration-500"
-                style={{
-                  width: `${item.value}%`,
-                  backgroundColor: item.value >= 90 ? COLORS.passed : '#E67E22',
-                }}
-              />
-            </div>
+        {/* Legend */}
+        <div className="flex items-center justify-center gap-3 mt-1 mb-2 flex-shrink-0">
+          <div className="flex items-center gap-1">
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: COLORS.passed }} />
+            <span className="text-[9px] font-bold text-text-muted uppercase tracking-wider">Passed</span>
           </div>
-        ))}
+          <div className="flex items-center gap-1">
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: COLORS.failed }} />
+            <span className="text-[9px] font-bold text-text-muted uppercase tracking-wider">Failed</span>
+          </div>
+        </div>
+
+        {/* Breakdown rows */}
+        <div className="space-y-1.5 flex-shrink-0 border-t border-gray-50 pt-2">
+          {breakdownItems.map((item) => (
+            <div key={item.label}>
+              <div className="flex items-center justify-between mb-0.5">
+                <span className="text-[9px] font-bold text-text-muted uppercase tracking-wider">{item.label}</span>
+                <span className="text-[9px] font-bold text-text-primary">{item.value}%</span>
+              </div>
+              <div className="w-full h-1 bg-gray-100 rounded-full overflow-hidden">
+                <div
+                  className="h-full rounded-full transition-all duration-500"
+                  style={{
+                    width: `${item.value}%`,
+                    backgroundColor: item.value >= 90 ? COLORS.passed : '#E67E22',
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

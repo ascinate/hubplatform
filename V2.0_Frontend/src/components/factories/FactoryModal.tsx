@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { X, ChevronDown } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { X, ChevronDown, Upload } from 'lucide-react'
 import { toast } from 'sonner'
 import api from '@/lib/api'
 
@@ -26,6 +26,7 @@ interface Factory {
   contact_email: string
   contact_phone: string
   is_active: boolean
+  factory_image?: string
 }
 
 interface FactoryModalProps {
@@ -50,6 +51,9 @@ export default function FactoryModal({ open, onClose, factory, onSaved }: Factor
   const [contactPhone, setContactPhone] = useState('')
   const [isActive, setIsActive] = useState(true)
   const [saving, setSaving] = useState(false)
+  const [image, setImage] = useState<File | null>(null)
+  const [imagePreview, setImagePreview] = useState<string | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const isEdit = !!factory
 
@@ -68,6 +72,8 @@ export default function FactoryModal({ open, onClose, factory, onSaved }: Factor
       setContactEmail(factory.contact_email || '')
       setContactPhone(factory.contact_phone || '')
       setIsActive(factory.is_active)
+      setImagePreview(factory.factory_image || null)
+      setImage(null)
     } else {
       setName('')
       setCity('')
@@ -82,8 +88,19 @@ export default function FactoryModal({ open, onClose, factory, onSaved }: Factor
       setContactEmail('')
       setContactPhone('')
       setIsActive(true)
+      setImage(null)
+      setImagePreview(null)
     }
   }, [factory])
+
+  const handleImageSelect = (file: File) => {
+    if (!file.type.startsWith('image/')) {
+      toast.error('Please select an image file')
+      return
+    }
+    setImage(file)
+    setImagePreview(URL.createObjectURL(file))
+  }
 
   if (!open) return null
 
@@ -112,12 +129,29 @@ export default function FactoryModal({ open, onClose, factory, onSaved }: Factor
       if (productionCapacity) payload.production_capacity = parseInt(productionCapacity)
       if (totalManpower) payload.total_manpower = parseInt(totalManpower)
 
-      if (isEdit) {
-        await api.patch(`/factories/${factory.id}/`, payload)
-        toast.success('Factory updated successfully')
+      let res
+      if (image) {
+        const formData = new FormData()
+        Object.entries(payload).forEach(([key, value]) => {
+          formData.append(key, String(value))
+        })
+        formData.append('factory_image', image)
+        
+        if (isEdit) {
+          res = await api.patch(`/factories/${factory.id}/`, formData, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+          })
+        } else {
+          res = await api.post('/factories/', formData, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+          })
+        }
       } else {
-        await api.post('/factories/', payload)
-        toast.success('Factory created successfully')
+        if (isEdit) {
+          res = await api.patch(`/factories/${factory.id}/`, payload)
+        } else {
+          res = await api.post('/factories/', payload)
+        }
       }
 
       onSaved()
@@ -161,6 +195,58 @@ export default function FactoryModal({ open, onClose, factory, onSaved }: Factor
               autoFocus
               className={inputClass}
             />
+          </div>
+
+          {/* Factory Image Drag & Drop */}
+          <div>
+            <label className={labelClass}>Factory Image</label>
+            <div
+              className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary/40 transition-colors cursor-pointer group"
+              onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); }}
+              onDrop={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const file = e.dataTransfer.files?.[0];
+                if (file) handleImageSelect(file);
+              }}
+              onClick={() => fileInputRef.current?.click()}
+            >
+              {imagePreview ? (
+                <div className="relative inline-block group/preview">
+                  <img src={imagePreview} alt="Preview" className="max-h-32 mx-auto rounded-lg object-contain border border-border" />
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setImage(null);
+                      setImagePreview(null);
+                      if (fileInputRef.current) fileInputRef.current.value = '';
+                    }}
+                    className="absolute -top-2 -right-2 bg-danger text-white p-1 rounded-full shadow-lg hover:bg-danger/90 transition-colors"
+                  >
+                    <X size={12} />
+                  </button>
+                </div>
+              ) : (
+                <div className="space-y-2 py-2">
+                  <Upload size={24} className="mx-auto text-text-muted group-hover:text-primary transition-colors" />
+                  <p className="text-xs text-text-muted">
+                    Drag & drop or <span className="text-primary font-medium">browse</span> factory image
+                  </p>
+                  <p className="text-[10px] text-text-muted/60 italic">Supports: JPG, PNG, WEBP (Max 5MB)</p>
+                </div>
+              )}
+              <input
+                type="file"
+                ref={fileInputRef}
+                className="hidden"
+                accept="image/*"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) handleImageSelect(file);
+                }}
+              />
+            </div>
           </div>
 
           {/* City + Country */}

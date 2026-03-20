@@ -26,6 +26,16 @@ const PHASE_LABELS: Record<string, string> = {
   quality_system: 'Quality System',
 }
 
+const TYPE_TO_PHASE: Record<string, string[]> = {
+  pre_production: ['production_prep'],
+  inline: ['production_execution'],
+  dupro: ['production_execution'],
+  final: ['quality_control'],
+  fri: ['quality_control'],
+  pre_final: ['quality_control'],
+  lab_test: ['quality_control'],
+}
+
 interface NewInspectionModalProps {
   open: boolean
   onClose: () => void
@@ -46,6 +56,7 @@ export default function NewInspectionModal({ open, onClose, onCreated }: NewInsp
   const [inspectionDate, setInspectionDate] = useState(() => new Date().toISOString().split('T')[0])
   const [auditorName, setAuditorName] = useState('')
   const [status, setStatus] = useState('draft')
+  const [scheduledDate, setScheduledDate] = useState(() => new Date().toISOString().split('T')[0])
 
   useEffect(() => {
     if (open) {
@@ -62,6 +73,7 @@ export default function NewInspectionModal({ open, onClose, onCreated }: NewInsp
     setInspectionDate(new Date().toISOString().split('T')[0])
     setAuditorName('')
     setStatus('draft')
+    setScheduledDate(new Date().toISOString().split('T')[0])
   }
 
   const loadFactories = async () => {
@@ -93,6 +105,12 @@ export default function NewInspectionModal({ open, onClose, onCreated }: NewInsp
   // Group templates by phase
   const templatesByPhase: Record<string, Template[]> = {}
   templates.forEach((t) => {
+    // Filter by inspection type if selected
+    if (inspectionType) {
+      const allowedPhases = TYPE_TO_PHASE[inspectionType] || []
+      if (!allowedPhases.includes(t.phase)) return
+    }
+
     if (!templatesByPhase[t.phase]) templatesByPhase[t.phase] = []
     templatesByPhase[t.phase].push(t)
   })
@@ -114,6 +132,10 @@ export default function NewInspectionModal({ open, onClose, onCreated }: NewInsp
         auditor_name: auditorName.trim(),
         status: status,
         result: 'pending',
+      }
+
+      if (status === 'scheduled') {
+        payload.scheduled_date = scheduledDate
       }
 
       if (template) {
@@ -278,6 +300,22 @@ export default function NewInspectionModal({ open, onClose, onCreated }: NewInsp
                 <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none" />
               </div>
             </div>
+
+            {/* Schedule Date (Conditional) */}
+            {status === 'scheduled' && (
+              <div>
+                <label className="block text-sm font-medium text-text-primary mb-1.5">
+                  Schedule Date <span className="text-danger">*</span>
+                </label>
+                <input
+                  type="date"
+                  value={scheduledDate}
+                  onChange={(e) => setScheduledDate(e.target.value)}
+                  required
+                  className="w-full px-4 py-2.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+                />
+              </div>
+            )}
           </div>
 
           {/* Footer */}

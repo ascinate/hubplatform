@@ -9,16 +9,23 @@
     @apply border-border;
     -webkit-tap-highlight-color: transparent;
   }
-  html, body {
+
+  html,
+  body {
     overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
   }
+
   body {
     @apply bg-bg-main text-text-primary font-sans antialiased;
   }
+
   /* Prevent iOS zoom on input focus */
   @media (max-width: 1023px) {
-    input, select, textarea {
+
+    input,
+    select,
+    textarea {
       font-size: 16px !important;
     }
   }
@@ -29,38 +36,64 @@
     scrollbar-width: thin;
     scrollbar-color: #D5D8DC transparent;
   }
+
   .scrollbar-thin::-webkit-scrollbar {
     width: 6px;
   }
+
   .scrollbar-thin::-webkit-scrollbar-track {
     background: transparent;
   }
+
   .scrollbar-thin::-webkit-scrollbar-thumb {
     background-color: #D5D8DC;
     border-radius: 3px;
   }
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-    .custom-scrollbar {
+
+  .custom-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: #E2E8F0 transparent;
   }
+
   .custom-scrollbar::-webkit-scrollbar {
     width: 5px;
   }
+
   .custom-scrollbar::-webkit-scrollbar-track {
     background: transparent;
   }
+
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background-color: #E2E8F0;
     border-radius: 10px;
   }
+
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: #CBD5E1;
   }
+
+
+}
+
+.border-\[\#C9A96E\] {
+  border-color: rgb(201 169 110 / var(--tw-border-opacity, 1)) !important;
+}
+
+.border-\[\#C9A96E\] {
+  border-color: rgb(253 230 138 / var(--tw-border-opacity, 1)) !important;
+}
+
+
+
+.bg-\[rgba\(201\2c 169\2c 110\2c 0\.30\)\] {
+  background-color: rgb(255 251 235) !important;
 }
